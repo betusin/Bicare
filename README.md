@@ -73,5 +73,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 npm version 8.15.0
 node version 16.17.1
 nvm version 2.2.11 
+expo version 6.0.6
 
 Use nvm to change your node version. Simply typing 16 sufficies.
