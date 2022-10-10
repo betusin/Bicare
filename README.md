@@ -69,7 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-### Tom notes
+### Tom notes on versions
 npm version 8.15.0
 
 node version 16.17.1
@@ -78,4 +78,16 @@ nvm version 2.2.11
 
 expo version 6.0.6
 
+yarn version 1.22.19
+
 Use nvm to change your node version. Simply typing 16 sufficies.
+
+### Tom's elaborate guide to BICARE testing
+
+1. Clone the repo
+
+2. get npm, node, nvm and expo with the versions mentioned above. nvm is purely a version manager, you can use it as follows: `nvm use 16`. This will default to 16.17.1 for node. Expo can be installed via npm: `npm install expo`
+
+3. Since all dependencies should be in the yarn.lock, you should run yarn install. 
+
+4. Everything *should* be set up correctly now. `expo start` will start an emulator. 
