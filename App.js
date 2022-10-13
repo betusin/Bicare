@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import "typeface-roboto"
 
 export default function App() {
+  
   return (
+    
     <View style={styles.ladida}>
       <View style={styles.container}>
       
@@ -20,12 +23,13 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     fontSize: 42,
-    fontFamily: 'Courier',
+    fontFamily: 'Roboto',
   },
   text: {
     color: 'white',
     fontSize: 26,
-    fontFamily: 'Courier'
+    fontWeight: '300',
+    fontFamily: 'Roboto',
   },
   ladida: {
     backgroundImage: 'linear-gradient(#751A33, #B34233)',
