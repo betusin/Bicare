@@ -6,8 +6,8 @@ export default function App() {
     <View style={styles.ladida}>
       <View style={styles.container}>
       
-        <Text>BICARE</Text>
-        <Text>Barter your bike repair anywhere</Text>
+        <Text style={styles.title}>BICARE</Text>
+        <Text style={styles.text}>Barter your bike repair anywhere</Text>
         <StatusBar style="auto" />
       </View>
     </View>
@@ -16,14 +16,25 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 42,
+    fontFamily: 'Courier',
+  },
+  text: {
+    color: 'white',
+    fontSize: 26,
+    fontFamily: 'Courier'
+  },
   ladida: {
-    backgroundColor: 'linear-gradient(#751A33, #B34233)',
+    backgroundImage: 'linear-gradient(#751A33, #B34233)',
     backgroundSize: 'cover',
     height: "100%",
   },
   container: {
-    flex: 1,
-    backgroundColor: 'blue',
+    flex: 0.3,
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
   },
