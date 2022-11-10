@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   },
   ladida: {
     backgroundImage: 'linear-gradient(#751A33, #B34233)',
+    // backgroundImage: 'linear-gradient(var(--primary-background), #B34233)',
     backgroundSize: 'cover',
     height: "100%",
   },
