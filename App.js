@@ -10,10 +10,26 @@ import { useFonts } from 'expo-font';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Navigation from "./screens/Navigation"
 import NewRepairRequest from "./screens/NewRepairRequest";
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { firebaseConfig } from '/src/firebaseConfig';
+
 const Stack = createStackNavigator();
 
 
 export default function App() {
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  const testData = getTestData(db);
+  console.log("testData", testData);
+
+  async function getTestData(db) {
+    const testCollesction = collection(db, 'test');
+    const testSnapshot = await getDocs(testCollesction);
+    const testData = testSnapshot.docs.map(doc => doc.data());
+    return testData;
+  }
 
   return (
     <NavigationContainer>
