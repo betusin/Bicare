@@ -12,7 +12,7 @@ import Navigation from "./screens/Navigation"
 import NewRepairRequest from "./screens/NewRepairRequest";
 import { initializeApp } from "firebase/app";
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
-import { firebaseConfig } from '/src/firebaseConfig';
+import { firebaseConfig } from './src/firebaseConfig';
 
 const Stack = createStackNavigator();
 

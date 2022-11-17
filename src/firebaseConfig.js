@@ -1,4 +1,4 @@
-const firebaseConfig = {
+export const firebaseConfig = {
     /* You can copy this config file from Firebase for Bicare app
     in Project settings in section General, if you have permissions.
 
