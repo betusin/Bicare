@@ -1,8 +1,14 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
-import { TextInput } from "react-native-web";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  TextInput,
+  SafeAreaView,
+} from "react-native";
 import React, { useState } from "react";
-import "typeface-roboto";
+//import "typeface-roboto";
 import SignupScreen from "./SignupScreen";
 
 export default function LoginScreen({ navigation }) {
@@ -10,8 +16,8 @@ export default function LoginScreen({ navigation }) {
   const [passwordText, setTextPassword] = useState("");
 
   return (
-    <View style={styles.ladida}>
-      <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.ladida}>
         <Text style={styles.title}>BICARE</Text>
         <Text style={styles.text}>Barter your bike repair anywhere</Text>
         <View style={styles.inputWrapper}>
@@ -23,10 +29,11 @@ export default function LoginScreen({ navigation }) {
           />
           <TextInput
             style={styles.input}
+            secureTextEntry={true}
             placeholder="Enter your Password"
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
-          />{" "}
+          />
           <Button
             style={styles.input}
             title="Login"
@@ -41,7 +48,7 @@ export default function LoginScreen({ navigation }) {
         </View>
         <StatusBar style="auto" />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
@@ -50,27 +57,29 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 42,
-    fontFamily: "Roboto",
+    //fontFamily: "Roboto",
   },
   text: {
     color: "white",
     fontSize: 26,
     fontWeight: "300",
-    fontFamily: "Roboto",
+    alignItems: "center",
+    //fontFamily: "Roboto",
   },
   ladida: {
-    backgroundImage: "linear-gradient(#751A33, #B34233)",
+    //backgroundImage: "linear-gradient(#751A33, #B34233)",
     backgroundSize: "cover",
     height: "100%",
+    alignItems: "center",
   },
   container: {
-    flex: 0.3,
-    backgroundColor: "transparent",
+    flex: 1,
+    backgroundColor: "cyan",
     alignItems: "center",
     justifyContent: "center",
   },
   input: {
-    flex: 0.3,
+    //flex: 0.3,
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
@@ -78,7 +87,7 @@ const styles = StyleSheet.create({
   },
   inputWrapper: {
     //flex: 0.3,
-    //backgroundColor: "white",
+    //backgroundColor: "red",
     alignItems: "center",
 
     //justifyContent: "center",
