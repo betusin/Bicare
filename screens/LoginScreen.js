@@ -7,11 +7,11 @@ import {
   TextInput,
   SafeAreaView,
 } from "react-native";
+import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from "react";
 import {TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import SignupScreen from "./SignupScreen";
-
 export default function LoginScreen({ navigation }) {
   const [usernameText, setTextUsername] = useState("");
   const [passwordText, setTextPassword] = useState("");
@@ -21,6 +21,7 @@ export default function LoginScreen({ navigation }) {
   });
 
   return (
+	<LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
     <SafeAreaView style={styles.container}>
       <View style={styles.ladida}>
         <Text style={styles.title}>BICARE</Text>
@@ -63,6 +64,7 @@ export default function LoginScreen({ navigation }) {
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
+	</LinearGradient>
   );
 }
 
@@ -122,7 +124,8 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundImage: "linear-gradient(#751A33, #B34233)",
+    //backgroundImage: "linear-gradient(#751A33, #B34233)",
+	//backgroundColor: "red",
     alignItems: "center",
     justifyContent: "center",
   },
