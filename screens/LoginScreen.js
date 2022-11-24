@@ -29,17 +29,19 @@ export default function LoginScreen({ navigation }) {
         <View style={styles.inputWrapper}>
           <TextInput
             style={styles.input}
-            placeholder="  Enter your Username"
+            placeholder="Enter your Username"
             onChangeText={(newText) => setTextUsername(newText)}
             value={usernameText}
           />
           <TextInput
             style={styles.input}
             secureTextEntry={true}
-            placeholder="  Enter your Password"
+            placeholder="Enter your Password"
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
           />
+		</View>
+        <View style={styles.buttonWrapper}>
           <TouchableOpacity
             style={styles.button}
             onPress={() => Alert.alert("Login Button pressed")}
@@ -74,13 +76,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 42,
     fontFamily: "Roboto",
+	textAlign: 'center', 
 
   },
   button: {
     alignItems: "center",
 	borderRadius: 5,
     backgroundColor: "#F5D466",
-    alignItems: "center",
     justifyContent: "center",
     marginVertical: "5%",
     shadowColor: "#000",
@@ -99,15 +101,17 @@ const styles = StyleSheet.create({
 	fontFamily: "Roboto",
 	fontSize: 20,
 	fontWeight: "bold",
+	textAlignt: "center",
+	justifyContent: "center",
+	alignItems: "center",
   }, 
   text: {
-    flex: 0.1,
     color: "white",
     fontSize: 26,
     fontWeight: "300",
     alignItems: "center",
-    justifyContent: "center", 
     fontFamily: "Roboto",
+	textAlign: "center", 
   },
   subtitle: {
 	//flex: 0.2,
@@ -115,6 +119,9 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "300",
     fontFamily: "Roboto",
+	justifyContent: "center",
+	alignItems: "center",
+	textAlign: "center",
   },
   ladida: {
     //backgroundImage: "linear-gradient(#751A33, #B34233)",
@@ -130,11 +137,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   input: {
-    //flex: 0.1,
     backgroundColor: "white",
-	fontSize: 18,
+	fontSize: 21,
     alignItems: "center",
     justifyContent: "center",
+	textAlign: "center",
     marginVertical: "5%",
     shadowColor: "#000",
     shadowOffset: {
@@ -145,13 +152,23 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     borderRadius: 5,
-	height: 30,
-	width: 250,
+	height: 50,
+	width: 260,
   },
   inputWrapper: {
-    //flex: 0.1,
+	flexDirection: 'column',
+    flex: 1,
     //backgroundColor: "red",
     alignItems: "center",
+    
+    //justifyContent: "center",
+  },
+  buttonWrapper: {
+	flexDirection: 'column', 
+    flex: 0.1,
+    //backgroundColor: "red",
+    alignItems: "center",
+	padding: 40,
     
     //justifyContent: "center",
   },
