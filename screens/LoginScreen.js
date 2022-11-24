@@ -40,6 +40,8 @@ export default function LoginScreen({ navigation }) {
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
           />
+        </View>
+        <View style={styles.buttonWrapper}>
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Navigation")}
@@ -123,7 +125,6 @@ const styles = StyleSheet.create({
   },
   ladida: {
     //backgroundImage: "linear-gradient(#751A33, #B34233)",
-    backgroundSize: "cover",
     height: "80%",
     alignItems: "center",
   },
@@ -140,7 +141,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
 	textAlign: "center",
-    marginVertical: "5%",
+    marginVertical: "3%",
+	marginHorizontal:"3%",
     shadowColor: "#000",
     shadowOffset: {
      	width: 0,
@@ -152,24 +154,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
 	height: 50,
 	width: 260,
-	padding: 50,
   },
   inputWrapper: {
+	//borderWidth: 5,
 	flexDirection: 'column',
-    flex: 1,
+    flex: 0.5,
     //backgroundColor: "red",
     alignItems: "center",
-	padding: 50,
-    
-    //justifyContent: "center",
+    justifyContent: "center",
   },
   buttonWrapper: {
+	//borderWidth: 10,
 	flexDirection: 'column', 
     flex: 1,
     //backgroundColor: "red",
     alignItems: "center",
-    
-    //justifyContent: "center",
+    justifyContent: "center",
   },
   space: {
 	//backgroundColor: "white",
