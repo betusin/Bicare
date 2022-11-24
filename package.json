@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@babel/preset-env": "^7.1.6",
+    "@expo/ngrok": "^4.1.0",
     "@react-navigation/native": "^6.0.13",
     "@react-navigation/native-stack": "^6.9.1",
     "@react-navigation/stack": "^6.3.4",
