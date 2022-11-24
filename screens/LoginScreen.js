@@ -8,7 +8,8 @@ import {
   SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
-//import "typeface-roboto";
+import {TouchableOpacity} from "react-native";
+import "typeface-roboto";
 import SignupScreen from "./SignupScreen";
 
 export default function LoginScreen({ navigation }) {
@@ -19,32 +20,37 @@ export default function LoginScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.ladida}>
         <Text style={styles.title}>BICARE</Text>
-        <Text style={styles.text}>Barter your bike repair anywhere</Text>
+        <Text style={styles.subtitle}>Barter your bike repair anywhere</Text>
         <View style={styles.inputWrapper}>
           <TextInput
             style={styles.input}
-            placeholder="Enter your Username"
+            placeholder="  Enter your Username"
             onChangeText={(newText) => setTextUsername(newText)}
             value={usernameText}
           />
           <TextInput
             style={styles.input}
             secureTextEntry={true}
-            placeholder="Enter your Password"
+            placeholder="  Enter your Password"
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
           />
-          <Button
-            style={styles.input}
-            title="Login"
+		  <View style={styles.space}> </View>
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => Alert.alert("Login Button pressed")}
-          />
-          <View style={styles.space}></View>
-          <Button
-            style={styles.input}
-            title="Sign up"
+          >
+			<Text
+		  		style={styles.buttonText}
+		  	> 
+		  	Login </Text>
+		  </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
             onPress={() => navigation.navigate("SignupScreen")}
-          />
+		  >
+		  	<Text> Sign up </Text>
+          </TouchableOpacity>
         </View>
         <StatusBar style="auto" />
       </View>
@@ -57,43 +63,90 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     fontSize: 42,
-    //fontFamily: "Roboto",
+    fontFamily: "Roboto",
   },
+  button: {
+    alignItems: "center",
+	borderRadius: 5,
+    backgroundColor: "#F5D466",
+    alignItems: "center",
+    justifyContent: "center",
+    marginVertical: "5%",
+    shadowColor: "#000",
+    shadowOffset: {
+     	width: 0,
+     	height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+
+    elevation: 5,
+	width: 100,
+	height: 30, 
+
+  },
+  buttontext: {
+	fontFamily: "Roboto",
+  }, 
   text: {
+	flex: 0.1,
     color: "white",
     fontSize: 26,
     fontWeight: "300",
     alignItems: "center",
-    //fontFamily: "Roboto",
+	justifyContent: "center", 
+    fontFamily: "Roboto",
+  },
+
+  subtitle: {
+	flex: 0.2,
+    color: "white",
+    fontSize: 26,
+    fontWeight: "300",
+    alignItems: "center",
+	justifyContent: "center", 
+    fontFamily: "Roboto",
   },
   ladida: {
     //backgroundImage: "linear-gradient(#751A33, #B34233)",
     backgroundSize: "cover",
-    height: "100%",
+    height: "80%",
     alignItems: "center",
   },
   container: {
     flex: 1,
-    backgroundColor: "cyan",
+    backgroundImage: "linear-gradient(#751A33, #B34233)",
     alignItems: "center",
     justifyContent: "center",
   },
   input: {
-    //flex: 0.3,
+    //flex: 0.1,
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
     marginVertical: "5%",
+    shadowColor: "#000",
+    shadowOffset: {
+     	width: 0,
+     	height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderRadius: 5,
+	height: 25,
+	width: 200,
   },
   inputWrapper: {
-    //flex: 0.3,
+    //flex: 0.1,
     //backgroundColor: "red",
     alignItems: "center",
-
+    
     //justifyContent: "center",
   },
   space: {
-    width: 20, // or whatever size  you need
-    height: 40,
+	//backgroundColor: "white",
+    width: 100, // or whatever size  you need
+    height: 75, 
   },
 });
