@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
 	width: 260,
   },
   inputWrapper: {
-	flexDirection: 'column',
+	flexDirection: "column",
     flex: 1,
     //backgroundColor: "red",
     alignItems: "center",
