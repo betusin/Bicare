@@ -39,7 +39,6 @@ export default function LoginScreen({ navigation }) {
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
           />
-		  <View style={styles.space}> </View>
           <TouchableOpacity
             style={styles.button}
             onPress={() => Alert.alert("Login Button pressed")}
@@ -47,13 +46,18 @@ export default function LoginScreen({ navigation }) {
 			<Text
 		  		style={styles.buttonText}
 		  	> 
-		  	Login </Text>
+		  		Login 
+		  	</Text>
 		  </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("SignupScreen")}
 		  >
-		  	<Text> Sign up </Text>
+		  	<Text
+		  		style={styles.buttonText}
+		  	> 
+		  		Sign up 
+		  	</Text>
           </TouchableOpacity>
         </View>
         <StatusBar style="auto" />
@@ -68,6 +72,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 42,
     fontFamily: "Roboto",
+
   },
   button: {
     alignItems: "center",
@@ -78,19 +83,20 @@ const styles = StyleSheet.create({
     marginVertical: "5%",
     shadowColor: "#000",
     shadowOffset: {
-     	width: 0,
-     	height: 2,
+     	width: 1,
+     	height: 3,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    shadowOpacity: 0.50,
+    shadowRadius: 4,
 
     elevation: 5,
-	width: 100,
-	height: 30, 
-
+	width: 150,
+	height: 50, 
   },
-  buttontext: {
+  buttonText: {
 	fontFamily: "Roboto",
+	fontSize: 20,
+	fontWeight: "bold",
   }, 
   text: {
     flex: 0.1,
@@ -101,14 +107,11 @@ const styles = StyleSheet.create({
     justifyContent: "center", 
     fontFamily: "Roboto",
   },
-
   subtitle: {
-	flex: 0.2,
+	//flex: 0.2,
     color: "white",
     fontSize: 26,
     fontWeight: "300",
-    alignItems: "center",
-    justifyContent: "center", 
     fontFamily: "Roboto",
   },
   ladida: {
@@ -126,6 +129,7 @@ const styles = StyleSheet.create({
   input: {
     //flex: 0.1,
     backgroundColor: "white",
+	fontSize: 18,
     alignItems: "center",
     justifyContent: "center",
     marginVertical: "5%",
@@ -138,8 +142,8 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
     borderRadius: 5,
-	height: 25,
-	width: 200,
+	height: 30,
+	width: 250,
   },
   inputWrapper: {
     //flex: 0.1,
