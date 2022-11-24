@@ -40,8 +40,6 @@ export default function LoginScreen({ navigation }) {
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
           />
-		</View>
-        <View style={styles.buttonWrapper}>
           <TouchableOpacity
             style={styles.button}
             onPress={() => navigation.navigate("Navigation")}
@@ -154,21 +152,22 @@ const styles = StyleSheet.create({
     borderRadius: 5,
 	height: 50,
 	width: 260,
+	padding: 50,
   },
   inputWrapper: {
-	flexDirection: "column",
+	flexDirection: 'column',
     flex: 1,
     //backgroundColor: "red",
     alignItems: "center",
+	padding: 50,
     
     //justifyContent: "center",
   },
   buttonWrapper: {
 	flexDirection: 'column', 
-    flex: 0.1,
+    flex: 1,
     //backgroundColor: "red",
     alignItems: "center",
-	padding: 40,
     
     //justifyContent: "center",
   },
