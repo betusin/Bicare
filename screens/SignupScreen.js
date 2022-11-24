@@ -8,7 +8,6 @@ import {
   SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
-//import "typeface-roboto";
 
 export default function SignupScreen(navigation) {
   const [phoneNumberText, setTextPhoneNumber] = useState("");

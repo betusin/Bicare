@@ -9,12 +9,16 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import {TouchableOpacity} from "react-native";
-import "typeface-roboto";
+import { useFonts } from 'expo-font';
 import SignupScreen from "./SignupScreen";
 
 export default function LoginScreen({ navigation }) {
   const [usernameText, setTextUsername] = useState("");
   const [passwordText, setTextPassword] = useState("");
+
+  const [fontsLoaded] = useFonts({
+    'Roboto': require('./../assets/fonts/Roboto-Regular.ttf'),
+  });
 
   return (
     <SafeAreaView style={styles.container}>
@@ -89,12 +93,12 @@ const styles = StyleSheet.create({
 	fontFamily: "Roboto",
   }, 
   text: {
-	flex: 0.1,
+    flex: 0.1,
     color: "white",
     fontSize: 26,
     fontWeight: "300",
     alignItems: "center",
-	justifyContent: "center", 
+    justifyContent: "center", 
     fontFamily: "Roboto",
   },
 
@@ -104,7 +108,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "300",
     alignItems: "center",
-	justifyContent: "center", 
+    justifyContent: "center", 
     fontFamily: "Roboto",
   },
   ladida: {
