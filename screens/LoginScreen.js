@@ -37,7 +37,7 @@ export default function LoginScreen({ navigation }) {
           <Button
             style={styles.input}
             title="Login"
-            onPress={() => Alert.alert("Login Button pressed")}
+            onPress={() => navigation.navigate("Maps")}
           />
           <View style={styles.space}></View>
           <Button

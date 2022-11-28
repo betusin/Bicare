@@ -4,9 +4,10 @@ import { TextInput } from "react-native-web";
 import React, { useState } from "react";
 //import "typeface-roboto";
 import LoginScreen from "./screens/LoginScreen";
+import SignupScreen from "./screens/SignupScreen";
+import Maps from "./screens/Maps";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import SignupScreen from "./screens/SignupScreen";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -21,6 +22,11 @@ export default function App() {
         <Stack.Screen
           name="SignupScreen"
           component={SignupScreen}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Maps"
+          component={Maps}
           options={{ headerShown: false }}
         ></Stack.Screen>
       </Stack.Navigator>
