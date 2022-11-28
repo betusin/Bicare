@@ -6,6 +6,7 @@ import LoginScreen from "./screens/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import SignupScreen from "./screens/SignupScreen";
+import NewRepairRequest from "./screens/NewRepairRequest";
 import { useFonts } from 'expo-font';
 const Stack = createStackNavigator();
 
@@ -15,8 +16,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
+          name="NewRepairRequest"
+          component={NewRepairRequest}
           options={{ headerShown: false }}
         ></Stack.Screen>
         <Stack.Screen
