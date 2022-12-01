@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import page from '../styles'
 import {TouchableOpacity} from "react-native"; 
 import { LinearGradient } from 'expo-linear-gradient';
-export default function SignupScreen(navigation) {
+export default function SignupScreen( {navigation} ) {
   const [phoneNumberText, setTextPhoneNumber] = useState("");
   const [usernameText, setTextUsername] = useState("");
   const [passwordText, setTextPassword] = useState("");
@@ -54,7 +54,7 @@ export default function SignupScreen(navigation) {
         <View style={page.buttonWrapper}>
           <TouchableOpacity
             style={page.button}
-            onPress={() => navigation.navigate("SignupScreen")}
+            onPress={() => navigation.navigate("Navigation")}
 		      >
           <Text
             style={page.buttonText}
