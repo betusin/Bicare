@@ -14,7 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { auth } from '../src/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export default function SignupScreen(navigation) {
+export default function SignupScreen({ navigation }) {
   const [phoneNumberText, setTextPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
   const [usernameText, setTextUsername] = useState("");
@@ -36,6 +36,7 @@ export default function SignupScreen(navigation) {
       .then(userCredentials => {
         const user = userCredentials.user;
         window.alert('Successfully signed up with email ' + email)
+        navigation.navigate("Navigation")
       })
       .catch(error => alert(error.message))
   }
@@ -48,7 +49,7 @@ export default function SignupScreen(navigation) {
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput
-            style={styles.input}
+            style={page.input}
             placeholder="Enter your Email"
             onChangeText={(newText) => setEmail(newText)}
             value={email}
@@ -57,27 +58,27 @@ export default function SignupScreen(navigation) {
             style={page.input}
             placeholder="Enter your Phone number"
             onChangeText={(newText) => setTextPhoneNumber(newText)}
-            value={usernameText}
+            value={phoneNumberText}
           />
           <TextInput
             style={page.input}
-            secureTextEntry={true}
             placeholder="Enter your Username"
-            onChangeText={(newText) => setTextPassword(newText)}
-            value={passwordText}
-          />
-          <TextInput
-            style={page.input}
-            placeholder="Enter your Password"
             onChangeText={(newText) => setTextUsername(newText)}
             value={usernameText}
           />
           <TextInput
             style={page.input}
             secureTextEntry={true}
-            placeholder="Re-enter your Password"
+            placeholder="Enter your Password"
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
+          />
+          <TextInput
+            style={page.input}
+            secureTextEntry={true}
+            placeholder="Re-enter your Password"
+            onChangeText={(newText) => setTextRePassword(newText)}
+            value={repasswordText}
           />
         </View>
         <View style={page.buttonWrapper}>
