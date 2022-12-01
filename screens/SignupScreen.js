@@ -11,11 +11,35 @@ import React, { useState } from "react";
 import page from '../styles'
 import {TouchableOpacity} from "react-native"; 
 import { LinearGradient } from 'expo-linear-gradient';
-export default function SignupScreen( {navigation} ) {
+import React, { useState, useEffect } from "react";
+import { auth } from '../src/firebase';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+
+export default function SignupScreen(navigation) {
   const [phoneNumberText, setTextPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
   const [usernameText, setTextUsername] = useState("");
   const [passwordText, setTextPassword] = useState("");
   const [repasswordText, setTextRePassword] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        navigation.navigate("Navigation")
+      }
+    })
+
+    return unsubscribe
+  }, [])
+
+  const handleSignUp = () => {
+    createUserWithEmailAndPassword(auth, email, passwordText)
+      .then(userCredentials => {
+        const user = userCredentials.user;
+        window.alert('Successfully signed up with email ' + email)
+      })
+      .catch(error => alert(error.message))
+  }
 
   return (
     <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
@@ -25,9 +49,15 @@ export default function SignupScreen( {navigation} ) {
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput
+            style={styles.input}
+            placeholder="Enter your Email"
+            onChangeText={(newText) => setEmail(newText)}
+            value={email}
+          />
+          <TextInput
             style={page.input}
             placeholder="Enter your Phone number"
-            onChangeText={(newText) => setTextUsername(newText)}
+            onChangeText={(newText) => setTextPhoneNumber(newText)}
             value={usernameText}
           />
           <TextInput
@@ -54,7 +84,7 @@ export default function SignupScreen( {navigation} ) {
         <View style={page.buttonWrapper}>
           <TouchableOpacity
             style={page.button}
-            onPress={() => navigation.navigate("Navigation")}
+            onPress={handleSignUp}
 		      >
           <Text
             style={page.buttonText}
