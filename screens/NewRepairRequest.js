@@ -69,8 +69,6 @@ export default function NewRepairRequest({ navigation }){
                             Create repair request
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button} onPress={() => navigation.toggleDrawer()}>
-                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
@@ -199,7 +197,6 @@ export const styles = StyleSheet.create({
       textAlign: "center"
     },
     view: {
-      //backgroundImage: "linear-gradient(#751A33, #B34233)",
       backgroundSize: "cover",
       height: "80%",
       width: "80%",
@@ -207,8 +204,7 @@ export const styles = StyleSheet.create({
     },
     container: {
       flex: 1,
-      backgroundColor: "#27241A", //TODO: temporary, remove
-      backgroundImage: "linear-gradient(#751A33, #B34233)",
+      backgroundColor: "#242424",
       alignItems: "center",
       justifyContent: "center",
     },

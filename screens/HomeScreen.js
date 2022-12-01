@@ -1,3 +1,5 @@
+//Work In Progress
+
 import {
   StyleSheet,
   Text,
@@ -20,10 +22,10 @@ export default function HomeScreen({ navigation }){
                 <Text style={styles.header}>Home Screen</Text>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => navigation.navigate("LoginScreen")}
+                    onPress={() => navigation.navigate("New Repair Request")}
                 >
-                    <Text style={styles.buttonText}> 
-                        Logout 
+                    <Text> 
+                        New Repair Request 
                     </Text>
                 </TouchableOpacity>
             </View>

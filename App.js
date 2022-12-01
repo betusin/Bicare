@@ -8,8 +8,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import SignupScreen from "./screens/SignupScreen";
 import { useFonts } from 'expo-font';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import HomeScreen from "./screens/HomeScreen";
 import Navigation from "./screens/Navigation"
+import NewRepairRequest from "./screens/NewRepairRequest";
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -21,17 +21,17 @@ export default function App() {
           name="LoginScreen"
           component={LoginScreen}
           options={{ headerShown: false }}
-        ></Stack.Screen>
+        />
         <Stack.Screen
           name="SignupScreen"
           component={SignupScreen}
           options={{ headerShown: false }}
-        ></Stack.Screen>
+        />
         <Stack.Screen
           name="Navigation"
           component={Navigation}
           options={{ headerShown: false }}
-        ></Stack.Screen>
+        />
       </Stack.Navigator>
     </NavigationContainer> 
   );
