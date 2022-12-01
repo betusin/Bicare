@@ -13,6 +13,7 @@ import {TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import SignupScreen from "./SignupScreen";
 import page from '../styles'
+
 export default function LoginScreen({ navigation }) {
   const [usernameText, setTextUsername] = useState("");
   const [passwordText, setTextPassword] = useState("");
@@ -45,7 +46,7 @@ export default function LoginScreen({ navigation }) {
         </View>
         <View style={page.buttonWrapper}>
           <TouchableOpacity
-            style={styles.button}
+            style={page.button}
             onPress={() => navigation.navigate("Navigation")}
           >
           <Text
