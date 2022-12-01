@@ -15,7 +15,7 @@ export default StyleSheet.create({
       borderRadius: 5,
       backgroundColor: "#F5D466",
       justifyContent: "center",
-      marginVertical: "5%",
+      marginVertical: "3%",
       shadowColor: "#000",
       shadowOffset: {
            width: 1,
@@ -84,15 +84,15 @@ export default StyleSheet.create({
     },
     inputWrapper: {
       flexDirection: 'column',
-      flex: 0.5,
       alignItems: "center",
       justifyContent: "center",
+	  height: 350,
     },
     buttonWrapper: {
       flexDirection: 'column', 
-      flex: 1,
       alignItems: "center",
       justifyContent: "center",
+	  height: 70,
     },
     space: {
       width: 100, 
