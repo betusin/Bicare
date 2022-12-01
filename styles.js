@@ -28,6 +28,24 @@ export default StyleSheet.create({
       width: 150,
       height: 50, 
     },
+	bigButton:{
+	  alignItems: "center",
+	  borderRadius: 5,
+	  backgroundColor:"#F5D466",
+      justifyContent: "center", 
+	  marginVertical: "3%",
+      shadowColor: "#000",
+      shadowOffset: {
+           width: 1,
+           height: 3,
+      },
+      shadowOpacity: 0.50,
+      shadowRadius: 4,
+  
+      elevation: 5,
+      width: 250,
+      height: 75, 
+	}, 
     buttonText: {
       fontFamily: "Roboto",
       fontSize: 20,
