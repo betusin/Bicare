@@ -9,19 +9,18 @@ import {
   SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
-import {styles} from './NewRepairRequest'
 import {TouchableOpacity} from "react-native";
-
+import page from '../styles'
 
 export default function HomeScreen({ navigation }){
     return(
-        <SafeAreaView style={styles.container}>
-            <View style={styles.view}>
-                <Text style={styles.title}>BICARE</Text>
-                <Text style={styles.subtitle}>Barter your bike repair anywhere</Text>
-                <Text style={styles.header}>Home Screen</Text>
+        <SafeAreaView style={page.container}>
+            <View style={page.view}>
+                <Text style={page.title}>BICARE</Text>
+                <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+                <Text style={page.header}>Home Screen</Text>
                 <TouchableOpacity
-                    style={styles.button}
+                    style={page.button}
                     onPress={() => navigation.navigate("New Repair Request")}
                 >
                     <Text> 

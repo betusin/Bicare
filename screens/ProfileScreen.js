@@ -7,23 +7,29 @@ import {
     TextInput,
     SafeAreaView,
   } from "react-native";
-  import React, { useState } from "react";
-  import {styles} from './NewRepairRequest'
-  import {TouchableOpacity} from "react-native";
+import React, { useState } from "react";
+import page from '../styles'
+import {TouchableOpacity} from "react-native";
 
+
+//Placeholders for design, these need to be pulled from the db
+const name = "John Doe"
+const phone = "06-12345678"
+const email = "john.doe@email.com"
+const jobs_made = 8;
 
 export default function ProfileScreen({ navigation }){
     return(
-        <SafeAreaView style={styles.container}>
-            <View style={styles.view}>
-                <Text style={styles.title}>BICARE</Text>
-                <Text style={styles.subtitle}>Barter your bike repair anywhere</Text>
-                <Text style={styles.header}>Profile</Text>
+        <SafeAreaView style={page.container}>
+            <View style={page.view}>
+                <Text style={page.title}>BICARE</Text>
+                <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+                <Text style={page.header}>Profile</Text>
                 <TouchableOpacity
-                    style={styles.button}
+                    style={page.button}
                     onPress={() => navigation.navigate("LoginScreen")}
                 >
-                    <Text style={styles.buttonText}> 
+                    <Text style={page.buttonText}> 
                         Logout 
                     </Text>
                 </TouchableOpacity>
