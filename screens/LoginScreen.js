@@ -38,56 +38,57 @@ export default function LoginScreen({ navigation }) {
       .then(userCredentials => {
         const user = userCredentials.user;
         window.alert('Logged in with:' + user.email);
+        navigation.navigate("Navigation")
       })
       .catch(error => alert(error.message))
   }
 
   return (
-	<LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
-    <SafeAreaView style={page.container}>
-      <View style={page.ladida}>
-        <Text style={page.title}>BICARE</Text>
-        <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-        <View style={page.inputWrapper}>
-          <TextInput
-            style={styles.input}
-            placeholder="  Enter your Email"
-            onChangeText={(newText) => setEmail(newText)}
-            value={email}
-          />
-          <TextInput
-            style={page.input}
-            secureTextEntry={true}
-            placeholder="Enter your Password"
-            onChangeText={(newText) => setTextPassword(newText)}
-            value={passwordText}
-          />
-        </View>
-        <View style={page.buttonWrapper}>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={handleLogin}
-          >
-          <Text
-              style={page.buttonText}
-            > 
-              Login 
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={page.button}
-            onPress={() => navigation.navigate("SignupScreen")}
-		      >
-          <Text
-            style={page.buttonText}
-          > 
-            Sign up 
-          </Text>
+    <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
+      <SafeAreaView style={page.container}>
+        <View style={page.ladida}>
+          <Text style={page.title}>BICARE</Text>
+          <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+          <View style={page.inputWrapper}>
+            <TextInput
+              style={page.input}
+              placeholder="Enter your Email"
+              onChangeText={(newText) => setEmail(newText)}
+              value={email}
+            />
+            <TextInput
+              style={page.input}
+              secureTextEntry={true}
+              placeholder="Enter your Password"
+              onChangeText={(newText) => setTextPassword(newText)}
+              value={passwordText}
+            />
+          </View>
+          <View style={page.buttonWrapper}>
+            <TouchableOpacity
+              style={page.button}
+              onPress={handleLogin}
+            >
+              <Text
+                  style={page.buttonText}
+              >
+                Login
+              </Text>
             </TouchableOpacity>
+            <TouchableOpacity
+              style={page.button}
+              onPress={() => navigation.navigate("SignupScreen")}
+            >
+              <Text
+                style={page.buttonText}
+              >
+                Sign up
+              </Text>
+            </TouchableOpacity>
+          </View>
+          <StatusBar style="auto" />
         </View>
-        <StatusBar style="auto" />
-      </View>
-    </SafeAreaView> 
-	</LinearGradient>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
