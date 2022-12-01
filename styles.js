@@ -1,5 +1,6 @@
 'use strict';
 import { StyleSheet } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 export default StyleSheet.create({
     title: {
@@ -28,11 +29,38 @@ export default StyleSheet.create({
       width: 150,
       height: 50, 
     },
+    buttonProfile: {
+      alignItems: "center",
+      borderRadius: 5,
+      backgroundColor: "#F5D466",
+      justifyContent: "center",
+      marginVertical: "3%",
+      shadowColor: "#000",
+      shadowOffset: {
+           width: 1,
+           height: 3,
+      },
+      shadowOpacity: 0.50,
+      shadowRadius: 4,
+  
+      elevation: 5,
+      width: 225,
+      height: 45, 
+    },
     buttonText: {
       fontFamily: "Roboto",
       fontSize: 20,
       fontWeight: "bold",
       textAlignt: "center",
+      justifyContent: "center",
+      alignItems: "center",
+    }, 
+    buttonTextSmall: {
+      color: "Black",
+      fontFamily: "Roboto",
+      fontSize: 16,
+      textAlignt: "center",
+      textTransform: "uppercase",
       justifyContent: "center",
       alignItems: "center",
     }, 
@@ -192,6 +220,29 @@ export default StyleSheet.create({
       //backgroundColor: "white",
       width: 100, // or whatever size  you need
       height: 75, 
+    },
+    profileColumn: {
+        paddingVertical: 20,
+        flexDirection: "column",
+        width: "120%"
+    },
+    profileRows: {
+      flexDirection: "row",
+    },
+    profileField: {
+      fontFamily: "Roboto",
+      fontSize: 16,
+      paddingRight: 5
+    },
+    profileFieldTitle: {
+      textAlign: "right",
+      flex: 0.4,
+      fontWeight: "bold",
+      color: "#F5D466",
+    },
+    profileFieldValue: {
+      flex: 0.6,
+      color: "white",
     },
   });
   

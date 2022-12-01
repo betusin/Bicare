@@ -13,24 +13,60 @@ import {TouchableOpacity} from "react-native";
 
 
 //Placeholders for design, these need to be pulled from the db
-const name = "John Doe"
+const name = "Jesse Ravensbergen"
 const phone = "06-12345678"
-const email = "john.doe@email.com"
+const email = "jesse.ravensbergen@gmail.com"
 const jobs_made = 8;
 
 export default function ProfileScreen({ navigation }){
     return(
         <SafeAreaView style={page.container}>
             <View style={page.view}>
-                <Text style={page.title}>BICARE</Text>
-                <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-                <Text style={page.header}>Profile</Text>
+
+                <Text style={page.title}>Profile</Text>
+
+
+                <View style={page.profileColumn}>
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Name:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>{name}</Text>
+                    </View>
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Email Address:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>{email}</Text>
+                    </View>
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Phone Number:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>{phone}</Text>
+                    </View>
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Jobs Offered:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>{jobs_made}</Text>
+                    </View>
+                </View>
+
                 <TouchableOpacity
-                    style={page.button}
+                    style={page.buttonProfile}
                     onPress={() => navigation.navigate("LoginScreen")}
                 >
-                    <Text style={page.buttonText}> 
-                        Logout 
+                    <Text style={page.buttonTextSmall}>
+                        Change Password 
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={page.buttonProfile}
+                    onPress={() => navigation.navigate("LoginScreen")}
+                >
+                    <Text style={page.buttonTextSmall}>
+                        View Payment Info
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={page.buttonProfile}
+                    onPress={() => navigation.navigate("LoginScreen")}
+                >
+                    <Text style={page.buttonTextSmall}>
+                        Register as Fixer                    
                     </Text>
                 </TouchableOpacity>
             </View>
