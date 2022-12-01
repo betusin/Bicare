@@ -15,9 +15,7 @@ import { auth } from '../src/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
 export default function SignupScreen({ navigation }) {
-  const [phoneNumberText, setTextPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [usernameText, setTextUsername] = useState("");
   const [passwordText, setTextPassword] = useState("");
   const [repasswordText, setTextRePassword] = useState("");
 
@@ -53,18 +51,6 @@ export default function SignupScreen({ navigation }) {
             placeholder="Enter your Email"
             onChangeText={(newText) => setEmail(newText)}
             value={email}
-          />
-          <TextInput
-            style={page.input}
-            placeholder="Enter your Phone number"
-            onChangeText={(newText) => setTextPhoneNumber(newText)}
-            value={phoneNumberText}
-          />
-          <TextInput
-            style={page.input}
-            placeholder="Enter your Username"
-            onChangeText={(newText) => setTextUsername(newText)}
-            value={usernameText}
           />
           <TextInput
             style={page.input}
