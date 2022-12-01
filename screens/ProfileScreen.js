@@ -10,9 +10,20 @@ import {
   import React, { useState } from "react";
   import {styles} from './NewRepairRequest'
   import {TouchableOpacity} from "react-native";
+  import { auth } from '../src/firebase';
 
 
 export default function ProfileScreen({ navigation }){
+
+    const handleSignOut = () => {
+        auth
+            .signOut()
+            .then(() => {
+                navigation.navigate("LoginScreen")
+            })
+            .catch(error => alert(error.message))
+    }
+
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.view}>
@@ -21,7 +32,7 @@ export default function ProfileScreen({ navigation }){
                 <Text style={styles.header}>Profile</Text>
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => navigation.navigate("LoginScreen")}
+                    onPress={handleSignOut}
                 >
                     <Text style={styles.buttonText}> 
                         Logout 
