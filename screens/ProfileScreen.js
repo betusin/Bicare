@@ -1,16 +1,13 @@
 //Work in Progress
 import {
-    StyleSheet,
     Text,
     View,
-    Button,
-    TextInput,
     SafeAreaView,
   } from "react-native";
-  import React, { useState } from "react";
-  import {styles} from './NewRepairRequest'
-  import {TouchableOpacity} from "react-native";
-  import { auth } from '../src/firebase';
+import React, { useState } from "react";
+import {styles} from './NewRepairRequest'
+import {TouchableOpacity} from "react-native";
+import { auth } from '../src/firebase';
 
 
 export default function ProfileScreen({ navigation }){
