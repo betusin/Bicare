@@ -8,15 +8,10 @@ import {
   SafeAreaView,
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {TouchableOpacity} from "react-native";            
 import { useFonts } from 'expo-font';
-import SignupScreen from "./SignupScreen";
 import page from '../styles'
-import React, { useState, useEffect } from "react";
-import {TouchableOpacity} from "react-native";
-import { useFonts } from 'expo-font';
-import SignupScreen from "./SignupScreen";
 import { auth } from '../src/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
 

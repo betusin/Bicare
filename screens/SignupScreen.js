@@ -7,11 +7,10 @@ import {
   TextInput,
   SafeAreaView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import page from '../styles'
 import {TouchableOpacity} from "react-native"; 
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useState, useEffect } from "react";
 import { auth } from '../src/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 
