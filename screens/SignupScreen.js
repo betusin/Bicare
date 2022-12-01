@@ -30,13 +30,17 @@ export default function SignupScreen({ navigation }) {
   }, [])
 
   const handleSignUp = () => {
-    createUserWithEmailAndPassword(auth, email, passwordText)
-      .then(userCredentials => {
-        const user = userCredentials.user;
-        window.alert('Successfully signed up with email ' + email)
-        navigation.navigate("Navigation")
-      })
-      .catch(error => alert(error.message))
+    if (passwordText != repasswordText) {
+      alert("Passwords not matching!")
+    } else {
+      createUserWithEmailAndPassword(auth, email, passwordText)
+        .then(userCredentials => {
+          const user = userCredentials.user;
+          window.alert('Successfully signed up with email ' + email)
+          navigation.navigate("Navigation")
+        })
+        .catch(error => alert(error.message))
+    }
   }
 
   return (
