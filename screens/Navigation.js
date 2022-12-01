@@ -5,7 +5,7 @@ import { DrawerActions, NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './HomeScreen';
 import NewRepairRequest from './NewRepairRequest';
 import ProfileScreen from './ProfileScreen';
-
+import FixScreen from './FixScreen';
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() {
@@ -36,6 +36,21 @@ export default function Navigation() {
                     drawerItemStyle: { display: "none"}
                 }}
             />
+			<Drawer.Screen
+				name="Change Status to fixer"
+				component={FixScreen}
+				options={{
+					drawerItemStyle: {display: "none"}
+				}}
+			/>
+            <Drawer.Screen name="FixScreen" component={FixScreen}/>
+			<Drawer.Screen
+				name="Change Status to client"
+				component={HomeScreen}
+				options={{
+					drawerItemStyle: {display: "none"}
+				}}
+			/>
             <Drawer.Screen name="Profile" component={ProfileScreen}/>
 
         </Drawer.Navigator>
