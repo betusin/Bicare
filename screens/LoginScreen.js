@@ -13,15 +13,39 @@ import {TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import SignupScreen from "./SignupScreen";
 import page from '../styles'
+import React, { useState, useEffect } from "react";
+import {TouchableOpacity} from "react-native";
+import { useFonts } from 'expo-font';
+import SignupScreen from "./SignupScreen";
+import { auth } from '../src/firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginScreen({ navigation }) {
-  const [usernameText, setTextUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [passwordText, setTextPassword] = useState("");
 
   const [fontsLoaded] = useFonts({
     'Roboto': require('./../assets/fonts/Roboto-Regular.ttf'),
   });
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        navigation.navigate("Navigation")
+      }
+    })
+
+    return unsubscribe
+  }, [])
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, email, passwordText)
+      .then(userCredentials => {
+        const user = userCredentials.user;
+        window.alert('Logged in with:' + user.email);
+      })
+      .catch(error => alert(error.message))
+  }
 
   return (
 	<LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
@@ -31,10 +55,10 @@ export default function LoginScreen({ navigation }) {
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput
-            style={page.input}
-            placeholder="Enter your Username"
-            onChangeText={(newText) => setTextUsername(newText)}
-            value={usernameText}
+            style={styles.input}
+            placeholder="  Enter your Email"
+            onChangeText={(newText) => setEmail(newText)}
+            value={email}
           />
           <TextInput
             style={page.input}
@@ -46,8 +70,8 @@ export default function LoginScreen({ navigation }) {
         </View>
         <View style={page.buttonWrapper}>
           <TouchableOpacity
-            style={page.button}
-            onPress={() => navigation.navigate("Navigation")}
+            style={styles.button}
+            onPress={handleLogin}
           >
           <Text
               style={page.buttonText}
