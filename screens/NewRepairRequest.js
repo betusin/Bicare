@@ -26,6 +26,7 @@ export default function NewRepairRequest({ navigation }){
 
     ]);
 
+
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.view}>
@@ -68,13 +69,15 @@ export default function NewRepairRequest({ navigation }){
                             Create repair request
                         </Text>
                     </TouchableOpacity>
+                    <TouchableOpacity style={styles.button} onPress={() => navigation.toggleDrawer()}>
+                    </TouchableOpacity>
                 </View>
             </View>
         </SafeAreaView>
     );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
     title: {
       color: "#F5D466",
       fontWeight: "bold",

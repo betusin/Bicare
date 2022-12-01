@@ -6,8 +6,10 @@ import LoginScreen from "./screens/LoginScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import SignupScreen from "./screens/SignupScreen";
-import NewRepairRequest from "./screens/NewRepairRequest";
 import { useFonts } from 'expo-font';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import HomeScreen from "./screens/HomeScreen";
+import Navigation from "./screens/Navigation"
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -16,8 +18,8 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="NewRepairRequest"
-          component={NewRepairRequest}
+          name="LoginScreen"
+          component={LoginScreen}
           options={{ headerShown: false }}
         ></Stack.Screen>
         <Stack.Screen
@@ -25,12 +27,17 @@ export default function App() {
           component={SignupScreen}
           options={{ headerShown: false }}
         ></Stack.Screen>
+        <Stack.Screen
+          name="Navigation"
+          component={Navigation}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
       </Stack.Navigator>
-    </NavigationContainer>
+    </NavigationContainer> 
   );
 }
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   title: {
     color: "white",
     fontWeight: "bold",
