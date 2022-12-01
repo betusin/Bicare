@@ -10,6 +10,14 @@ export default StyleSheet.create({
       textAlign: 'center', 
   
     },
+    header: {
+      paddingTop: 10,
+      textTransform: "uppercase",
+      color: "white",
+      fontSize: 20,
+      textDecorationLine: "underline",
+      fontWeight: "bold",
+    },
     button: {
       alignItems: "center",
       borderRadius: 5,
