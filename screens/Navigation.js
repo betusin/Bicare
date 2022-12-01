@@ -25,7 +25,8 @@ export default function Navigation() {
                 drawerStyle: {
                     backgroundColor: "#2F2F2F",
                     width: 220
-                }
+                },
+                swipeEdgeWidth: 250,
             }}
         >
             <Drawer.Screen name="Home" component={HomeScreen}/>
