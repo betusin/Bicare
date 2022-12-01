@@ -45,8 +45,8 @@ export default function LoginScreen({ navigation }) {
         </View>
         <View style={page.buttonWrapper}>
           <TouchableOpacity
-            style={page.button}
-            onPress={() => Alert.alert("Login Button pressed")}
+            style={styles.button}
+            onPress={() => navigation.navigate("Navigation")}
           >
           <Text
               style={page.buttonText}
