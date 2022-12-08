@@ -47,7 +47,7 @@ export default function LoginScreen({ navigation }) {
 
 return (
   <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
-    <SafeAreaView style={page.container}>
+    <SafeAreaView style={page.containerNoBackground}>
       <View style={page.ladida}>
         <Image
           style={page.tinyLogo}

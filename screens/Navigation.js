@@ -59,7 +59,6 @@ export default function Navigation() {
 					drawerItemStyle: {display: "none"}
 				}}
 			/>
-            <Drawer.Screen name="FixScreen" component={FixScreen}/>
 			<Drawer.Screen
 				name="Change Status to client"
 				component={HomeScreen}

@@ -9,15 +9,14 @@ import {
   SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
-import {styles} from './NewRepairRequest';
 import page from '../styles';
 import {Image, TouchableOpacity} from "react-native";
 
 
 export default function HomeScreen({ navigation }){
     return(
-        <SafeAreaView style={styles.container}>
-			<View style={styles.view}>
+        <SafeAreaView style={page.container}>
+			<View style={page.view}>
 			<Image
         		style={page.tinyLogo}
         		source={require('../img/logoWhiteTrial2.png')}
@@ -26,22 +25,22 @@ export default function HomeScreen({ navigation }){
                 <Text style={page.header}>Home Screen</Text>
                 <View style={page.buttonWrapper}>
                 <TouchableOpacity
-                    style={page.bigButton}
+                    style={page.buttonProfile}
                     onPress={() => navigation.navigate("New Repair Request")}
                 >
                     <Text
-						style={page.buttonText}
+						style={page.buttonTextSmall}
 	    			> 
                         New Repair Request 
                     </Text>
                 </TouchableOpacity>
             	
                 <TouchableOpacity
-                    style={page.bigButton}
+                    style={page.buttonProfile}
                     onPress={() => navigation.navigate("Change Status to fixer")}
                 >
                     <Text
-						style={page.buttonText}
+						style={page.buttonTextSmall}
 	    			>
 						Change Status 
                     </Text>

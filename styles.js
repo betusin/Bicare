@@ -274,7 +274,7 @@ export default StyleSheet.create({
       textTransform: 'uppercase',
       textDecorationLine: 'underline',
       fontWeight: "bold"
-    }
+    },
 	tinyLogo:{
 	  width: 175,
 	  height:175,
