@@ -2,19 +2,18 @@ import {
   StyleSheet,
   Text,
   View,
-  Button,
   TextInput,
   SafeAreaView,
 } from "react-native";
 import React, { useState } from "react";
-import {TouchableOpacity} from "react-native";            
+import {TouchableOpacity} from "react-native";
 import page from '../styles'
 
 export default function LoginScreen({ navigation }) {
     const [oldPasswordText, setOldPasswordText] = useState("");
     const [newPasswordText, setNewPasswordText] = useState("");
     const [reenterPasswordText, setReenterPasswordText] = useState("");
-  
+
 return (
     <SafeAreaView style={page.container}>
         <View style={page.ladida}>
@@ -49,20 +48,20 @@ return (
                 onPress={() => navigation.navigate("Profile")} //This needs to store the new password
             >
                 <Text style={page.buttonTextSmall} >
-                Change Password 
+                Change Password
                 </Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={page.buttonProfile}
                 onPress={() => navigation.navigate("Profile")}
                 >
-                <Text style={page.buttonTextSmall}> 
+                <Text style={page.buttonTextSmall}>
                 Back to Profle
                 </Text>
             </TouchableOpacity>
             </View>
         </View>
-    </SafeAreaView> 
+    </SafeAreaView>
 )};
 
 export const styles = StyleSheet.create({
