@@ -9,11 +9,13 @@ import React, { useState, useEffect } from "react";
 import page from '../styles'
 import {Image, TouchableOpacity} from "react-native"; 
 import { LinearGradient } from 'expo-linear-gradient';
-import { auth } from '../src/firebase';
+import { auth, db } from '../src/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc } from 'firebase/firestore/lite';
 
 export default function SignupScreen({ navigation }) {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [passwordText, setTextPassword] = useState("");
   const [repasswordText, setTextRePassword] = useState("");
 
@@ -34,6 +36,11 @@ export default function SignupScreen({ navigation }) {
       createUserWithEmailAndPassword(auth, email, passwordText)
         .then(userCredentials => {
           const user = userCredentials.user;
+          const userData = {
+            username: username,
+          }
+          setDoc(doc(db, "users", user.uid), userData)
+            .catch(error => alert(error));
           window.alert('Successfully signed up with email ' + email)
           navigation.navigate("Navigation")
         })
@@ -56,6 +63,12 @@ export default function SignupScreen({ navigation }) {
             placeholder="Enter your Email"
             onChangeText={(newText) => setEmail(newText)}
             value={email}
+          />
+          <TextInput
+            style={page.input}
+            placeholder="Enter your Username"
+            onChangeText={(newText) => setUsername(newText)}
+            value={username}
           />
           <TextInput
             style={page.input}
