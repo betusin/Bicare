@@ -9,8 +9,6 @@ import {styles} from './NewRepairRequest'
 import {Image, TouchableOpacity} from "react-native";
 import { auth } from '../src/firebase';
 
-
-
 export default function ProfileScreen({ navigation }){
 
     const handleSignOut = () => {

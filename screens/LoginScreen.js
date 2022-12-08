@@ -6,7 +6,7 @@ import {
   SafeAreaView,
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Image, TouchableOpacity} from "react-native";            
 import { useFonts } from 'expo-font';
 import page from '../styles'
@@ -43,21 +43,23 @@ export default function LoginScreen({ navigation }) {
       .catch(error => alert(error.message))
   }
 
-  return (
-	<LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
+
+
+return (
+  <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
     <SafeAreaView style={page.container}>
       <View style={page.ladida}>
-		<Image
-        	style={page.tinyLogo}
-        	source={require('../img/logoWhiteTrial2.png')}
-      	/>
+        <Image
+          style={page.tinyLogo}
+          source={require('../img/logoWhiteTrial2.png')}
+        />      
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput
             style={page.input}
-            placeholder="Enter your Username"
-            onChangeText={(newText) => setTextUsername(newText)}
-            value={usernameText}
+            placeholder="Enter your Email"
+            onChangeText={(newText) => setEmail(newText)}
+            value={email}
           />
           <TextInput
             style={page.input}
@@ -70,28 +72,28 @@ export default function LoginScreen({ navigation }) {
         <View style={page.buttonWrapper}>
           <TouchableOpacity
             style={page.button}
-            onPress={() => navigation.navigate("Navigation")}
+            onPress={handleLogin}
           >
-          <Text
-              style={page.buttonText}
-            > 
-              Login 
+            <Text
+                style={page.buttonText}
+            >
+              Login
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={page.button}
             onPress={() => navigation.navigate("SignupScreen")}
-		      >
-          <Text
-            style={page.buttonText}
-          > 
-            Sign up 
-          </Text>
-            </TouchableOpacity>
-          </View>
-          <StatusBar style="auto" />
+          >
+            <Text
+              style={page.buttonText}
+            >
+              Sign up
+            </Text>
+          </TouchableOpacity>
         </View>
-      </SafeAreaView>
-    </LinearGradient>
-  );
+        <StatusBar style="auto" />
+      </View>
+    </SafeAreaView>
+  </LinearGradient>
+);
 }
