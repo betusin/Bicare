@@ -12,6 +12,7 @@ import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
+import SignupScreen from "./SignupScreen";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -20,6 +21,7 @@ export default function LoginScreen({ navigation }) {
   const [fontsLoaded] = useFonts({
     'Roboto': require('./../assets/fonts/Roboto-Regular.ttf'),
   });
+
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(user => {
