@@ -5,6 +5,7 @@ import { DrawerActions, NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './HomeScreen';
 import NewRepairRequest from './NewRepairRequest';
 import ProfileScreen from './ProfileScreen';
+import PaymentInfo from './PaymentInfo'
 
 const Drawer = createDrawerNavigator();
 
@@ -36,6 +37,13 @@ export default function Navigation() {
                 options={{
                     drawerItemStyle: { display: "none"}
                 }}
+            />
+            <Drawer.Screen
+                name="PaymentInfo"
+                component={PaymentInfo}
+                options={{
+                    drawerItemStyle: { display: "none"}
+                }} 
             />
             <Drawer.Screen name="Profile" component={ProfileScreen}/>
 

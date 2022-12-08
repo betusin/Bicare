@@ -17,6 +17,7 @@ const name = "Jesse Ravensbergen"
 const phone = "06-12345678"
 const email = "jesse.ravensbergen@gmail.com"
 const jobs_made = 8;
+const balance = 4.52;
 
 export default function ProfileScreen({ navigation }){
     return(
@@ -39,6 +40,10 @@ export default function ProfileScreen({ navigation }){
                         <Text style={[page.profileField,page.profileFieldTitle]}>Phone Number:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>{phone}</Text>
                     </View>
+                    <View style={[page.profileRows, {marginTop: 20}]}>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Balance:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>€ {balance}</Text>
+                    </View>
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Jobs Offered:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>{jobs_made}</Text>
@@ -55,7 +60,7 @@ export default function ProfileScreen({ navigation }){
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={page.buttonProfile}
-                    onPress={() => navigation.navigate("LoginScreen")}
+                    onPress={() => navigation.navigate("PaymentInfo")}
                 >
                     <Text style={page.buttonTextSmall}>
                         View Payment Info
