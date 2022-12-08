@@ -52,7 +52,7 @@ export default function ProfileScreen({ navigation }){
 
                 <TouchableOpacity
                     style={page.buttonProfile}
-                    onPress={() => navigation.navigate("LoginScreen")}
+                    onPress={() => navigation.navigate("ChangePassword")}
                 >
                     <Text style={page.buttonTextSmall}>
                         Change Password 

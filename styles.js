@@ -244,5 +244,12 @@ export default StyleSheet.create({
       flex: 0.6,
       color: "white",
     },
+    header: {
+      color: "white",
+      fontSize: 20,
+      textTransform: 'uppercase',
+      textDecorationLine: 'underline',
+      fontWeight: "bold"
+    }
   });
   

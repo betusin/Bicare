@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { DrawerActions, NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './HomeScreen';
 import NewRepairRequest from './NewRepairRequest';
 import ProfileScreen from './ProfileScreen';
 import PaymentInfo from './PaymentInfo'
+import ChangePassword from './ChangePassword'
 
 const Drawer = createDrawerNavigator();
 
@@ -41,6 +40,13 @@ export default function Navigation() {
             <Drawer.Screen
                 name="PaymentInfo"
                 component={PaymentInfo}
+                options={{
+                    drawerItemStyle: { display: "none"}
+                }} 
+            />
+            <Drawer.Screen
+                name="ChangePassword"
+                component={ChangePassword}
                 options={{
                     drawerItemStyle: { display: "none"}
                 }} 
