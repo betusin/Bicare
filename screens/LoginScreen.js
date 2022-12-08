@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from "react";
-import {TouchableOpacity} from "react-native";            
+import {Image, TouchableOpacity} from "react-native";            
 import { useFonts } from 'expo-font';
 import SignupScreen from "./SignupScreen";
 import page from '../styles'
@@ -27,7 +27,10 @@ export default function LoginScreen({ navigation }) {
 	<LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
     <SafeAreaView style={page.container}>
       <View style={page.ladida}>
-        <Text style={page.title}>BICARE</Text>
+		<Image
+        	style={page.tinyLogo}
+        	source={require('../img/logoWhiteTrial2.png')}
+      	/>
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput
