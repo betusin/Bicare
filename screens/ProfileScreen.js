@@ -85,6 +85,14 @@ export default function ProfileScreen({ navigation }){
                         Register as Fixer                    
                     </Text>
                 </TouchableOpacity>
+                <TouchableOpacity
+                    style={page.buttonProfile}
+                    onPress={handleSignOut}
+                >
+                    <Text style={page.buttonTextSmall}>
+                        Logout
+                    </Text>
+                </TouchableOpacity>
             </View>
         </SafeAreaView>
     );
