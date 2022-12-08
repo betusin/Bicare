@@ -7,12 +7,40 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 import {TouchableOpacity} from "react-native";
-import page from '../styles'
+import page from '../styles';
+import {
+    updatePassword,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
+} from 'firebase/auth';
+import { auth } from "../src/firebase";
 
 export default function LoginScreen({ navigation }) {
     const [oldPasswordText, setOldPasswordText] = useState("");
     const [newPasswordText, setNewPasswordText] = useState("");
     const [reenterPasswordText, setReenterPasswordText] = useState("");
+
+    const changePassword = async () => {
+        if (newPasswordText != reenterPasswordText) {
+            alert("New password and reentered are not matching!")
+            return;
+        }
+
+        const credential = EmailAuthProvider.credential(
+            auth.currentUser.email,
+            oldPasswordText
+        );
+        reauthenticateWithCredential(auth.currentUser, credential)
+            .then(() => {
+                updatePassword(auth.currentUser, newPasswordText)
+                    .then(() => {
+                        alert("Password changed successfully");
+                        navigation.navigate("Profile");
+                    })
+                    .catch(error => alert(error.message))
+            })
+            .catch(error => alert(error.message))
+    }
 
 return (
     <SafeAreaView style={page.container}>
@@ -45,7 +73,7 @@ return (
             <View style={page.buttonWrapper}>
             <TouchableOpacity
                 style={page.buttonProfile}
-                onPress={() => navigation.navigate("Profile")} //This needs to store the new password
+                onPress={changePassword}
             >
                 <Text style={page.buttonTextSmall} >
                 Change Password
