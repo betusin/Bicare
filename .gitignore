@@ -33,3 +33,6 @@ npm-debug.*
 *.mobileprovision
 *.orig.*
 web-build/
+
+#ignore db api key
+src/firebaseConfig.js
