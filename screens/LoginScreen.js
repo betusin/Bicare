@@ -6,13 +6,12 @@ import {
   SafeAreaView,
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useState } from "react";
-import {Image, TouchableOpacity} from "react-native";            
+import React, { useState, useEffect } from "react";
+import {Image, TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import SignupScreen from "./SignupScreen";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -55,9 +54,9 @@ export default function LoginScreen({ navigation }) {
         <View style={page.inputWrapper}>
           <TextInput
             style={page.input}
-            placeholder="Enter your Username"
-            onChangeText={(newText) => setTextUsername(newText)}
-            value={usernameText}
+            placeholder="Enter your Email"
+            onChangeText={(newText) => setEmail(newText)}
+            value={email}
           />
           <TextInput
             style={page.input}
@@ -80,7 +79,7 @@ export default function LoginScreen({ navigation }) {
           </TouchableOpacity>
           <TouchableOpacity
             style={page.button}
-            onPress={() => navigation.navigate("SignupScreen")}
+            onPress={() => handleLogin}
 		      >
           <Text
             style={page.buttonText}
