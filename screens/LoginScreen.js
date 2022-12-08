@@ -1,9 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import {
-  StyleSheet,
   Text,
   View,
-  Button,
   TextInput,
   SafeAreaView,
 } from "react-native";
@@ -11,17 +9,39 @@ import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState } from "react";
 import {Image, TouchableOpacity} from "react-native";            
 import { useFonts } from 'expo-font';
-import SignupScreen from "./SignupScreen";
 import page from '../styles'
+import { auth } from '../src/firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
+import SignupScreen from "./SignupScreen";
 
 export default function LoginScreen({ navigation }) {
-  const [usernameText, setTextUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [passwordText, setTextPassword] = useState("");
 
   const [fontsLoaded] = useFonts({
     'Roboto': require('./../assets/fonts/Roboto-Regular.ttf'),
   });
 
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        navigation.navigate("Navigation")
+      }
+    })
+
+    return unsubscribe
+  }, [])
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, email, passwordText)
+      .then(userCredentials => {
+        const user = userCredentials.user;
+        window.alert('Logged in with:' + user.email);
+        navigation.navigate("Navigation")
+      })
+      .catch(error => alert(error.message))
+  }
 
   return (
 	<LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
@@ -68,10 +88,10 @@ export default function LoginScreen({ navigation }) {
             Sign up 
           </Text>
             </TouchableOpacity>
+          </View>
+          <StatusBar style="auto" />
         </View>
-        <StatusBar style="auto" />
-      </View>
-    </SafeAreaView> 
-	</LinearGradient>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
