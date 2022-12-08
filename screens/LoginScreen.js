@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState, useEffect } from "react";
-import {Image, TouchableOpacity} from "react-native";            
+import {Image, TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
@@ -52,8 +52,6 @@ export default function LoginScreen({ navigation }) {
       });
   }
 
-
-
 return (
   <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
     <SafeAreaView style={page.containerNoBackground}>
@@ -61,7 +59,7 @@ return (
         <Image
           style={page.tinyLogo}
           source={require('../img/logoWhiteTrial2.png')}
-        />      
+        />
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput
