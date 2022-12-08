@@ -39,6 +39,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
+      <StatusBar style="light" />
     </NavigationContainer> 
   );
 }
