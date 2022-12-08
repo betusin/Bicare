@@ -12,7 +12,6 @@ import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
-import SignupScreen from "./SignupScreen";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
