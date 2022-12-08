@@ -37,13 +37,16 @@ export default function NewRepairRequest({ navigation }){
             problem: selectedItem.label,
             description: description,
             amount: Number(amount),
+            requester: user.uid,
         };
 
-        addDoc(collection(db, "users", `${user.uid}`, 'repair_request'), data)
-            .then(() =>{
+        addDoc(collection(db, "repair_request"),  data)
+            .then((docRef) => {
                 alert("Repair successfully requested!")
             })
             .catch(error => alert(error.message))
+
+            navigation.navigate("Home");
     }
 
     return(
