@@ -118,11 +118,15 @@ export default StyleSheet.create({
       flexDirection: 'column', 
       alignItems: "center",
       justifyContent: "center",
-	  height: 70,
+	    marginBottom: 20,
     },
     space: {
       width: 100, 
       height: 75, 
     },
+	tinyLogo:{
+	  width: 175,
+	  height:175,
+	},
   });
   

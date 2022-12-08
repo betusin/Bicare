@@ -11,16 +11,20 @@ import {
 import React, { useState } from "react";
 import {styles} from './NewRepairRequest';
 import page from '../styles';
-import {TouchableOpacity} from "react-native";
+import {Image, TouchableOpacity} from "react-native";
 
 
 export default function HomeScreen({ navigation }){
     return(
         <SafeAreaView style={styles.container}>
-            <View style={styles.view}>
-                <Text style={page.title}>BICARE</Text>
-                <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+			<View style={styles.view}>
+			<Image
+        		style={page.tinyLogo}
+        		source={require('../img/logoWhiteTrial2.png')}
+      		/>
+				<Text style={page.subtitle}>Barter your bike repair anywhere</Text>
                 <Text style={page.header}>Home Screen</Text>
+                <View style={page.buttonWrapper}>
                 <TouchableOpacity
                     style={page.bigButton}
                     onPress={() => navigation.navigate("New Repair Request")}
@@ -43,6 +47,7 @@ export default function HomeScreen({ navigation }){
                     </Text>
 				
                 </TouchableOpacity>
+                </View>
 			</View>
         </SafeAreaView>
     );

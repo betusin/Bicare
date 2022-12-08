@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import page from '../styles'
-import {TouchableOpacity} from "react-native"; 
+import {Image, TouchableOpacity} from "react-native"; 
 import { LinearGradient } from 'expo-linear-gradient';
 import { auth } from '../src/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
@@ -45,7 +45,10 @@ export default function SignupScreen({ navigation }) {
     <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
     <SafeAreaView style={page.container}>
       <View style={page.ladida}>
-        <Text style={page.title}>BICARE</Text>
+      <Image
+        		style={page.tinyLogo}
+        		source={require('../img/logoWhiteTrial2.png')}
+      		/>
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput

@@ -6,8 +6,8 @@ import {
   SafeAreaView,
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useState, useEffect } from "react";
-import {TouchableOpacity} from "react-native";            
+import React, { useState } from "react";
+import {Image, TouchableOpacity} from "react-native";            
 import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
@@ -44,46 +44,49 @@ export default function LoginScreen({ navigation }) {
   }
 
   return (
-    <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
-      <SafeAreaView style={page.container}>
-        <View style={page.ladida}>
-          <Text style={page.title}>BICARE</Text>
-          <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-          <View style={page.inputWrapper}>
-            <TextInput
-              style={page.input}
-              placeholder="Enter your Email"
-              onChangeText={(newText) => setEmail(newText)}
-              value={email}
-            />
-            <TextInput
-              style={page.input}
-              secureTextEntry={true}
-              placeholder="Enter your Password"
-              onChangeText={(newText) => setTextPassword(newText)}
-              value={passwordText}
-            />
-          </View>
-          <View style={page.buttonWrapper}>
-            <TouchableOpacity
-              style={page.button}
-              onPress={handleLogin}
-            >
-              <Text
-                  style={page.buttonText}
-              >
-                Login
-              </Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={page.button}
-              onPress={() => navigation.navigate("SignupScreen")}
-            >
-              <Text
-                style={page.buttonText}
-              >
-                Sign up
-              </Text>
+	<LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
+    <SafeAreaView style={page.container}>
+      <View style={page.ladida}>
+		<Image
+        	style={page.tinyLogo}
+        	source={require('../img/logoWhiteTrial2.png')}
+      	/>
+        <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+        <View style={page.inputWrapper}>
+          <TextInput
+            style={page.input}
+            placeholder="Enter your Username"
+            onChangeText={(newText) => setTextUsername(newText)}
+            value={usernameText}
+          />
+          <TextInput
+            style={page.input}
+            secureTextEntry={true}
+            placeholder="Enter your Password"
+            onChangeText={(newText) => setTextPassword(newText)}
+            value={passwordText}
+          />
+        </View>
+        <View style={page.buttonWrapper}>
+          <TouchableOpacity
+            style={page.button}
+            onPress={() => navigation.navigate("Navigation")}
+          >
+          <Text
+              style={page.buttonText}
+            > 
+              Login 
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={page.button}
+            onPress={() => navigation.navigate("SignupScreen")}
+		      >
+          <Text
+            style={page.buttonText}
+          > 
+            Sign up 
+          </Text>
             </TouchableOpacity>
           </View>
           <StatusBar style="auto" />

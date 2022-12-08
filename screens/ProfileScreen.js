@@ -6,8 +6,9 @@ import {
   } from "react-native";
 import React, { useState } from "react";
 import {styles} from './NewRepairRequest'
-import {TouchableOpacity} from "react-native";
+import {Image, TouchableOpacity} from "react-native";
 import { auth } from '../src/firebase';
+
 
 
 export default function ProfileScreen({ navigation }){
@@ -24,7 +25,10 @@ export default function ProfileScreen({ navigation }){
     return(
         <SafeAreaView style={styles.container}>
             <View style={styles.view}>
-                <Text style={styles.title}>BICARE</Text>
+            <Image
+        		style={page.tinyLogo}
+        		source={require('../img/logoWhiteTrial2.png')}
+      		/>
                 <Text style={styles.subtitle}>Barter your bike repair anywhere</Text>
                 <Text style={styles.header}>Profile</Text>
                 <TouchableOpacity
