@@ -11,7 +11,7 @@ import {Image, TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -40,6 +40,16 @@ export default function LoginScreen({ navigation }) {
         navigation.navigate("Navigation")
       })
       .catch(error => alert(error.message))
+  }
+
+  const resetPassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("Reset password email sent. Check your inbox.")
+      })
+      .catch((error) => {
+        alert(error.message)
+      });
   }
 
 
@@ -77,6 +87,16 @@ return (
                 style={page.buttonText}
             >
               Login
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={page.button}
+            onPress={resetPassword}
+          >
+            <Text
+                style={page.buttonText}
+            >
+              Forgot password
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
