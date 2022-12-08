@@ -13,7 +13,7 @@ import React, { useState } from "react";
 import { useFonts } from 'expo-font';
 import DropDownPicker from 'react-native-dropdown-picker';
 import page from '../styles';
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
 import { db, auth } from '../src/firebase';
 
 export default function NewRepairRequest({ navigation }){
@@ -38,6 +38,8 @@ export default function NewRepairRequest({ navigation }){
             description: description,
             amount: Number(amount),
             requester: user.uid,
+            location: new GeoPoint(90, 90),
+            createdAt: Timestamp.fromDate(new Date()),
         };
 
         addDoc(collection(db, "repair_request"),  data)
