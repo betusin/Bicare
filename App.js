@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import Maps from "./screens/Maps";
+// import TestLocation from "./screens/TestLocation";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 const Stack = createStackNavigator();
@@ -29,6 +30,11 @@ export default function App() {
           component={Maps}
           options={{ headerShown: false }}
         ></Stack.Screen>
+        {/* <Stack.Screen
+          name="TestLocation"
+          component={TestLocation}
+          options={{ headerShown: false }}
+        ></Stack.Screen> */}
       </Stack.Navigator>
     </NavigationContainer>
   );
