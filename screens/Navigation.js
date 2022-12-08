@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { DrawerActions, NavigationContainer } from '@react-navigation/native';
 import HomeScreen from './HomeScreen';
 import NewRepairRequest from './NewRepairRequest';
 import ProfileScreen from './ProfileScreen';
+import PaymentInfo from './PaymentInfo'
+import ChangePassword from './ChangePassword'
 import FixScreen from './FixScreen';
+
 const Drawer = createDrawerNavigator();
 
 export default function Navigation() {
@@ -25,7 +26,8 @@ export default function Navigation() {
                 drawerStyle: {
                     backgroundColor: "#2F2F2F",
                     width: 220
-                }
+                },
+                swipeEdgeWidth: 250,
             }}
         >
             <Drawer.Screen name="Home" component={HomeScreen}/>
@@ -36,6 +38,20 @@ export default function Navigation() {
                     drawerItemStyle: { display: "none"}
                 }}
             />
+            <Drawer.Screen
+                name="PaymentInfo"
+                component={PaymentInfo}
+                options={{
+                    drawerItemStyle: { display: "none"}
+                }} 
+            />
+            <Drawer.Screen
+                name="ChangePassword"
+                component={ChangePassword}
+                options={{
+                    drawerItemStyle: { display: "none"}
+                }} 
+            />
 			<Drawer.Screen
 				name="Change Status to fixer"
 				component={FixScreen}
@@ -43,7 +59,6 @@ export default function Navigation() {
 					drawerItemStyle: {display: "none"}
 				}}
 			/>
-            <Drawer.Screen name="FixScreen" component={FixScreen}/>
 			<Drawer.Screen
 				name="Change Status to client"
 				component={HomeScreen}

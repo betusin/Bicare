@@ -34,5 +34,8 @@ npm-debug.*
 *.orig.*
 web-build/
 
-#ignore db api key
+# macOS
+.DS_Store
+
+#ignore api key
 src/firebaseConfig.js
