@@ -6,9 +6,10 @@ import {
   Button,
   TextInput,
   SafeAreaView,
+  Image,
+  TouchableOpacity
 } from "react-native";
 import React, { useState } from "react";
-import {TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import DropDownPicker from 'react-native-dropdown-picker';
 import page from '../styles'
@@ -31,7 +32,10 @@ export default function NewRepairRequest({ navigation }){
     return(
         <SafeAreaView style={page.container}>
             <View style={page.view}>
-                <Text style={page.title}>BICARE</Text>
+                <Image
+                    style={page.tinyLogo}
+                    source={require('../img/logoWhiteTrial2.png')}
+                />                
                 <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
                 <Text style={page.header}>New Repair Request</Text>
                 <View style={page.inputWrapper}>
