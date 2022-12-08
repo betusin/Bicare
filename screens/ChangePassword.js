@@ -48,7 +48,7 @@ return (
                 style={page.buttonProfile}
                 onPress={() => navigation.navigate("Profile")} //This needs to store the new password
             >
-                <Text style={page.buttonText} >
+                <Text style={page.buttonTextSmall} >
                 Change Password 
                 </Text>
             </TouchableOpacity>
@@ -56,7 +56,7 @@ return (
                 style={page.buttonProfile}
                 onPress={() => navigation.navigate("Profile")}
                 >
-                <Text style={page.buttonText}> 
+                <Text style={page.buttonTextSmall}> 
                 Back to Profle
                 </Text>
             </TouchableOpacity>
