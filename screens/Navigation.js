@@ -5,6 +5,7 @@ import NewRepairRequest from './NewRepairRequest';
 import ProfileScreen from './ProfileScreen';
 import PaymentInfo from './PaymentInfo'
 import ChangePassword from './ChangePassword'
+import FixScreen from './FixScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -51,6 +52,21 @@ export default function Navigation() {
                     drawerItemStyle: { display: "none"}
                 }} 
             />
+			<Drawer.Screen
+				name="Change Status to fixer"
+				component={FixScreen}
+				options={{
+					drawerItemStyle: {display: "none"}
+				}}
+			/>
+            <Drawer.Screen name="FixScreen" component={FixScreen}/>
+			<Drawer.Screen
+				name="Change Status to client"
+				component={HomeScreen}
+				options={{
+					drawerItemStyle: {display: "none"}
+				}}
+			/>
             <Drawer.Screen name="Profile" component={ProfileScreen}/>
 
         </Drawer.Navigator>

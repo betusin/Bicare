@@ -11,6 +11,14 @@ export default StyleSheet.create({
       textAlign: 'center', 
   
     },
+    header: {
+      paddingTop: 10,
+      textTransform: "uppercase",
+      color: "white",
+      fontSize: 20,
+      textDecorationLine: "underline",
+      fontWeight: "bold",
+    },
     button: {
       alignItems: "center",
       borderRadius: 5,
@@ -42,11 +50,27 @@ export default StyleSheet.create({
       },
       shadowOpacity: 0.50,
       shadowRadius: 4,
-  
       elevation: 5,
       width: 225,
       height: 45, 
     },
+	bigButton:{
+	  alignItems: "center",
+	  borderRadius: 5,
+	  backgroundColor:"#F5D466",
+      justifyContent: "center", 
+	  marginVertical: "3%",
+      shadowColor: "#000",
+      shadowOffset: {
+           width: 1,
+           height: 3,
+      },
+      shadowOpacity: 0.50,
+      shadowRadius: 4,
+      elevation: 5,
+      width: 250,
+      height: 75, 
+	}, 
     buttonText: {
       fontFamily: "Roboto",
       fontSize: 20,
@@ -120,7 +144,7 @@ export default StyleSheet.create({
       flexDirection: 'column', 
       alignItems: "center",
       justifyContent: "center",
-	  height: 70,
+	    marginBottom: 20,
     },
     space: {
       width: 100, 
@@ -251,5 +275,9 @@ export default StyleSheet.create({
       textDecorationLine: 'underline',
       fontWeight: "bold"
     }
+	tinyLogo:{
+	  width: 175,
+	  height:175,
+	},
   });
   

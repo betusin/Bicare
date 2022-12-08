@@ -1,16 +1,14 @@
 //Work in Progress
 import {
-    StyleSheet,
     Text,
     View,
-    Button,
-    TextInput,
     SafeAreaView,
   } from "react-native";
 import React, { useState } from "react";
 import page from '../styles'
-import {TouchableOpacity} from "react-native";
-
+import {styles} from './NewRepairRequest'
+import {Image, TouchableOpacity} from "react-native";
+import { auth } from '../src/firebase';
 
 //Placeholders for design, these need to be pulled from the db
 const name = "Jesse Ravensbergen"
@@ -20,10 +18,23 @@ const jobs_made = 8;
 const balance = 4.52;
 
 export default function ProfileScreen({ navigation }){
+
+    const handleSignOut = () => {
+        auth
+            .signOut()
+            .then(() => {
+                navigation.navigate("LoginScreen")
+            })
+            .catch(error => alert(error.message))
+    }
+
     return(
         <SafeAreaView style={page.container}>
             <View style={page.view}>
-
+            <Image
+        		style={page.tinyLogo}
+        		source={require('../img/logoWhiteTrial2.png')}
+      		  />
                 <Text style={page.title}>Profile</Text>
 
 

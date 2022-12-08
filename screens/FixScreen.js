@@ -14,31 +14,19 @@ import page from '../styles';
 import {Image, TouchableOpacity} from "react-native";
 
 
-export default function HomeScreen({ navigation }){
+export default function FixScreen({ navigation }){
     return(
         <SafeAreaView style={styles.container}>
-			<View style={styles.view}>
-			<Image
+            <View style={styles.view}>
+            <Image
         		style={page.tinyLogo}
         		source={require('../img/logoWhiteTrial2.png')}
       		/>
-				<Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-                <Text style={page.header}>Home Screen</Text>
-                <View style={page.buttonWrapper}>
+                <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+                <Text style={page.header}>Fixer screen</Text>
                 <TouchableOpacity
                     style={page.bigButton}
-                    onPress={() => navigation.navigate("New Repair Request")}
-                >
-                    <Text
-						style={page.buttonText}
-	    			> 
-                        New Repair Request 
-                    </Text>
-                </TouchableOpacity>
-            	
-                <TouchableOpacity
-                    style={page.bigButton}
-                    onPress={() => navigation.navigate("Change Status to fixer")}
+                    onPress={() => navigation.navigate("Change Status to client")}
                 >
                     <Text
 						style={page.buttonText}
@@ -47,7 +35,7 @@ export default function HomeScreen({ navigation }){
                     </Text>
 				
                 </TouchableOpacity>
-                </View>
+            	
 			</View>
         </SafeAreaView>
     );

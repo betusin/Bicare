@@ -39,4 +39,3 @@ web-build/
 
 #ignore api key
 src/firebaseConfig.js
-
