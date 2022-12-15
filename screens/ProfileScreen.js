@@ -14,7 +14,6 @@ import { sendEmailVerification } from "firebase/auth";
 //Placeholders for design, these need to be pulled from the db
 const name = "Jesse Ravensbergen"
 const phone = "06-12345678"
-const email = "jesse.ravensbergen@gmail.com"
 const jobs_made = 8;
 const balance = 4.52;
 
@@ -56,7 +55,7 @@ export default function ProfileScreen({ navigation }){
                     </View>
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Email Address:</Text>
-                        <Text style={[page.profileField,page.profileFieldValue]}>{email}</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>{user.email}</Text>
                     </View>
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Email verified:</Text>
