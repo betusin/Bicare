@@ -11,7 +11,7 @@ import {Image, TouchableOpacity} from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import { auth, db } from '../src/firebase';
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from 'firebase/firestore/lite';
+import { setDoc, doc } from 'firebase/firestore';
 
 export default function SignupScreen({ navigation }) {
   const [email, setEmail] = useState("");
