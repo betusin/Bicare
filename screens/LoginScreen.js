@@ -1,99 +1,98 @@
 import { StatusBar } from "expo-status-bar";
 import {
-  StyleSheet,
   Text,
   View,
-  Button,
   TextInput,
   SafeAreaView,
 } from "react-native";
-import React, { useState } from "react";
-//import "typeface-roboto";
-import SignupScreen from "./SignupScreen";
+import { LinearGradient } from 'expo-linear-gradient';
+import React, { useState, useEffect } from "react";
+import {Image, TouchableOpacity} from "react-native";            
+import { useFonts } from 'expo-font';
+import page from '../styles'
+import { auth } from '../src/firebase';
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginScreen({ navigation }) {
-  const [usernameText, setTextUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [passwordText, setTextPassword] = useState("");
 
-  return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.ladida}>
-        <Text style={styles.title}>BICARE</Text>
-        <Text style={styles.text}>Barter your bike repair anywhere</Text>
-        <View style={styles.inputWrapper}>
+  const [fontsLoaded] = useFonts({
+    'Roboto': require('./../assets/fonts/Roboto-Regular.ttf'),
+  });
+
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(user => {
+      if (user) {
+        navigation.navigate("Navigation")
+      }
+    })
+
+    return unsubscribe
+  }, [])
+
+  const handleLogin = () => {
+    signInWithEmailAndPassword(auth, email, passwordText)
+      .then(userCredentials => {
+        const user = userCredentials.user;
+        window.alert('Logged in with:' + user.email);
+        navigation.navigate("Navigation")
+      })
+      .catch(error => alert(error.message))
+  }
+
+
+
+return (
+  <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
+    <SafeAreaView style={page.containerNoBackground}>
+      <View style={page.ladida}>
+        <Image
+          style={page.tinyLogo}
+          source={require('../img/logoWhiteTrial2.png')}
+        />      
+        <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+        <View style={page.inputWrapper}>
           <TextInput
-            style={styles.input}
-            placeholder="Enter your Username"
-            onChangeText={(newText) => setTextUsername(newText)}
-            value={usernameText}
+            style={page.input}
+            placeholder="Enter your Email"
+            onChangeText={(newText) => setEmail(newText)}
+            value={email}
           />
           <TextInput
-            style={styles.input}
+            style={page.input}
             secureTextEntry={true}
             placeholder="Enter your Password"
             onChangeText={(newText) => setTextPassword(newText)}
             value={passwordText}
           />
-          <Button
-            style={styles.input}
-            title="Login"
-            onPress={() => navigation.navigate("Maps")}
-          />
-          <View style={styles.space}></View>
-          <Button
-            style={styles.input}
-            title="Sign up"
+        </View>
+        <View style={page.buttonWrapper}>
+          <TouchableOpacity
+            style={page.button}
+            onPress={handleLogin}
+          >
+            <Text
+                style={page.buttonText}
+            >
+              Login
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={page.button}
             onPress={() => navigation.navigate("SignupScreen")}
-          />
+          >
+            <Text
+              style={page.buttonText}
+            >
+              Sign up
+            </Text>
+          </TouchableOpacity>
         </View>
         <StatusBar style="auto" />
       </View>
     </SafeAreaView>
-  );
+  </LinearGradient>
+);
 }
-
-const styles = StyleSheet.create({
-  title: {
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 42,
-    //fontFamily: "Roboto",
-  },
-  text: {
-    color: "white",
-    fontSize: 26,
-    fontWeight: "300",
-    alignItems: "center",
-    //fontFamily: "Roboto",
-  },
-  ladida: {
-    //backgroundImage: "linear-gradient(#751A33, #B34233)",
-    backgroundSize: "cover",
-    height: "100%",
-    alignItems: "center",
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "cyan",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    //flex: 0.3,
-    backgroundColor: "white",
-    alignItems: "center",
-    justifyContent: "center",
-    marginVertical: "5%",
-  },
-  inputWrapper: {
-    //flex: 0.3,
-    //backgroundColor: "red",
-    alignItems: "center",
-
-    //justifyContent: "center",
-  },
-  space: {
-    width: 20, // or whatever size  you need
-    height: 40,
-  },
-});
