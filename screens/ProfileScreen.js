@@ -9,6 +9,7 @@ import page from '../styles'
 import {styles} from './NewRepairRequest'
 import {Image, TouchableOpacity} from "react-native";
 import { auth } from '../src/firebase';
+import { sendEmailVerification } from "firebase/auth";
 
 //Placeholders for design, these need to be pulled from the db
 const name = "Jesse Ravensbergen"
@@ -26,6 +27,16 @@ export default function ProfileScreen({ navigation }){
                 navigation.navigate("LoginScreen")
             })
             .catch(error => alert(error.message))
+    }
+
+    const user = auth.currentUser;
+
+    const verifyAccount = () => {
+        sendEmailVerification(user)
+        .then(() => {
+            alert("Email verification send!")
+        })
+        .catch(error => alert(error.message));
     }
 
     return(
@@ -48,6 +59,10 @@ export default function ProfileScreen({ navigation }){
                         <Text style={[page.profileField,page.profileFieldValue]}>{email}</Text>
                     </View>
                     <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Email verified:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>{user.emailVerified ? "yes" : "no"}</Text>
+                    </View>
+                    <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Phone Number:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>{phone}</Text>
                     </View>
@@ -61,6 +76,17 @@ export default function ProfileScreen({ navigation }){
                     </View>
                 </View>
 
+
+                {!user.isEmailVerified &&
+                    <TouchableOpacity
+                        style={page.buttonProfile}
+                        onPress={verifyAccount}
+                    >
+                        <Text style={page.buttonTextSmall}>
+                            Verify Account
+                        </Text>
+                    </TouchableOpacity>
+                }
                 <TouchableOpacity
                     style={page.buttonProfile}
                     onPress={() => navigation.navigate("ChangePassword")}
