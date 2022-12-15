@@ -10,6 +10,7 @@ import {styles} from './NewRepairRequest'
 import {Image, TouchableOpacity} from "react-native";
 import { auth } from '../src/firebase';
 import { sendEmailVerification } from "firebase/auth";
+import { getUserData } from "../src/db/user"
 
 //Placeholders for design, these need to be pulled from the db
 const name = "Jesse Ravensbergen"
@@ -18,6 +19,17 @@ const jobs_made = 8;
 const balance = 4.52;
 
 export default function ProfileScreen({ navigation }){
+    const [ userData, setUserData ] = useState({
+        username: "",
+    });
+    const user = auth.currentUser;
+
+    getUserData(user.uid)
+    .then((data) => {
+        console.log(data.data)
+        setUserData(data);
+    })
+    .catch(error => alert(error))
 
     const handleSignOut = () => {
         auth
@@ -27,8 +39,6 @@ export default function ProfileScreen({ navigation }){
             })
             .catch(error => alert(error.message))
     }
-
-    const user = auth.currentUser;
 
     const verifyAccount = () => {
         sendEmailVerification(user)
@@ -50,8 +60,8 @@ export default function ProfileScreen({ navigation }){
 
                 <View style={page.profileColumn}>
                     <View style={[page.profileRows]}>
-                        <Text style={[page.profileField,page.profileFieldTitle]}>Name:</Text>
-                        <Text style={[page.profileField,page.profileFieldValue]}>{name}</Text>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Username:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>{userData.username}</Text>
                     </View>
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Email Address:</Text>
