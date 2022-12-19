@@ -279,5 +279,19 @@ export default StyleSheet.create({
 	  width: 175,
 	  height:175,
 	},
+  scrollContainer:{
+    flex: 1,
+    backgroundColor: "#242424",
+  },
+  scrollContainerContent:{
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  scrollView: {
+    backgroundSize: "cover",
+    width: "80%",
+    paddingTop: "20%",
+    alignItems: "center",
+  }
   });
   

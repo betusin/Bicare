@@ -28,9 +28,9 @@ export default function NewRepairRequest({ navigation }){
 
 
     return(
-        <SafeAreaView style={page.container} >
-            <View style={page.view}>
-            {/* <ScrollView behavior="padding" style={{flex: 1}} contentContainerStyle={page.view}> */}
+        <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} enabled   keyboardVerticalOffset={0}>
+        <ScrollView behavior="padding" style={page.scrollContainer} contentContainerStyle={page.scrollContainerContent}>
+            <View style={page.scrollView}>
                 <Image
                     style={page.tinyLogo}
                     source={require('../img/logoWhiteTrial2.png')}
@@ -73,8 +73,11 @@ export default function NewRepairRequest({ navigation }){
                         </Text>
                     </TouchableOpacity>
                 </View>
-            {/* </ScrollView> */}
+                <Text>
+                            Create repair request
+                </Text>
             </View>
-        </SafeAreaView>
+        </ScrollView>
+        </KeyboardAvoidingView>
     );
 }
