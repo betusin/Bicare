@@ -6,6 +6,7 @@ import ProfileScreen from './ProfileScreen';
 import PaymentInfo from './PaymentInfo'
 import ChangePassword from './ChangePassword'
 import FixScreen from './FixScreen';
+import OffersScreen from './OffersScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -34,6 +35,13 @@ export default function Navigation() {
             <Drawer.Screen 
                 name="New Repair Request" 
                 component={NewRepairRequest}
+                options={{
+                    drawerItemStyle: { display: "none"}
+                }}
+            />
+            <Drawer.Screen 
+                name="Offers screen" 
+                component={OffersScreen}
                 options={{
                     drawerItemStyle: { display: "none"}
                 }}

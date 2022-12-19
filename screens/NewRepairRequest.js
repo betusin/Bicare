@@ -69,6 +69,7 @@ export default function NewRepairRequest({ navigation }){
                     />
                     <TouchableOpacity
                         style={page.button}
+                        onPress={() => navigation.navigate("Offers screen")}
                     >
                         <Text>
                             Create repair request
