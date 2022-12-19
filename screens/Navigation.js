@@ -1,13 +1,12 @@
-import * as React from "react";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import HomeScreen from "./HomeScreen";
-import NewRepairRequest from "./NewRepairRequest";
-import ProfileScreen from "./ProfileScreen";
-import PaymentInfo from "./PaymentInfo";
-import ChangePassword from "./ChangePassword";
-import FixScreen from "./FixScreen";
-import MapClient from "./MapClient";
-import MapFixer from "./MapFixer";
+import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import HomeScreen from './HomeScreen';
+import NewRepairRequest from './NewRepairRequest';
+import ProfileScreen from './ProfileScreen';
+import PaymentInfo from './PaymentInfo'
+import ChangePassword from './ChangePassword'
+import FixScreen from './FixScreen';
+import OffersScreen from './OffersScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -38,6 +37,13 @@ export default function Navigation() {
         component={NewRepairRequest}
         options={{
           drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="Offers screen"
+        component={OffersScreen}
+        options={{
+            drawerItemStyle: { display: "none"}
         }}
       />
       <Drawer.Screen

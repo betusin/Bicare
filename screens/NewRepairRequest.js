@@ -48,7 +48,7 @@ export default function NewRepairRequest({ navigation }){
             })
             .catch(error => alert(error.message))
 
-            navigation.navigate("Home");
+            navigation.navigate("Offers screen");
     }
 
     return(
