@@ -1,16 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import {
-  StyleSheet,
   Text,
   View,
-  Button,
   TextInput,
   SafeAreaView,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import React, { useState } from "react";
-import { useFonts } from 'expo-font';
 import DropDownPicker from 'react-native-dropdown-picker';
 import page from '../styles'
 
@@ -30,13 +28,13 @@ export default function NewRepairRequest({ navigation }){
 
 
     return(
-        <SafeAreaView style={page.container}>
+        <SafeAreaView style={page.container} >
             <View style={page.view}>
+            {/* <ScrollView behavior="padding" style={{flex: 1}} contentContainerStyle={page.view}> */}
                 <Image
                     style={page.tinyLogo}
                     source={require('../img/logoWhiteTrial2.png')}
                 />                
-                <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
                 <Text style={page.header}>New Repair Request</Text>
                 <View style={page.inputWrapper}>
                     <Text style={page.fieldTitle}>Problem</Text>
@@ -75,6 +73,7 @@ export default function NewRepairRequest({ navigation }){
                         </Text>
                     </TouchableOpacity>
                 </View>
+            {/* </ScrollView> */}
             </View>
         </SafeAreaView>
     );
