@@ -8,8 +8,10 @@ import React, { useState } from "react";
 import page from '../styles'
 import {styles} from './NewRepairRequest'
 import {Image, TouchableOpacity} from "react-native";
-import { auth } from '../src/firebase';
+import { db, auth } from '../src/firebase';
 import { sendEmailVerification } from "firebase/auth";
+import { useDocument } from 'react-firebase-hooks/firestore';
+import { doc, setDoc } from "firebase/firestore";
 
 //Placeholders for design, these need to be pulled from the db
 const name = "Jesse Ravensbergen"
@@ -17,7 +19,14 @@ const phone = "06-12345678"
 const jobs_made = 8;
 const balance = 4.52;
 
-export default function ProfileScreen({ navigation }){
+export default function ProfileScreen({ navigation }) {
+    const user = auth.currentUser;
+    const docRef = doc(db, "users", user.uid);
+    const [userData, loading, error] = useDocument(docRef);
+
+    if (error) {
+        alert(JSON.stringify(error));
+    }
 
     const handleSignOut = () => {
         auth
@@ -27,8 +36,6 @@ export default function ProfileScreen({ navigation }){
             })
             .catch(error => alert(error.message))
     }
-
-    const user = auth.currentUser;
 
     const verifyAccount = () => {
         sendEmailVerification(user)
@@ -43,7 +50,13 @@ export default function ProfileScreen({ navigation }){
             alert("Your account is not verified. Please verify before registering as a fixer.");
             return;
         }
-        alert("should register, not implemented yet");
+        setDoc(docRef, { isFixer: true }, { merge: true })
+        .then(() => {
+            alert("Successfully registered as fixer!");
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
     }
 
     return(
@@ -58,8 +71,11 @@ export default function ProfileScreen({ navigation }){
 
                 <View style={page.profileColumn}>
                     <View style={[page.profileRows]}>
-                        <Text style={[page.profileField,page.profileFieldTitle]}>Name:</Text>
-                        <Text style={[page.profileField,page.profileFieldValue]}>{name}</Text>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Username:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>
+                            {userData && userData.data().username}
+                            {loading && <span>Loading...</span>}
+                        </Text>
                     </View>
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Email Address:</Text>
@@ -110,14 +126,16 @@ export default function ProfileScreen({ navigation }){
                         View Payment Info
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    style={page.buttonProfile}
-                    onPress={registerAsFixer}
-                >
-                    <Text style={page.buttonTextSmall}>
-                        Register as Fixer
-                    </Text>
-                </TouchableOpacity>
+                {userData && !userData.data().isFixer &&
+                    <TouchableOpacity
+                        style={page.buttonProfile}
+                        onPress={registerAsFixer}
+                    >
+                        <Text style={page.buttonTextSmall}>
+                            Register as Fixer
+                        </Text>
+                    </TouchableOpacity>
+                }
                 <TouchableOpacity
                     style={page.buttonProfile}
                     onPress={handleSignOut}
