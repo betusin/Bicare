@@ -38,6 +38,14 @@ export default function ProfileScreen({ navigation }){
         .catch(error => alert(error.message));
     }
 
+    const registerAsFixer = () => {
+        if (!user.emailVerified) {
+            alert("Your account is not verified. Please verify before registering as a fixer.");
+            return;
+        }
+        alert("should register, not implemented yet");
+    }
+
     return(
         <SafeAreaView style={page.container}>
             <View style={page.view}>
@@ -104,10 +112,10 @@ export default function ProfileScreen({ navigation }){
                 </TouchableOpacity>
                 <TouchableOpacity
                     style={page.buttonProfile}
-                    onPress={() => navigation.navigate("LoginScreen")}
+                    onPress={registerAsFixer}
                 >
                     <Text style={page.buttonTextSmall}>
-                        Register as Fixer                    
+                        Register as Fixer
                     </Text>
                 </TouchableOpacity>
                 <TouchableOpacity
