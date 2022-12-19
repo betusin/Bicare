@@ -76,7 +76,7 @@ export default function ProfileScreen({ navigation }){
                 </View>
 
 
-                {!user.isEmailVerified &&
+                {!user.emailVerified &&
                     <TouchableOpacity
                         style={page.buttonProfile}
                         onPress={verifyAccount}
