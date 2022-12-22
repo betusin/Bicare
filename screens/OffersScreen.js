@@ -1,4 +1,5 @@
 import { StatusBar } from "expo-status-bar";
+import {Card} from "react-native-paper"
 import {
   StyleSheet,
   Text,
@@ -29,30 +30,30 @@ export default function OffersScreen({ navigation }){
         { id: 6, txt: 'sixth check', isChecked: false },
         { id: 7, txt: 'seventh check', isChecked: false },
       ];
-
-    this.state = {
-        products: data,
-    };
+      const [state, setState] = useState({products: data});
+    // this.state = {
+    //     products: data,
+    // };
     
-    handleChange = (id) => {
-        let temp = this.state.products.map((product) => {
+    const handleChange = (id) => {
+        let temp = state.products.map((product) => {
           if (id === product.id) {
             return { ...product, isChecked: !product.isChecked };
           }
           return product;
         });
-        this.setState({
+        setState({
           products: temp,
         });
     };
 
-    renderFlatList = (renderData) => {
+    const renderFlatList = (renderData) => {
         return (
           <FlatList
             data={renderData}
             renderItem={({ item }) => (
               <Card style={{ margin: 5 }}>
-                <View style={styles.card}>
+                <View style={page.card}>
                   <View
                     style={{
                       flexDirection: 'row',
@@ -62,7 +63,7 @@ export default function OffersScreen({ navigation }){
                     <CheckBox
                       value={item.isChecked}
                       onChange={() => {
-                        this.handleChange(item.id);
+                        handleChange(item.id);
                       }}
                     />
                     <Text>{item.txt}</Text>
@@ -84,7 +85,7 @@ export default function OffersScreen({ navigation }){
                 <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
                 <Text style={page.header}>Offers screen</Text>
                 <View style={{ flex: 1 }}>
-                    {this.renderFlatList(this.state.products)}
+                    {renderFlatList(state.products)}
                 </View>
             </View>
         </SafeAreaView>

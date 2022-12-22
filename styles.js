@@ -315,6 +315,20 @@ export default StyleSheet.create({
     height: "80%",
     alignItems: "center",
   },
+  card: {
+    padding: 10,
+    margin: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 400,
+  },
+  cardText:{
+    margin: 10, 
+    flexDirection: 'column', 
+    justifyContent: 'space-between',
+    flex: 1,
+    padding: 10, 
+  },
   containerNoBackground: {
     flex: 1,
     alignItems: "center",
@@ -397,6 +411,19 @@ export default StyleSheet.create({
     display: "flex",
     alignSelf: "flex-start",
   },
+  initialPrice: {
+    flexDirection: "row",
+    display: "flex",
+    alignSelf: "center",
+    padding: 30, 
+  },
+  initialPriceTitle: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "300",
+    alignSelf: "center",
+    fontFamily: "Roboto",
+  },
   descriptionInput: {
     //flex: 0.1,
     backgroundColor: "white",
@@ -472,6 +499,16 @@ export default StyleSheet.create({
   profileFieldValue: {
     flex: 0.6,
     color: "white",
+  },
+  cardFieldTitle: {
+    textAlign: "left",
+    flex: 0.4,
+    fontWeight: "bold",
+    color: "black",
+  },
+  cardFieldValue: {
+    flex: 0.6,
+    color: "#636363",
   },
   header: {
     color: "white",
