@@ -10,7 +10,7 @@ import page from '../styles'
 import {Image, TouchableOpacity} from "react-native"; 
 import { LinearGradient } from 'expo-linear-gradient';
 import { auth, db } from '../src/firebase';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { setDoc, doc } from 'firebase/firestore';
 
 export default function SignupScreen({ navigation }) {
@@ -36,6 +36,10 @@ export default function SignupScreen({ navigation }) {
       createUserWithEmailAndPassword(auth, email, passwordText)
         .then(userCredentials => {
           const user = userCredentials.user;
+          sendEmailVerification(user)
+          .catch(error => {
+            alert(error.message);
+          });;
           const userData = {
             username: username,
           }
