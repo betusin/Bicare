@@ -109,6 +109,13 @@ export default StyleSheet.create({
       height: "80%",
       alignItems: "center",
     },
+
+    card: {
+      padding: 10,
+      margin: 5,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
     containerNoBackground: {
       flex: 1,
       alignItems: "center",
