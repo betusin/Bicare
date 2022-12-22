@@ -94,7 +94,7 @@ return (
             <Text
                 style={page.buttonText}
             >
-              Forgot password
+              Forgot Password
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -104,7 +104,7 @@ return (
             <Text
               style={page.buttonText}
             >
-              Sign up
+              Sign Up
             </Text>
           </TouchableOpacity>
         </View>
