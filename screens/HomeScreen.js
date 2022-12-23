@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import page from "../styles";
 import { Image, TouchableOpacity } from "react-native";
 import styles from "../styles";
+import MapClient from "./MapClient";
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -30,17 +31,24 @@ export default function HomeScreen({ navigation }) {
           >
             <Text style={page.buttonTextSmall}>New Repair Request</Text>
           </TouchableOpacity>
-
+          <TouchableOpacity
+            style={page.smallMap}
+            onPress={() => navigation.navigate("MapClient")}
+          >
+            <View style={page.bigMap} pointerEvents="none">
+              <MapClient></MapClient>
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity
             style={page.buttonProfile}
             onPress={() => navigation.navigate("Change Status to fixer")}
           >
             <Text style={page.buttonTextSmall}>Change Status</Text>
           </TouchableOpacity>
-          <TouchableOpacity
+          {/* <TouchableOpacity
             style={page.buttonProfile}
-            onPress={() => navigation.navigate("Maps")}
-          ></TouchableOpacity>
+            onPress={() => navigation.navigate("MapClient")}
+          ></TouchableOpacity> */}
         </View>
       </View>
     </SafeAreaView>

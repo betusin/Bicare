@@ -1,5 +1,5 @@
 "use strict";
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
 import { color } from "react-native-reanimated";
 
 export default StyleSheet.create({
@@ -278,7 +278,24 @@ export default StyleSheet.create({
     height: 175,
   },
   logoMaps: {
-    width: 50,
+    width: 32.5,
     height: 50,
+  },
+  fixerLogoMaps: {
+    width: 35,
+    height: 35,
+  },
+  titleCalloutMaker: {
+    fontSize: 16,
+    fontWeight: "800",
+  },
+  bigMap: {
+    //width: Dimensions.get("window").width,
+    //height: Dimensions.get("window").height,
+    flex: 1,
+  },
+  smallMap: {
+    width: Dimensions.get("window").width * 0.6,
+    height: Dimensions.get("window").height * 0.2,
   },
 });

@@ -4,7 +4,7 @@ import { TextInput } from "react-native-web";
 import React, { useState } from "react";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
-import Maps from "./screens/Maps";
+import MapClient from "./screens/MapClient";
 // import TestLocation from "./screens/TestLocation";
 import { NavigationContainer } from "@react-navigation/native";
 import {
@@ -37,8 +37,8 @@ export default function App() {
           options={{ headerShown: false }}
         />
         <Stack.Screen
-          name="Maps"
-          component={Maps}
+          name="MapClient"
+          component={MapClient}
           options={{ headerShown: false }}
         />
         <Stack.Screen

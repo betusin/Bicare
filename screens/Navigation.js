@@ -6,7 +6,8 @@ import ProfileScreen from "./ProfileScreen";
 import PaymentInfo from "./PaymentInfo";
 import ChangePassword from "./ChangePassword";
 import FixScreen from "./FixScreen";
-import Maps from "./Maps";
+import MapClient from "./MapClient";
+import MapFixer from "./MapFixer";
 
 const Drawer = createDrawerNavigator();
 
@@ -68,8 +69,15 @@ export default function Navigation() {
         }}
       />
       <Drawer.Screen
-        name="Maps"
-        component={Maps}
+        name="MapClient"
+        component={MapClient}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="MapFixer"
+        component={MapFixer}
         options={{
           drawerItemStyle: { display: "none" },
         }}
