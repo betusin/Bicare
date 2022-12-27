@@ -10,7 +10,7 @@ import {styles} from './NewRepairRequest'
 import {Image, TouchableOpacity} from "react-native";
 import { db, auth } from '../src/firebase';
 import { sendEmailVerification } from "firebase/auth";
-import { useDocument } from 'react-firebase-hooks/firestore';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { doc, setDoc } from "firebase/firestore";
 
 //Placeholders for design, these need to be pulled from the db
@@ -22,7 +22,7 @@ const balance = 4.52;
 export default function ProfileScreen({ navigation }) {
     const user = auth.currentUser;
     const docRef = doc(db, "users", user.uid);
-    const [userData, loading, error] = useDocument(docRef);
+    const [userData, loading, error] = useDocumentData(docRef);
 
     if (error) {
         alert(JSON.stringify(error));
@@ -73,7 +73,7 @@ export default function ProfileScreen({ navigation }) {
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Username:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>
-                            {userData && userData.data().username}
+                            {userData && userData.username}
                             {loading && "Loading..."}
                         </Text>
                     </View>
@@ -126,7 +126,7 @@ export default function ProfileScreen({ navigation }) {
                         View Payment Info
                     </Text>
                 </TouchableOpacity>
-                {userData && !userData.data().isFixer &&
+                {userData && !userData.isFixer &&
                     <TouchableOpacity
                         style={page.buttonProfile}
                         onPress={registerAsFixer}
