@@ -166,7 +166,7 @@ const styles = StyleSheet.create({
   },
   callout: {
     backgroundColor: "white",
-    borderRadius: "5",
+    borderRadius: 5,
     width: Dimensions.get("window").width * 0.5,
   },
 });
