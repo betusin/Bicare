@@ -74,7 +74,7 @@ export default function ProfileScreen({ navigation }) {
                         <Text style={[page.profileField,page.profileFieldTitle]}>Username:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>
                             {userData && userData.data().username}
-                            {loading && <span>Loading...</span>}
+                            {loading && "Loading..."}
                         </Text>
                     </View>
                     <View style={[page.profileRows]}>
