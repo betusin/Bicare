@@ -5,11 +5,20 @@ import {
   View,
   SafeAreaView,
 } from "react-native";
+<<<<<<< HEAD
 import React from "react";
 import page from '../styles';
 import { Image, TouchableOpacity } from "react-native";
 
 
+=======
+import React, { useState } from "react";
+import page from "../styles";
+import { Image, TouchableOpacity } from "react-native";
+import styles from "../styles";
+import MapClient from "./MapClient";
+
+>>>>>>> mapsAPI
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={page.container}>
@@ -25,13 +34,16 @@ export default function HomeScreen({ navigation }) {
             style={page.buttonProfile}
             onPress={() => navigation.navigate("New Repair Request")}
           >
-            <Text
-              style={page.buttonTextSmall}
-            >
-              New Repair Request
-            </Text>
+            <Text style={page.buttonTextSmall}>New Repair Request</Text>
           </TouchableOpacity>
-
+          <TouchableOpacity
+            style={page.smallMap}
+            onPress={() => navigation.navigate("MapClient")}
+          >
+            <View style={page.bigMap} pointerEvents="none">
+              <MapClient></MapClient>
+            </View>
+          </TouchableOpacity>
           <TouchableOpacity
             style={page.buttonProfile}
             onPress={() => navigation.navigate("Change Status to fixer")}
