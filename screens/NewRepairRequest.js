@@ -12,13 +12,15 @@ import {
 import React, { useState } from "react";
 import { useFonts } from 'expo-font';
 import DropDownPicker from 'react-native-dropdown-picker';
-import page from '../styles'
+import page from '../styles';
+import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
+import { db, auth } from '../src/firebase';
 
 export default function NewRepairRequest({ navigation }){
 
     const [description, onChangeText] = React.useState("Useless Text");
-    const [amount, onChangeNumber] = React.useState(null);
-    
+    const [amount, onChangeNumber] = React.useState(10);
+
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
@@ -28,6 +30,26 @@ export default function NewRepairRequest({ navigation }){
 
     ]);
 
+    const createRepairRequest = () => {
+        const user = auth.currentUser;
+        var selectedItem = items.filter((item) => item.value == value)[0];
+        const data = {
+            problem: selectedItem.label,
+            description: description,
+            amount: Number(amount),
+            requester: user.uid,
+            location: new GeoPoint(90, 90),
+            createdAt: Timestamp.fromDate(new Date()),
+        };
+
+        addDoc(collection(db, "repair_request"),  data)
+            .then((docRef) => {
+                alert("Repair successfully requested!")
+            })
+            .catch(error => alert(error.message))
+
+            navigation.navigate("Home");
+    }
 
     return(
         <SafeAreaView style={page.container}>
@@ -69,6 +91,7 @@ export default function NewRepairRequest({ navigation }){
                     />
                     <TouchableOpacity
                         style={page.button}
+                        onPress={createRepairRequest}
                     >
                         <Text>
                             Create repair request

@@ -7,11 +7,11 @@ import {
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState, useEffect } from "react";
-import {Image, TouchableOpacity} from "react-native";            
+import {Image, TouchableOpacity} from "react-native";
 import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -42,7 +42,15 @@ export default function LoginScreen({ navigation }) {
       .catch(error => alert(error.message))
   }
 
-
+  const resetPassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert("Reset password email sent. Check your inbox.")
+      })
+      .catch((error) => {
+        alert(error.message)
+      });
+  }
 
 return (
   <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
@@ -51,7 +59,7 @@ return (
         <Image
           style={page.tinyLogo}
           source={require('../img/logoWhiteTrial2.png')}
-        />      
+        />
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <View style={page.inputWrapper}>
           <TextInput
@@ -81,12 +89,22 @@ return (
           </TouchableOpacity>
           <TouchableOpacity
             style={page.button}
+            onPress={resetPassword}
+          >
+            <Text
+                style={page.buttonText}
+            >
+              Forgot Password
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={page.button}
             onPress={() => navigation.navigate("SignupScreen")}
           >
             <Text
               style={page.buttonText}
             >
-              Sign up
+              Sign Up
             </Text>
           </TouchableOpacity>
         </View>

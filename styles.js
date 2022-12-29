@@ -34,8 +34,8 @@ export default StyleSheet.create({
       shadowRadius: 4,
   
       elevation: 5,
-      width: 150,
-      height: 50, 
+      width: 200,
+      height: 50,
     },
     buttonProfile: {
       alignItems: "center",
