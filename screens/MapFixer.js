@@ -7,6 +7,7 @@ import React from "react";
 import page from "../styles";
 import { db } from "../src/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { getDistance, getPreciseDistance } from "geolib";
 
 export default function MapFixer({ navigation }) {
   const [location, setLocation] = useState({});
@@ -109,19 +110,16 @@ export default function MapFixer({ navigation }) {
                   })}
                 >
                   <View>
-                    <View style={styles.callout}>
-                      <Text>
-                        Problem:{"\n"}
-                        {String(val.problem)}
+                    <View style={page.callout}>
+                      <Text style={page.titleCalloutMaker}>I need help!</Text>
+                      <Text style={page.subtitleCalloutMaker}>Problem:</Text>
+                      <Text> {String(val.problem)}</Text>
+                      <Text style={page.subtitleCalloutMaker}>Amount:</Text>
+                      <Text>{String(" " + val.amount) + "€"}</Text>
+                      <Text style={page.subtitleCalloutMaker}>
+                        Description:
                       </Text>
-                      <Text>
-                        Amount:{"\n"}
-                        {String(val.amount) + "€"}
-                      </Text>
-                      <Text>
-                        Description:{"\n"}
-                        {String(val.description)}
-                      </Text>
+                      <Text> {String(val.description)}</Text>
                     </View>
                   </View>
                 </Callout>
@@ -145,7 +143,8 @@ export default function MapFixer({ navigation }) {
                 />
                 <Callout tooltip onPress={() => alert("Clicked")}>
                   <View>
-                    <View style={styles.callout}>
+                    <View style={page.callout}>
+                      <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
                       <Text>{val.username}</Text>
                     </View>
                   </View>
@@ -158,21 +157,15 @@ export default function MapFixer({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  map: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
-  callout: {
-    backgroundColor: "white",
-    borderRadius: 5,
-    width: Dimensions.get("window").width * 0.5,
-  },
-});
+const calculateDistance = (
+  originLat,
+  originLong,
+  destinationLat,
+  destinationLong
+) => {
+  var dis = getDistance(
+    { latitude: originLat, longitude: originLong },
+    { latitude: destinationLat, longitude: destinationLong }
+  );
+  alert(`Distance\n\n${dis} Meter\nOR\n${dis / 1000} KM`);
+};
