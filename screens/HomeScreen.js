@@ -5,20 +5,10 @@ import {
   View,
   SafeAreaView,
 } from "react-native";
-<<<<<<< HEAD
-import React from "react";
-import page from '../styles';
-import { Image, TouchableOpacity } from "react-native";
-
-
-=======
 import React, { useState } from "react";
 import page from "../styles";
 import { Image, TouchableOpacity } from "react-native";
-import styles from "../styles";
 import MapClient from "./MapClient";
-
->>>>>>> mapsAPI
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={page.container}>
