@@ -102,18 +102,18 @@ export default function MapClient({ navigation }) {
                 />
                 <Callout tooltip onPress={() => alert("Clicked")}>
                   <View>
-                    <View style={styles.callout}>
+                    <View style={page.callout}>
                       <Text style={page.titleCalloutMaker}>
                         {String(val.title)}
                       </Text>
-                      <Text>
-                        Opening hours:{"\n"}
-                        {String(val.openingHours)}
+                      <Text style={page.subtitleCalloutMaker}>
+                        Opening hours:
                       </Text>
-                      <Text>
-                        Phone number:{"\n"}
-                        {String(val.phoneNumber)}
+                      <Text> {String(val.openingHours)}</Text>
+                      <Text style={page.subtitleCalloutMaker}>
+                        Phone number:
                       </Text>
+                      <Text>{String(val.phoneNumber)}</Text>
                     </View>
                   </View>
                 </Callout>
@@ -143,7 +143,8 @@ export default function MapClient({ navigation }) {
                   onPress={() => navigation.navigate("MapFixer")}
                 >
                   <View>
-                    <View style={styles.callout}>
+                    <View style={page.callout}>
+                      <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
                       <Text>{val.username}</Text>
                     </View>
                   </View>
@@ -157,16 +158,16 @@ export default function MapClient({ navigation }) {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  callout: {
-    backgroundColor: "white",
-    borderRadius: 5,
-    width: Dimensions.get("window").width * 0.5,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "#fff",
+//     alignItems: "center",
+//     justifyContent: "center",
+//   },
+//   callout: {
+//     backgroundColor: "white",
+//     borderRadius: 5,
+//     width: Dimensions.get("window").width * 0.5,
+//   },
+// });
