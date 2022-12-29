@@ -570,4 +570,9 @@ export default StyleSheet.create({
     paddingTop: "20%",
     alignItems: "center",
   },
+  callout: {
+    backgroundColor: "white",
+    borderRadius: 5,
+    width: Dimensions.get("window").width * 0.5,
+  },
 });
