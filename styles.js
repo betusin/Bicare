@@ -112,9 +112,16 @@ export default StyleSheet.create({
 
     card: {
       padding: 10,
-      margin: 5,
+      margin: 10,
       flexDirection: 'row',
       justifyContent: 'space-between',
+      width: 400,
+    },
+    cardText:{
+      margin: 10, 
+      flexDirection: 'column', 
+      justifyContent: 'space-between',
+      flex: 1,
     },
     containerNoBackground: {
       flex: 1,
@@ -195,6 +202,11 @@ export default StyleSheet.create({
       paddingRight: 5,
     },
     amountView: {
+      flexDirection: "row",
+      display: "flex",
+      alignSelf: "flex-start"
+    },
+    initialPrice: {
       flexDirection: "row",
       display: "flex",
       alignSelf: "flex-start"
