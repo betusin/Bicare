@@ -27,6 +27,7 @@ export default function MakeOfferScreen({ route, navigation }){
         addDoc(collection(db, "repair_request", requestData.id, "offers"), offerData)
         .then(() => {
             alert(`Offer created with estimated time - ${eta} and price - ${priceOffer}`)
+            navigation.navigate("FixerWaiting", {request: requestData, offer: offerData})
         })
         .catch((error) => alert(error.message))
     }

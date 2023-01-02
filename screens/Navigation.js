@@ -9,6 +9,7 @@ import FixScreen from "./FixScreen";
 import MapClient from "./MapClient";
 import MapFixer from "./MapFixer";
 import MakeOfferScreen from "./MakeOfferScreen";
+import FixerWaiting from "./FixerWaiting";
 
 const Drawer = createDrawerNavigator();
 
@@ -37,6 +38,11 @@ export default function Navigation({route}) {
       <Drawer.Screen
         name="MakeOfferScreen"
         component={MakeOfferScreen}
+        initialParams={{ params: route.params }}
+      />
+      <Drawer.Screen
+        name="FixerWaiting"
+        component={FixerWaiting}
         initialParams={{ params: route.params }}
       />
       <Drawer.Screen
