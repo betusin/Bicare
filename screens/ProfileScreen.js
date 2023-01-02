@@ -84,7 +84,10 @@ export default function ProfileScreen({ navigation }) {
                     </View>
                     <View style={[page.profileRows, {marginTop: 20}]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Balance:</Text>
-                        <Text style={[page.profileField,page.profileFieldValue]}>€ {balance}</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>€&nbsp;
+                            {userData && (userData.balance ? userData.balance : 0)}
+                            {loading && "Loading..."}
+                        </Text>
                     </View>
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Jobs Offered:</Text>
