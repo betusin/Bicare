@@ -8,10 +8,11 @@ import ChangePassword from "./ChangePassword";
 import FixScreen from "./FixScreen";
 import MapClient from "./MapClient";
 import MapFixer from "./MapFixer";
+import MakeOfferScreen from "./MakeOfferScreen";
 
 const Drawer = createDrawerNavigator();
 
-export default function Navigation() {
+export default function Navigation({route}) {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
@@ -33,6 +34,11 @@ export default function Navigation() {
       }}
     >
       <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen
+        name="MakeOfferScreen"
+        component={MakeOfferScreen}
+        initialParams={{ params: route.params }}
+      />
       <Drawer.Screen
         name="New Repair Request"
         component={NewRepairRequest}
