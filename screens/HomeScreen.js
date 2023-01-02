@@ -9,6 +9,14 @@ import React, { useState } from "react";
 import page from "../styles";
 import { Image, TouchableOpacity } from "react-native";
 import MapClient from "./MapClient";
+import { auth, db } from '../src/firebase';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
+import { doc } from "firebase/firestore";
+
+const user = auth.currentUser;
+const docRef = doc(db, "users", user.uid);
+const [userData, loading, error] = useDocumentData(docRef);
+
 export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={page.container}>
@@ -34,17 +42,19 @@ export default function HomeScreen({ navigation }) {
               <MapClient></MapClient>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={page.buttonProfile}
-            onPress={() => navigation.navigate("Change Status to fixer")}
-          >
-            <Text
-              style={page.buttonTextSmall}
+          {userData.isFixer &&
+            <TouchableOpacity
+              style={page.buttonProfile}
+              onPress={() => navigation.navigate("Change Status to fixer")}
             >
-              Change Status
-            </Text>
+              <Text
+                style={page.buttonTextSmall}
+              >
+                Change Status
+              </Text>
 
-          </TouchableOpacity>
+            </TouchableOpacity>
+          }
         </View>
       </View>
     </SafeAreaView>
