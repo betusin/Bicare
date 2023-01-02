@@ -13,11 +13,11 @@ import { auth, db } from '../src/firebase';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { doc } from "firebase/firestore";
 
-const user = auth.currentUser;
-const docRef = doc(db, "users", user.uid);
-const [userData, loading, error] = useDocumentData(docRef);
-
 export default function HomeScreen({ navigation }) {
+  const user = auth.currentUser;
+  const docRef = doc(db, "users", user.uid);
+  const [userData, loading, error] = useDocumentData(docRef);
+
   return (
     <SafeAreaView style={page.container}>
       <View style={page.view}>
@@ -42,7 +42,7 @@ export default function HomeScreen({ navigation }) {
               <MapClient></MapClient>
             </View>
           </TouchableOpacity>
-          {userData.isFixer &&
+          {userData && userData.isFixer &&
             <TouchableOpacity
               style={page.buttonProfile}
               onPress={() => navigation.navigate("Change Status to fixer")}
