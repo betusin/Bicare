@@ -122,6 +122,7 @@ export default StyleSheet.create({
       flexDirection: 'column', 
       justifyContent: 'space-between',
       flex: 1,
+      padding: 10, 
     },
     containerNoBackground: {
       flex: 1,
@@ -209,7 +210,15 @@ export default StyleSheet.create({
     initialPrice: {
       flexDirection: "row",
       display: "flex",
-      alignSelf: "flex-start"
+      alignSelf: "center",
+      padding: 30, 
+    },
+    initialPriceTitle: {
+      color: "white",
+      fontSize: 14,
+      fontWeight: "300",
+      alignSelf: "center",
+      fontFamily: "Roboto",
     },
     descriptionInput: {
         //flex: 0.1,
@@ -287,6 +296,18 @@ export default StyleSheet.create({
       flex: 0.6,
       color: "white",
     },
+
+    cardFieldTitle: {
+      textAlign: "left",
+      flex: 0.4,
+      fontWeight: "bold",
+      color: "black",
+    },
+    cardFieldValue: {
+      flex: 0.6,
+      color: "#636363",
+    },
+
     header: {
       color: "white",
       fontSize: 20,
