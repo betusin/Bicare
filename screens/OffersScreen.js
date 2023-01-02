@@ -30,13 +30,13 @@ export default function OffersScreen({ navigation }){
         { id: 6, distance: 'distance',  ETA: 'eta', price: 'price', isChecked: false },
         { id: 7, distance: 'distance',ETA: 'eta', price: 'price',  isChecked: false },
       ];
-      const [state, setState] = useState({products: data});
-    // this.state = {
-    //     products: data,
-    // };
+    const [state, setState] = useState({products: data});
     
     const handleChange = (id) => {
         let temp = state.products.map((product) => {
+          if (id !== product.id) {
+          return {...product, isChecked: false};
+          }
           if (id === product.id) {
             return { ...product, isChecked: !product.isChecked };
           }
@@ -54,7 +54,7 @@ export default function OffersScreen({ navigation }){
           <FlatList
             data={renderData}
             renderItem={({ item }) => (
-              <Card style={{ margin: 5 }}>
+              <Card style={{ margin: 5, backgroundColor: "#F5D466"}}>
                 <View style={page.card}>
                   <View
                     style={{
@@ -62,16 +62,25 @@ export default function OffersScreen({ navigation }){
                       flex: 1,
                       justifyContent: 'center',
                     }}>
-                    <CheckBox
+                    <CheckBox style={{width: 30, height: 30, padding: 1, alignSelf: 'center' }}
                       value={item.isChecked}
                       onChange={() => {
                         handleChange(item.id);
                       }}
                     />
                     <View style={page.cardText}>
-                      <Text>{item.distance}</Text>
-                      <Text>{item.ETA}</Text>
-                      <Text>{item.price}</Text>
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.cardFieldTitle]}>Distance:</Text>
+                        <Text style={[page.profileField,page.cardFieldValue]}>{item.distance}</Text>
+                    </View>
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.cardFieldTitle]}>ETA:</Text>
+                        <Text style={[page.profileField,page.cardFieldValue]}>{item.ETA}</Text>
+                    </View>
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.cardFieldTitle]}>Price:</Text>
+                        <Text style={[page.profileField,page.cardFieldValue]}>{item.price}</Text>
+                    </View>
                     </View>
                   </View>
                 </View>
@@ -91,9 +100,8 @@ export default function OffersScreen({ navigation }){
                 <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
                 <Text style={page.header}>Offers screen</Text>
                 <View style={page.inputWrapper}>
-                <Text style={page.fieldTitle}>Initial price</Text>
                 <View style={page.initialPrice}>
-                      <Text style={page.euroSign}>€</Text>
+                      <Text style={page.euroSign}>Initial price €</Text>
                       <TextInput
                           style={page.amountInput}
                           placeholder="10"
