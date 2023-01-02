@@ -10,18 +10,27 @@ import {
 import React, { useState } from "react";
 import page from '../styles'
 import {TouchableOpacity} from "react-native";
-
-var balance = 4.52;
+import { auth, db } from "../src/firebase";
+import { doc, setDoc } from "firebase/firestore";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 
 export default function ProfileScreen({ navigation }){
 
 
     function increaseBalance(amount) {
-        balance = balance + amount;
-        setBalanceText(balance);
+        const balance = userData.balance ? userData.balance : 0;
+        setDoc(docRef, {balance: balance + amount}, {merge: true})
+        .then(() => {
+            alert("Increased balance uccessfully!");
+        })
+        .catch((error) => {
+            alert(error.message);
+        });
     }
 
-    const [balanceText, setBalanceText] = useState(balance);
+    const user = auth.currentUser;
+    const docRef = doc(db, "users", user.uid);
+    const [userData, loading, error] = useDocumentData(docRef);
 
     return(
         <SafeAreaView style={page.container}>
@@ -31,7 +40,10 @@ export default function ProfileScreen({ navigation }){
 
                 <View style={[styles.row, {marginTop: 20}]}>
                     <Text style={[page.profileField,page.profileFieldTitle]}>Current Balance:</Text>
-                    <Text style={[page.profileField,page.profileFieldValue,{flex: 0.2}]}>€ {balanceText}</Text>
+                    <Text style={[page.profileField,page.profileFieldValue,{flex: 0.2}]}>€&nbsp;
+                        {userData && (userData.balance ? userData.balance : 0)}
+                        {loading && "Loading..."}
+                    </Text>
                 </View>
 
                 <View style={page.profileColumn}>
