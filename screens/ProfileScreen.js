@@ -14,8 +14,6 @@ import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { doc, setDoc } from "firebase/firestore";
 
 //Placeholders for design, these need to be pulled from the db
-const name = "Jesse Ravensbergen"
-const phone = "06-12345678"
 const jobs_made = 8;
 const balance = 4.52;
 
@@ -84,10 +82,6 @@ export default function ProfileScreen({ navigation }) {
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Email verified:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>{user.emailVerified ? "yes" : "no"}</Text>
-                    </View>
-                    <View style={[page.profileRows]}>
-                        <Text style={[page.profileField,page.profileFieldTitle]}>Phone Number:</Text>
-                        <Text style={[page.profileField,page.profileFieldValue]}>{phone}</Text>
                     </View>
                     <View style={[page.profileRows, {marginTop: 20}]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Balance:</Text>
