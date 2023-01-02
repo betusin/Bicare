@@ -4,9 +4,8 @@ import {
     View,
     SafeAreaView,
   } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import page from '../styles'
-import {styles} from './NewRepairRequest'
 import {Image, TouchableOpacity} from "react-native";
 import { db, auth } from '../src/firebase';
 import { sendEmailVerification } from "firebase/auth";
