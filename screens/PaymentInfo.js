@@ -3,11 +3,9 @@ import {
     StyleSheet,
     Text,
     View,
-    Button,
-    TextInput,
     SafeAreaView,
   } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import page from '../styles'
 import {TouchableOpacity} from "react-native";
 import { auth, db } from "../src/firebase";
@@ -54,7 +52,7 @@ export default function ProfileScreen({ navigation }){
                             onPress={() => increaseBalance(5)}
                         >
                             <Text style={page.buttonTextSmall}>
-                                €5                   
+                                €5
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -62,7 +60,7 @@ export default function ProfileScreen({ navigation }){
                             onPress={() => increaseBalance(10)}
                         >
                             <Text style={page.buttonTextSmall}>
-                                €10                   
+                                €10
                             </Text>
                         </TouchableOpacity>
                     </View>
@@ -72,7 +70,7 @@ export default function ProfileScreen({ navigation }){
                             onPress={() => increaseBalance(15)}
                         >
                             <Text style={page.buttonTextSmall}>
-                                €15                   
+                                €15
                             </Text>
                         </TouchableOpacity>
                         <TouchableOpacity
@@ -80,7 +78,7 @@ export default function ProfileScreen({ navigation }){
                             onPress={() => increaseBalance(20)}
                         >
                             <Text style={page.buttonTextSmall}>
-                                €20                   
+                                €20
                             </Text>
                         </TouchableOpacity>
                     </View>
