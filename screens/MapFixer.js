@@ -88,7 +88,7 @@ export default function MapFixer({ navigation }) {
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
       >
-        {repairRequests.map((val, index) => {
+        {repairRequests && renderRequests && repairRequests.map((val, index) => {
           if (renderRequests) {
             return (
               <Marker
