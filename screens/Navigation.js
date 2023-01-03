@@ -8,6 +8,9 @@ import ChangePassword from "./ChangePassword";
 import FixScreen from "./FixScreen";
 import MapClient from "./MapClient";
 import MapFixer from "./MapFixer";
+import ClientWaitingScreen from "./ClientWaitingScreen";
+import MapFixerONW from "./MapFixerONW";
+import RepairDoneScreen from "./RepairDoneScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -78,6 +81,27 @@ export default function Navigation() {
       <Drawer.Screen
         name="MapFixer"
         component={MapFixer}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="ClientWaitingScreen"
+        component={ClientWaitingScreen}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="MapFixerONW"
+        component={MapFixerONW}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="RepairDoneScreen"
+        component={RepairDoneScreen}
         options={{
           drawerItemStyle: { display: "none" },
         }}

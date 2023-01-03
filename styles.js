@@ -501,8 +501,6 @@ export default StyleSheet.create({
     fontWeight: "600",
   },
   bigMap: {
-    //width: Dimensions.get("window").width,
-    //height: Dimensions.get("window").height,
     flex: 1,
   },
   smallMap: {
