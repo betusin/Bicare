@@ -12,6 +12,9 @@ import MakeOfferScreen from "./MakeOfferScreen";
 import FixerWaiting from "./FixerWaiting";
 import OffersScreen from "./OffersScreen";
 import OfflineOrderScreen from "./OfflineOrderScreen";
+import ClientWaitingScreen from "./ClientWaitingScreen";
+import MapFixerONW from "./MapFixerONW";
+import RepairDoneScreen from "./RepairDoneScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -116,6 +119,27 @@ export default function Navigation({route}) {
 					drawerItemStyle: {display: "none"}
 				}}
 			/>
+      <Drawer.Screen
+        name="ClientWaitingScreen"
+        component={ClientWaitingScreen}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="MapFixerONW"
+        component={MapFixerONW}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="RepairDoneScreen"
+        component={RepairDoneScreen}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
       <Drawer.Screen name="Profile" component={ProfileScreen} />
     </Drawer.Navigator>
   );

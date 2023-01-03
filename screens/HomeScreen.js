@@ -1,11 +1,7 @@
 //Work In Progress
 
-import {
-  Text,
-  View,
-  SafeAreaView,
-} from "react-native";
-import React, { useState } from "react";
+import { Text, View, SafeAreaView } from "react-native";
+import React from "react";
 import page from "../styles";
 import { Image, TouchableOpacity } from "react-native";
 import MapClient from "./MapClient";
@@ -23,7 +19,7 @@ export default function HomeScreen({ navigation }) {
       <View style={page.view}>
         <Image
           style={page.tinyLogo}
-          source={require('../img/logoWhiteTrial2.png')}
+          source={require("../img/logoWhiteTrial2.png")}
         />
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <Text style={page.header}>Home Screen</Text>
