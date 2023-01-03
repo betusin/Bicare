@@ -1,7 +1,7 @@
 //Work In Progress
 
 import { Text, View, SafeAreaView } from "react-native";
-import React, { useState } from "react";
+import React from "react";
 import page from "../styles";
 import { Image, TouchableOpacity } from "react-native";
 import MapClient from "./MapClient";
