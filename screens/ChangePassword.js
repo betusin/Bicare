@@ -5,6 +5,8 @@ import {
   Button,
   TextInput,
   SafeAreaView,
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import React, { useState } from "react";
 import {TouchableOpacity} from "react-native";            
@@ -16,8 +18,9 @@ export default function LoginScreen({ navigation }) {
     const [reenterPasswordText, setReenterPasswordText] = useState("");
   
 return (
-    <SafeAreaView style={page.container}>
-        <View style={page.ladida}>
+    <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} enabled   keyboardVerticalOffset={0}>
+    <ScrollView behavior="padding" style={page.scrollContainer} contentContainerStyle={page.scrollContainerContent}>        
+        <View style={page.scrollView}>
             <Text style={page.title}>BICARE</Text>
             <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
             <View style={page.inputWrapper}>
@@ -62,8 +65,8 @@ return (
             </TouchableOpacity>
             </View>
         </View>
-    </SafeAreaView> 
-)};
+    </ScrollView>
+    </KeyboardAvoidingView>)};
 
 export const styles = StyleSheet.create({
     input: {
