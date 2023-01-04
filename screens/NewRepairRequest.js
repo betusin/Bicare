@@ -14,6 +14,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import page from '../styles';
 import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
 import { db, auth } from '../src/firebase';
+import Toast from 'react-native-toast-message';
 
 export default function NewRepairRequest({ navigation }){
 
@@ -45,7 +46,10 @@ export default function NewRepairRequest({ navigation }){
             });
             setLocation(location);
             } catch (error) {
-            alert(error);
+                Toast.show({
+                    type: 'error',
+                    text1: error.message,
+                });
             }
         })();
     }, []);
@@ -64,9 +68,15 @@ export default function NewRepairRequest({ navigation }){
 
         addDoc(collection(db, "repair_request"),  data)
             .then((docRef) => {
-                alert("Repair successfully requested!")
+                Toast.show({
+                    type: 'success',
+                    text1: "Repair successfully requested!",
+                })
             })
-            .catch(error => alert(error.message))
+            .catch(error => Toast.show({
+                type: 'error',
+                text1: error.message,
+            }))
 
             navigation.navigate("Offers screen");
     }

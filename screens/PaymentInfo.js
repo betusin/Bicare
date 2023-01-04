@@ -11,6 +11,7 @@ import {TouchableOpacity} from "react-native";
 import { auth, db } from "../src/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { useDocumentData } from "react-firebase-hooks/firestore";
+import Toast from 'react-native-toast-message';
 
 export default function ProfileScreen({ navigation }){
 
@@ -19,10 +20,16 @@ export default function ProfileScreen({ navigation }){
         const balance = userData.balance ? userData.balance : 0;
         setDoc(docRef, {balance: balance + amount}, {merge: true})
         .then(() => {
-            alert("Increased balance uccessfully!");
+            Toast.show({
+                type: 'success',
+                text1: "Increased balance successfully!",
+            });
         })
         .catch((error) => {
-            alert(error.message);
+            Toast.show({
+                type: 'error',
+                text1: error.message,
+            });
         });
     }
 
