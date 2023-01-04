@@ -11,7 +11,7 @@ import {
   import {Image, TouchableOpacity} from "react-native";
   
   
-  export default function ConfirmRepairDoneScreen({ navigation }){
+  export default function OfflineOrderScreen({ navigation }){
     const [offer, setOffer] = useState("");
     const [estimation, setEstimation] = useState("");
       return(
@@ -27,25 +27,18 @@ import {
                         <Text style={[page.profileField,page.profileFieldTitle]}>Repair order:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>number</Text>
                     </View>
+
+                    <View style={[page.profileRows]}>
+                        <Text style={[page.profileField,page.profileFieldTitle]}>Description of problem and offer:</Text>
+                        <Text style={[page.profileField,page.profileFieldValue]}>database information on order</Text>
+                    </View>
+
                     <View style={[page.profileRows]}>
                         <Text style={[page.profileField,page.profileFieldTitle]}>Status:</Text>
                         <Text style={[page.profileField,page.profileFieldValue]}>Completed successfully!</Text>
                     </View>
                 </View>
 
-
-
-
-                  <TouchableOpacity
-                      style={page.buttonProfile}
-                  >
-                      <Text
-                          style={page.buttonTextSmall}
-                      >
-                          Order details
-                      </Text>
-                  
-                  </TouchableOpacity>
 
                   <TouchableOpacity
                       style={page.buttonProfile}
