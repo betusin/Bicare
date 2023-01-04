@@ -25,11 +25,11 @@ export default function MapFixer({ navigation }) {
         amount: doc.data().amount,
         latitude: doc.data().location.latitude,
         longitude: doc.data().location.longitude,
-        createdAt: doc.data().opening_hours,
+        createdAt: doc.data().createdAt,
         description: doc.data().description,
         problem: doc.data().problem,
         phoneNumber: doc.data().phone_number,
-        request: doc.data().requester,
+        requester: doc.data().requester,
       });
     });
     setRepairRequests(repairRequests);
@@ -88,7 +88,7 @@ export default function MapFixer({ navigation }) {
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
       >
-        {repairRequests.map((val, index) => {
+        {repairRequests && renderRequests && repairRequests.map((val, index) => {
           if (renderRequests) {
             return (
               <Marker
@@ -104,7 +104,9 @@ export default function MapFixer({ navigation }) {
                 />
                 <Callout
                   tooltip
-                  onPress={() => alert("todo, navigate to barterScreen")} // navigation.navigate("BarterScreen") TODO
+                  onPress={() => navigation.navigate("MakeOfferScreen", {
+                    request: val
+                  })}
                 >
                   <View>
                     <View style={styles.callout}>
