@@ -13,6 +13,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { auth, db } from '../src/firebase';
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { setDoc, doc } from 'firebase/firestore';
+import Toast from 'react-native-toast-message';
 
 export default function SignupScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -32,24 +33,42 @@ export default function SignupScreen({ navigation }) {
 
   const handleSignUp = () => {
     if (passwordText != repasswordText) {
-      alert("Passwords not matching!")
+      Toast.show({
+        type: 'error',
+        text1: "Passwords are not matching!",
+      });
     } else {
       createUserWithEmailAndPassword(auth, email, passwordText)
         .then(userCredentials => {
           const user = userCredentials.user;
           sendEmailVerification(user)
           .catch(error => {
-            alert(error.message);
-          });;
+            Toast.show({
+              type: 'error',
+              text1: error.message,
+            });
+          });
           const userData = {
             username: username,
           }
           setDoc(doc(db, "users", user.uid), userData)
-            .catch(error => alert(error));
-          window.alert('Successfully signed up with email ' + email)
-          navigation.navigate("Navigation")
+          .then(() => {
+            Toast.show({
+              type: 'success',
+              text1: 'Successfully signed up!',
+              text2: `You have signed up with email ${email}`
+            });
+            navigation.navigate("Navigation")
+          })
+          .catch(error => Toast.show({
+            type: 'error',
+            text1: error.message,
+          }));
         })
-        .catch(error => alert(error.message))
+        .catch(error => Toast.show({
+          type: 'error',
+          text1: error.message,
+        }))
     }
   }
 
