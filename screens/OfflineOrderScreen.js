@@ -1,19 +1,13 @@
 import {
-    StyleSheet,
     Text,
     View,
-    Button,
-    TextInput,
     SafeAreaView,
   } from "react-native";
-  import React, { useState } from "react";
   import page from '../styles';
   import {Image, TouchableOpacity} from "react-native";
   
   
   export default function OfflineOrderScreen({ navigation }){
-    const [offer, setOffer] = useState("");
-    const [estimation, setEstimation] = useState("");
       return(
           <SafeAreaView style={page.container}>
               <View style={page.view}>

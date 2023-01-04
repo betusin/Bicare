@@ -1,9 +1,6 @@
 import {
-    StyleSheet,
     Text,
     View,
-    Button,
-    TextInput,
     SafeAreaView,
   } from "react-native";
   import React, { useState } from "react";
@@ -12,8 +9,6 @@ import {
   
   
   export default function ConfirmRepairDoneScreen({ navigation }){
-    const [offer, setOffer] = useState("");
-    const [estimation, setEstimation] = useState("");
       return(
           <SafeAreaView style={page.container}>
               <View style={page.view}>
