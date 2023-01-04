@@ -1,18 +1,15 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
 import MapClient from "./screens/MapClient";
-// import TestLocation from "./screens/TestLocation";
 import { NavigationContainer } from "@react-navigation/native";
 import {
   createStackNavigator,
   CardStyleInterpolators,
 } from "@react-navigation/stack";
 import { useFonts } from "expo-font";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import Navigation from "./screens/Navigation";
-import NewRepairRequest from "./screens/NewRepairRequest";
 import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
