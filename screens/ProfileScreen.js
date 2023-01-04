@@ -13,6 +13,7 @@ import { db, auth } from '../src/firebase';
 import { sendEmailVerification } from "firebase/auth";
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { doc, setDoc } from "firebase/firestore";
+import Toast from "react-native-toast-message";
 
 //Placeholders for design, these need to be pulled from the db
 const jobs_made = 8;
@@ -24,37 +25,66 @@ export default function ProfileScreen({ navigation }) {
     const [userData, loading, error] = useDocumentData(docRef);
 
     if (error) {
-        alert(JSON.stringify(error));
+        Toast.show({
+            type: 'error',
+            text1: JSON.stringify(error),
+        });
     }
 
     const handleSignOut = () => {
         auth
             .signOut()
             .then(() => {
+                Toast.show({
+                    type: 'success',
+                    text1: 'Successfully logged out!',
+                    text2: `Hope to see you soon ${userData.username}!`
+                });
                 navigation.navigate("LoginScreen")
             })
-            .catch(error => alert(error.message))
+            .catch(error => Toast.show({
+                type: 'error',
+                text1: error.message,
+            }))
     }
 
     const verifyAccount = () => {
         sendEmailVerification(user)
         .then(() => {
-            alert("Email verification send!")
+            Toast.show({
+                type: 'success',
+                text1: 'Verification email was sent',
+                text2: `Check your inbox of email ${user.email}.`
+            });
         })
-        .catch(error => alert(error.message));
+        .catch(error => Toast.show({
+            type: 'error',
+            text1: error.message,
+        }));
     }
 
     const registerAsFixer = () => {
         if (!user.emailVerified) {
-            alert("Your account is not verified. Please verify before registering as a fixer.");
+            Toast.show({
+                type: 'error',
+                text1: "Account not verified!",
+                text2: "Please verify your account before registering as a fixer.",
+            });
             return;
         }
         setDoc(docRef, { isFixer: true }, { merge: true })
         .then(() => {
-            alert("Successfully registered as fixer!");
+            Toast.show({
+                type: 'success',
+                text1: "Successfully registered as fixer!",
+                text2: "Congratulations! Now you can offer a repair for repair requests.",
+            });
         })
         .catch((error) => {
-            alert(error.message);
+            Toast.show({
+                type: 'error',
+                text1: error.message,
+            });
         });
     }
 
