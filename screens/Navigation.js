@@ -39,11 +39,17 @@ export default function Navigation({route}) {
         name="MakeOfferScreen"
         component={MakeOfferScreen}
         initialParams={{ params: route.params }}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
       />
       <Drawer.Screen
         name="FixerWaiting"
         component={FixerWaiting}
         initialParams={{ params: route.params }}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
       />
       <Drawer.Screen
         name="New Repair Request"
