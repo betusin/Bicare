@@ -24,9 +24,9 @@ import {
                 source={require('../img/logoWhiteTrial2.png')}
             />
                 <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-                <Text style={page.header}>Confirm your offer</Text>
+                <Text style={page.header}>Confirm your repair</Text>
 
-                <Text style={page.fieldTitle}>Wait for fixer to confirm your offer</Text>
+                <Text style={page.fieldTitle}>Wait for client to confirm your offer</Text>
 
                 <View style={page.profileColumn}>
                     <View style={[page.profileRows]}>
