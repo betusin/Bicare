@@ -100,7 +100,7 @@ return (
                 onPress={() => navigation.navigate("Profile")}
                 >
                 <Text style={page.buttonTextSmall}>
-                Back to Profle
+                Back to Profile
                 </Text>
             </TouchableOpacity>
             </View>
