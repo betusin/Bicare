@@ -1,16 +1,14 @@
-import { StatusBar } from "expo-status-bar";
 import {
-  StyleSheet,
   Text,
   View,
-  Button,
   TextInput,
   SafeAreaView,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView
 } from "react-native";
 import React, { useState } from "react";
-import { useFonts } from 'expo-font';
 import DropDownPicker from 'react-native-dropdown-picker';
 import page from '../styles';
 import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
@@ -52,13 +50,13 @@ export default function NewRepairRequest({ navigation }){
     }
 
     return(
-        <SafeAreaView style={page.container}>
-            <View style={page.view}>
+        <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} enabled   keyboardVerticalOffset={0}>
+        <ScrollView behavior="padding" style={page.scrollContainer} contentContainerStyle={page.scrollContainerContent}>
+            <View style={page.scrollView}>
                 <Image
                     style={page.tinyLogo}
                     source={require('../img/logoWhiteTrial2.png')}
                 />                
-                <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
                 <Text style={page.header}>New Repair Request</Text>
                 <View style={page.inputWrapper}>
                     <Text style={page.fieldTitle}>Problem</Text>
@@ -98,7 +96,11 @@ export default function NewRepairRequest({ navigation }){
                         </Text>
                     </TouchableOpacity>
                 </View>
+                <Text>
+                            Create repair request
+                </Text>
             </View>
-        </SafeAreaView>
+        </ScrollView>
+        </KeyboardAvoidingView>
     );
 }

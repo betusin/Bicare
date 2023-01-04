@@ -3,6 +3,8 @@ import {
     Text,
     View,
     SafeAreaView,
+    ScrollView,
+    KeyboardAvoidingView
   } from "react-native";
 import React, { useState } from "react";
 import page from '../styles'
@@ -60,8 +62,9 @@ export default function ProfileScreen({ navigation }) {
     }
 
     return(
-        <SafeAreaView style={page.container}>
-            <View style={page.view}>
+        <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} enabled   keyboardVerticalOffset={0}>
+        <ScrollView behavior="padding" style={page.scrollContainer} contentContainerStyle={page.scrollContainerContent}>        
+            <View style={page.scrollView}>
             <Image
         		style={page.tinyLogo}
         		source={require('../img/logoWhiteTrial2.png')}
@@ -144,7 +147,8 @@ export default function ProfileScreen({ navigation }) {
                         Logout
                     </Text>
                 </TouchableOpacity>
-            </View>
-        </SafeAreaView>
+                </View>
+    </ScrollView>
+    </KeyboardAvoidingView>
     );
 }

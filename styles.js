@@ -505,4 +505,32 @@ export default StyleSheet.create({
     width: Dimensions.get("window").width * 0.6,
     height: Dimensions.get("window").height * 0.2,
   },
+  scrollContainer:{
+    flex: 1,
+    backgroundColor: "#242424",
+  },
+  scrollContainerContent:{
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  scrollView: {
+    backgroundSize: "cover",
+    width: "80%",
+    paddingTop: "20%",
+    alignItems: "center",
+  },
+  scrollContainer:{
+    flex: 1,
+    backgroundColor: "#242424",
+  },
+  scrollContainerContent:{
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  scrollView: {
+    backgroundSize: "cover",
+    width: "80%",
+    paddingTop: "20%",
+    alignItems: "center",
+  }
 });

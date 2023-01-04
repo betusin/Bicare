@@ -1,6 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, Button } from "react-native";
-import { TextInput } from "react-native-web";
 import React, { useState } from "react";
 import LoginScreen from "./screens/LoginScreen";
 import SignupScreen from "./screens/SignupScreen";
@@ -47,6 +45,7 @@ export default function App() {
           options={{ headerShown: false }}
         />
       </Stack.Navigator>
+      <StatusBar style="light" />
     </NavigationContainer>
   );
 }
