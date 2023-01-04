@@ -10,8 +10,9 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
-  CheckBox
 } from "react-native";
+
+import CheckBox from 'expo-checkbox';
 import React, { useState } from "react";
 import { useFonts } from 'expo-font';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -46,8 +47,6 @@ export default function OffersScreen({ navigation }){
           products: temp,
         });
     };
-
-    const [amount, onChangeNumber] = React.useState(null);
 
     const renderFlatList = (renderData) => {
         return (
@@ -105,8 +104,7 @@ export default function OffersScreen({ navigation }){
                       <TextInput
                           style={page.amountInput}
                           placeholder="10"
-                          onChangeText={onChangeNumber}
-                          keyboardType="numeric"
+                          editable = {false}
                       />
                 </View>
                 <View style={{ flex: 1}}>
