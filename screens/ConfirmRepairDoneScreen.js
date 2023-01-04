@@ -11,7 +11,7 @@ import {
   import {Image, TouchableOpacity} from "react-native";
   
   
-  export default function ConfirmOfferScreen({ navigation }){
+  export default function ConfirmRepairDoneScreen({ navigation }){
     const [offer, setOffer] = useState("");
     const [estimation, setEstimation] = useState("");
       return(
@@ -22,22 +22,10 @@ import {
                   source={require('../img/logoWhiteTrial2.png')}
                 />
                     <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-                    <Text style={page.header}>Confirm your offer</Text>
-                    <View style={page.inputWrapper}>
-                    <TextInput
-                      style={page.input}
-                      placeholder="Price offer"
-                      onChangeText={(newText) => setOffer(newText)}
-                      value={offer}
-                    />
-                    <TextInput
-                      style={page.input}
-                      secureTextEntry={true}
-                      placeholder="Time estimation in minutes"
-                      onChangeText={(newText) => setEstimation(newText)}
-                      value={estimation}
-                    />
-                    </View>
+                    <Text style={page.header}>Completed order</Text>
+
+
+                    
 
                   <TouchableOpacity
                       style={page.buttonProfile}
@@ -45,7 +33,7 @@ import {
                       <Text
                           style={page.buttonTextSmall}
                       >
-                          Confirm offer
+                          Order details
                       </Text>
                   
                   </TouchableOpacity>
