@@ -164,6 +164,20 @@ export default StyleSheet.create({
     fontFamily: "Roboto",
 
   },
+  card: {
+    padding: 10,
+    margin: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 400,
+  },
+  cardText:{
+    margin: 10, 
+    flexDirection: 'column', 
+    justifyContent: 'space-between',
+    flex: 1,
+    padding: 10, 
+  },
   amountInput: {
     backgroundColor: "white",
     fontSize: 18,
@@ -239,6 +253,19 @@ export default StyleSheet.create({
     backgroundColor: "#242424",
     alignItems: "center",
     justifyContent: "center",
+  },
+  initialPrice: {
+    flexDirection: "row",
+    display: "flex",
+    alignSelf: "center",
+    padding: 30, 
+  },
+  initialPriceTitle: {
+    color: "white",
+    fontSize: 14,
+    fontWeight: "300",
+    alignSelf: "center",
+    fontFamily: "Roboto",
   },
   inputWrapper: {
       alignItems: "center",
@@ -391,6 +418,20 @@ export default StyleSheet.create({
     alignSelf: "center",
     fontSize: 20,
     paddingRight: 5,
+  },
+  card: {
+    padding: 10,
+    margin: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 400,
+  },
+  cardText:{
+    margin: 10, 
+    flexDirection: 'column', 
+    justifyContent: 'space-between',
+    flex: 1,
+    padding: 10, 
   },
   amountView: {
     flexDirection: "row",

@@ -68,7 +68,7 @@ export default function NewRepairRequest({ navigation }){
             })
             .catch(error => alert(error.message))
 
-            navigation.navigate("Home");
+            navigation.navigate("Offers screen");
     }
 
     return(
@@ -118,9 +118,6 @@ export default function NewRepairRequest({ navigation }){
                         </Text>
                     </TouchableOpacity>
                 </View>
-                <Text>
-                            Create repair request
-                </Text>
             </View>
         </ScrollView>
         </KeyboardAvoidingView>
