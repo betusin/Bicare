@@ -7,6 +7,7 @@ import PaymentInfo from './PaymentInfo'
 import ChangePassword from './ChangePassword'
 import FixScreen from './FixScreen';
 import OffersScreen from './OffersScreen';
+import OfflineOrderScreen from './OfflineOrderScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -70,6 +71,13 @@ export default function Navigation() {
 			<Drawer.Screen
 				name="Change Status to client"
 				component={HomeScreen}
+				options={{
+					drawerItemStyle: {display: "none"}
+				}}
+			/>
+            <Drawer.Screen
+				name="Offline Order Screen"
+				component={OfflineOrderScreen}
 				options={{
 					drawerItemStyle: {display: "none"}
 				}}

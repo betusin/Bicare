@@ -33,6 +33,7 @@ import {
 
                   <TouchableOpacity
                       style={page.buttonProfile}
+                      onPress={() => navigation.navigate("Offline Order Screen")}
                   >
                       <Text
                           style={page.buttonTextSmall}
