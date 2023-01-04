@@ -13,7 +13,7 @@ import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
-import { Toast } from "react-native-toast-message/lib/src/Toast";
+import Toast from 'react-native-toast-message';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
