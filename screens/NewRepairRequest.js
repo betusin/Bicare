@@ -10,18 +10,13 @@ import {
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useFonts } from "expo-font";
-import {
-  requestForegroundPermissionsAsync,
-  getCurrentPositionAsync,
-  Accuracy,
-} from "expo-location";
 import DropDownPicker from "react-native-dropdown-picker";
 import page from "../styles";
 import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
 import { db, auth } from "../src/firebase";
 import * as Location from "expo-location";
-import { doc, getDoc } from "firebase/firestore";
 import { getDistance } from "geolib";
+import Toast from 'react-native-toast-message';
 
 export default function NewRepairRequest({ navigation }) {
   const [description, onChangeText] = React.useState("Useless Text");
@@ -50,20 +45,25 @@ export default function NewRepairRequest({ navigation }) {
         });
         setLocation(location);
       } catch (error) {
-        console.log(error + "error");
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
       }
     })();
   }, []);
 
   const createRepairRequest = () => {
     var selectedItem = items.filter((item) => item.value == value)[0];
-    //console.log(selectedItem);
     if (
       selectedItem == undefined &&
       description.length != 0 &&
       amount.length != 0
     ) {
-      alert("All fields must be filled in");
+      Toast.show({
+        type: 'error',
+        text1: "All fields must be filled in",
+      })
       return;
     }
     const user = auth.currentUser;
@@ -80,15 +80,19 @@ export default function NewRepairRequest({ navigation }) {
     };
     addDoc(collection(db, "repair_request"), data)
       .then((docRef) => {
-        //console.log(docRef.id + " docRef");
-        // data.requestID = docRef;
-        alert("Repair successfully requested!");
+        Toast.show({
+          type: 'success',
+          text1: "Repair successfully requested!",
+        })
         navigation.navigate("Offers screen", {
           request: data,
           requestID: docRef.id,
         });
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => Toast.show({
+        type: 'error',
+        text1: error.message,
+      }));
   };
 
   const calculateDistance = (
@@ -102,7 +106,6 @@ export default function NewRepairRequest({ navigation }) {
       { latitude: destinationLat, longitude: destinationLong }
     );
     return dis;
-    //alert(`Distance\n\n${dis} Meter\nOR\n${dis / 1000} KM`);
   };
 
   return (
