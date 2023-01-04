@@ -3,7 +3,8 @@ import {
   Text,
   View,
   TextInput,
-  SafeAreaView,
+  KeyboardAvoidingView,
+  ScrollView
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState, useEffect } from "react";
@@ -54,8 +55,9 @@ export default function LoginScreen({ navigation }) {
 
 return (
   <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
-    <SafeAreaView style={page.containerNoBackground}>
-      <View style={page.ladida}>
+    <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} enabled   keyboardVerticalOffset={0}>
+    <ScrollView behavior="padding" style={page.scrollContainerNoBackground} contentContainerStyle={page.scrollContainerContent}>
+        <View style={page.scrollView}>
         <Image
           style={page.tinyLogo}
           source={require('../img/logoWhiteTrial2.png')}
@@ -109,8 +111,9 @@ return (
           </TouchableOpacity>
         </View>
         <StatusBar style="auto" />
-      </View>
-    </SafeAreaView>
+        </View>
+    </ScrollView>
+    </KeyboardAvoidingView>
   </LinearGradient>
 );
 }

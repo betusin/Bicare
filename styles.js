@@ -509,19 +509,8 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: "#242424",
   },
-  scrollContainerContent:{
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  scrollView: {
-    backgroundSize: "cover",
-    width: "80%",
-    paddingTop: "20%",
-    alignItems: "center",
-  },
-  scrollContainer:{
+  scrollContainerNoBackground:{
     flex: 1,
-    backgroundColor: "#242424",
   },
   scrollContainerContent:{
     alignItems: "center",
@@ -532,5 +521,5 @@ export default StyleSheet.create({
     width: "80%",
     paddingTop: "20%",
     alignItems: "center",
-  }
+  },
 });
