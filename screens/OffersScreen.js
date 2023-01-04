@@ -63,7 +63,7 @@ export default function OffersScreen({ navigation }){
                     }}>
                     <CheckBox style={{width: 30, height: 30, padding: 1, alignSelf: 'center' }}
                       value={item.isChecked}
-                      onChange={() => {
+                      onValueChange={() => {
                         handleChange(item.id);
                       }}
                     />
