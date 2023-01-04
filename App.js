@@ -13,11 +13,13 @@ import { useFonts } from "expo-font";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Navigation from "./screens/Navigation";
 import NewRepairRequest from "./screens/NewRepairRequest";
+import Toast from 'react-native-toast-message';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
+    <>
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{
@@ -47,5 +49,7 @@ export default function App() {
       </Stack.Navigator>
       <StatusBar style="light" />
     </NavigationContainer>
+    <Toast />
+    </>
   );
 }
