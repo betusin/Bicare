@@ -11,10 +11,14 @@ import MapFixer from "./MapFixer";
 import ClientWaitingScreen from "./ClientWaitingScreen";
 import MapFixerONW from "./MapFixerONW";
 import RepairDoneScreen from "./RepairDoneScreen";
+import MakeOfferScreen from "./MakeOfferScreen";
+import FixerWaiting from "./FixerWaiting";
+import OffersScreen from "./OffersScreen";
+import OfflineOrderScreen from "./OfflineOrderScreen";
 
 const Drawer = createDrawerNavigator();
 
-export default function Navigation() {
+export default function Navigation({ route }) {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
@@ -36,6 +40,22 @@ export default function Navigation() {
       }}
     >
       <Drawer.Screen name="Home" component={HomeScreen} />
+      <Drawer.Screen
+        name="MakeOfferScreen"
+        component={MakeOfferScreen}
+        initialParams={{ params: route.params }}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="FixerWaiting"
+        component={FixerWaiting}
+        initialParams={{ params: route.params }}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
       <Drawer.Screen
         name="New Repair Request"
         component={NewRepairRequest}
@@ -102,6 +122,20 @@ export default function Navigation() {
       <Drawer.Screen
         name="RepairDoneScreen"
         component={RepairDoneScreen}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="Offers screen"
+        component={OffersScreen}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="Offline Order Screen"
+        component={OfflineOrderScreen}
         options={{
           drawerItemStyle: { display: "none" },
         }}

@@ -26,11 +26,11 @@ export default function MapFixer({ navigation }) {
         amount: doc.data().amount,
         latitude: doc.data().location.latitude,
         longitude: doc.data().location.longitude,
-        createdAt: doc.data().opening_hours,
+        createdAt: doc.data().createdAt,
         description: doc.data().description,
         problem: doc.data().problem,
         phoneNumber: doc.data().phone_number,
-        request: doc.data().requester,
+        requester: doc.data().requester,
       });
     });
     setRepairRequests(repairRequests);
@@ -89,49 +89,54 @@ export default function MapFixer({ navigation }) {
         provider={PROVIDER_GOOGLE}
         showsUserLocation={true}
       >
-        {repairRequests.map((val, index) => {
-          if (renderRequests) {
-            return (
-              <Marker
-                coordinate={{
-                  latitude: val.latitude,
-                  longitude: val.longitude,
-                }}
-                key={index}
-              >
-                <Image
-                  style={page.logoMaps}
-                  source={require("../img/bicare-bike-marker.png")}
-                />
-                <Callout
-                  tooltip
-                  onPress={() =>
-                    calculateDistance(
-                      location.coords.latitude,
-                      location.coords.longitude,
-                      val.latitude,
-                      val.longitude
-                    )
-                  }
+        {repairRequests &&
+          renderRequests &&
+          repairRequests.map((val, index) => {
+            if (renderRequests) {
+              return (
+                <Marker
+                  coordinate={{
+                    latitude: val.latitude,
+                    longitude: val.longitude,
+                  }}
+                  key={index}
                 >
-                  <View>
-                    <View style={page.callout}>
-                      <Text style={page.titleCalloutMaker}>I need help!</Text>
-                      <Text style={page.subtitleCalloutMaker}>Problem:</Text>
-                      <Text> {String(val.problem)}</Text>
-                      <Text style={page.subtitleCalloutMaker}>Amount:</Text>
-                      <Text>{String(" " + val.amount) + "€"}</Text>
-                      <Text style={page.subtitleCalloutMaker}>
-                        Description:
-                      </Text>
-                      <Text> {String(val.description)}</Text>
+                  <Image
+                    style={page.logoMaps}
+                    source={require("../img/bicare-bike-marker.png")}
+                  />
+                  <Callout
+                    tooltip
+                    onPress={() => {
+                      calculateDistance(
+                        location.coords.latitude,
+                        location.coords.longitude,
+                        val.latitude,
+                        val.longitude
+                      );
+                      navigation.navigate("MakeOfferScreen", {
+                        request: val,
+                      });
+                    }}
+                  >
+                    <View>
+                      <View style={page.callout}>
+                        <Text style={page.titleCalloutMaker}>I need help!</Text>
+                        <Text style={page.subtitleCalloutMaker}>Problem:</Text>
+                        <Text> {String(val.problem)}</Text>
+                        <Text style={page.subtitleCalloutMaker}>Amount:</Text>
+                        <Text>{String(" " + val.amount) + "€"}</Text>
+                        <Text style={page.subtitleCalloutMaker}>
+                          Description:
+                        </Text>
+                        <Text> {String(val.description)}</Text>
+                      </View>
                     </View>
-                  </View>
-                </Callout>
-              </Marker>
-            );
-          }
-        })}
+                  </Callout>
+                </Marker>
+              );
+            }
+          })}
         {activeFixers.map((val, index) => {
           if (fixerRender) {
             return (

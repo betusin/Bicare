@@ -5,8 +5,15 @@ import React, { useState } from "react";
 import page from "../styles";
 import { Image, TouchableOpacity } from "react-native";
 import MapClient from "./MapClient";
+import { auth, db } from "../src/firebase";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import { doc } from "firebase/firestore";
 
 export default function HomeScreen({ navigation }) {
+  const user = auth.currentUser;
+  const docRef = doc(db, "users", user.uid);
+  const [userData, loading, error] = useDocumentData(docRef);
+
   return (
     <SafeAreaView style={page.container}>
       <View style={page.view}>
@@ -31,24 +38,14 @@ export default function HomeScreen({ navigation }) {
               <MapClient></MapClient>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={page.buttonProfile}
-            onPress={() => navigation.navigate("Change Status to fixer")}
-          >
-            <Text style={page.buttonTextSmall}>Change Status</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={page.buttonProfile}
-            onPress={() => navigation.navigate("ClientWaitingScreen")}
-          >
-            <Text style={page.buttonTextSmall}>Test Waiting Screen</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={page.buttonProfile}
-            onPress={() => navigation.navigate("MapFixerONW")}
-          >
-            <Text style={page.buttonTextSmall}>Test ONW map</Text>
-          </TouchableOpacity>
+          {userData && userData.isFixer && (
+            <TouchableOpacity
+              style={page.buttonProfile}
+              onPress={() => navigation.navigate("Change Status to fixer")}
+            >
+              <Text style={page.buttonTextSmall}>Change Status</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </View>
     </SafeAreaView>
