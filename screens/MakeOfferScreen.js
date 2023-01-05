@@ -15,10 +15,10 @@ import Toast from "react-native-toast-message";
 
 
 export default function MakeOfferScreen({ route, navigation }){
-    const user = auth.currentUser;
-    const [priceOffer, setPriceOffer] = useState("8");
-    const [eta, setEta] = useState("40");
     const requestData = route.params.request;
+    const user = auth.currentUser;
+    const [priceOffer, setPriceOffer] = useState(requestData.amount.toString());
+    const [eta, setEta] = useState("40");
 
     const createOffer = () => {
         const offerData = {
