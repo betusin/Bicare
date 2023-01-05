@@ -28,12 +28,13 @@ export default function MakeOfferScreen({ route, navigation }){
         }
 
         addDoc(collection(db, "repair_request", requestData.id, "offers"), offerData)
-        .then(() => {
+        .then((docRef) => {
             Toast.show({
                 type: 'success',
                 text1: "Offer created successfully",
                 text2: `Offer created with estimated time ${eta} minutes and price ${priceOffer}€`,
             });
+            offerData.id = docRef.id;
             navigation.navigate("FixerWaiting", {request: requestData, offer: offerData})
         })
         .catch((error) => Toast.show({
