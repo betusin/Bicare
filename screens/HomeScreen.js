@@ -8,6 +8,7 @@ import MapClient from "./MapClient";
 import { auth, db } from "../src/firebase";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import { doc } from "firebase/firestore";
+import MapFixer from "./MapFixer";
 
 export default function HomeScreen({ navigation }) {
   const user = auth.currentUser;

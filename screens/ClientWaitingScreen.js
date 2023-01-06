@@ -8,17 +8,26 @@ import {
 } from "react-native";
 import page from "../styles";
 import { useState, useEffect } from "react";
-import { collection, getDocs, getDoc, doc, get } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  doc,
+  get,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../src/firebase";
 import { CurrentRenderContext } from "@react-navigation/native";
 
-export default function ClientWaitingScreen({ navigation }) {
+export default function ClientWaitingScreen({ navigation, route }) {
   const [distance, setDistance] = useState(10000);
   const [repairOrderNo, setrepairOrderNo] = useState(0);
   const [repairRequests, setRepairRequests] = useState([]);
   const [currentRR, setCurrentRR] = useState({});
 
   const [location, setLocation] = useState({});
+  const requestID = route.params.requestID;
+  const offers = route.params.offers;
 
   // TODO wait for confirmation from both fixer and client
   function handlePress() {
@@ -30,7 +39,18 @@ export default function ClientWaitingScreen({ navigation }) {
           text: "Yes",
           onPress: () => {
             console.log("Yes pressed");
-            navigation.navigate("RepairDoneScreen"); // ToDo navigate to barter screen
+            // TODO remove all offers and repair requests
+            // remove all offers
+            offers.map((product) => {
+              if (product.id != id) {
+                deleteDoc(
+                  doc(db, "repair_request", requestID, "offers", product.id)
+                );
+              }
+            });
+            // delete request
+            deleteDoc(doc(db, "repair_request", requestID));
+            navigation.navigate("RepairDoneScreen"); // ToDo navigate to done screen
           },
         },
         {
@@ -94,7 +114,7 @@ export default function ClientWaitingScreen({ navigation }) {
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <Text style={page.header}>Waiting Screen</Text>
         <Text style={page.subtitle}>A fixer is on the way!</Text>
-        <Text style={page.text}> Repair order : #{repairOrderNo}</Text>
+        <Text style={page.text}> Repair order : #{String(requestID)}</Text>
         <Text style={page.text}>The fixer is approximately:</Text>
         <Text style={page.text}> {distance} meters away</Text>
         <TouchableOpacity style={page.button} onPress={handlePress}>
