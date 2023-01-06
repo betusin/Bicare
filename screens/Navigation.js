@@ -143,13 +143,6 @@ export default function Navigation({ route }) {
         }}
       />
       <Drawer.Screen
-        name="MapFixerONW"
-        component={MapFixerONW}
-        options={{
-          drawerItemStyle: { display: "none" },
-        }}
-      />
-      <Drawer.Screen
         name="RepairDoneScreen"
         component={RepairDoneScreen}
         options={{

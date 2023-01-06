@@ -70,7 +70,6 @@ export default function ClientWaitingScreen({ navigation, route }) {
             });
             // delete request
             deleteDoc(doc(db, "repair_request", requestID));
-
             navigation.navigate("RepairDoneScreen", { requestID: requestID });
           },
         },
