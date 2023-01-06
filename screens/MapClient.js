@@ -19,7 +19,6 @@ export default function MapClient({ navigation }) {
   const fixersRef = collection(db, "active_fixers");
 
   const [docs, loading, error] = useCollectionData(fixersRef);
-  //console.log(JSON.stringify(docs) + "DOCS");
 
   async function getBikeShopData() {
     const querySnapshot = await getDocs(bikeShopsRef);
@@ -48,7 +47,6 @@ export default function MapClient({ navigation }) {
       });
     });
     setActiveFixers(activeFixers);
-    //setFixerRender(true);
   }
 
   useEffect(() => {
@@ -162,96 +160,3 @@ export default function MapClient({ navigation }) {
     return <View syle={{ flex: 1 }}></View>;
   }
 }
-// return (
-//   <View style={page.bigMap}>
-//     {true ? console.log("") : console.log("")}
-//     <MapView
-//       ref={(ref) => (this.map = ref)}
-//       style={page.bigMap}
-//       provider={PROVIDER_GOOGLE}
-//       showsUserLocation={true}
-//     >
-//       {bikeShops.map((val, index) => {
-//         if (render) {
-//           return (
-//             <Marker
-//               coordinate={{
-//                 latitude: val.latitude,
-//                 longitude: val.longitude,
-//               }}
-//               key={index}
-//             >
-//               <Image
-//                 style={page.logoMaps}
-//                 source={require("../img/bicare-store-marker.png")}
-//               />
-//               <Callout tooltip onPress={() => alert("Clicked")}>
-//                 <View>
-//                   <View style={page.callout}>
-//                     <Text style={page.titleCalloutMaker}>
-//                       {String(val.title)}
-//                     </Text>
-//                     <Text style={page.subtitleCalloutMaker}>
-//                       Opening hours:
-//                     </Text>
-//                     <Text> {String(val.openingHours)}</Text>
-//                     <Text style={page.subtitleCalloutMaker}>
-//                       Phone number:
-//                     </Text>
-//                     <Text>{String(val.phoneNumber)}</Text>
-//                   </View>
-//                 </View>
-//               </Callout>
-//             </Marker>
-//           );
-//         }
-//       })}
-//       {fixerRender
-//         ? docs.map((val, index) => {
-//             return (
-//               <Marker
-//                 coordinate={{
-//                   latitude: val.latitude,
-//                   longitude: val.longitude,
-//                 }}
-//                 key={index}
-//                 //title={val.title}
-//                 //description={val.description}
-//                 //onCalloutPress={() => alert("Clicked")}
-//               >
-//                 <Image
-//                   style={page.fixerLogoMaps}
-//                   source={require("../img/bicare-fixer-marker.png")}
-//                 />
-//                 <Callout
-//                   tooltip
-//                   onPress={() => navigation.navigate("MapFixer")}
-//                 >
-//                   <View>
-//                     <View style={page.callout}>
-//                       <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
-//                       <Text>{val.username}</Text>
-//                     </View>
-//                   </View>
-//                 </Callout>
-//               </Marker>
-//             );
-//           })
-//         : null}
-//     </MapView>
-//   </View>
-// );
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center",
-//   },
-//   callout: {
-//     backgroundColor: "white",
-//     borderRadius: 5,
-//     width: Dimensions.get("window").width * 0.5,
-//   },
-// });

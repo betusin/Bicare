@@ -8,6 +8,8 @@ import ChangePassword from "./ChangePassword";
 import FixScreen from "./FixScreen";
 import MapClient from "./MapClient";
 import MapFixer from "./MapFixer";
+import ClientWaitingScreen from "./ClientWaitingScreen";
+import RepairDoneScreen from "./RepairDoneScreen";
 import MakeOfferScreen from "./MakeOfferScreen";
 import FixerWaiting from "./FixerWaiting";
 import OffersScreen from "./OffersScreen";
@@ -122,13 +124,6 @@ export default function Navigation({route}) {
       <Drawer.Screen
         name="ClientWaitingScreen"
         component={ClientWaitingScreen}
-        options={{
-          drawerItemStyle: { display: "none" },
-        }}
-      />
-      <Drawer.Screen
-        name="MapFixerONW"
-        component={MapFixerONW}
         options={{
           drawerItemStyle: { display: "none" },
         }}

@@ -29,7 +29,6 @@ export default function ClientWaitingScreen({ navigation, route }) {
   const requestID = route.params.requestID;
   const offers = route.params.offers;
 
-  // TODO wait for confirmation from both fixer and client
   function handlePress() {
     Alert.alert(
       "Repair order",
@@ -39,18 +38,15 @@ export default function ClientWaitingScreen({ navigation, route }) {
           text: "Yes",
           onPress: () => {
             console.log("Yes pressed");
-            // TODO remove all offers and repair requests
             // remove all offers
             offers.map((product) => {
-              if (product.id != id) {
-                deleteDoc(
-                  doc(db, "repair_request", requestID, "offers", product.id)
-                );
-              }
+              deleteDoc(
+                doc(db, "repair_request", requestID, "offers", product.id)
+              );
             });
             // delete request
             deleteDoc(doc(db, "repair_request", requestID));
-            navigation.navigate("RepairDoneScreen"); // ToDo navigate to done screen
+            navigation.navigate("RepairDoneScreen", { requestID: requestID });
           },
         },
         {
@@ -75,9 +71,6 @@ export default function ClientWaitingScreen({ navigation, route }) {
     );
     return dis;
   };
-
-  // TODO GET THE SPECIFIC REPAIR REQUEST
-  // AND BASED ON THIS GET THE LOCATION OF CLIENT AND FIXER AND CALCULATE DISTANCE AND DISPLAY DISTANCE
   useEffect(() => {
     (async () => {
       // Fetch all repair requests into repairRequests
@@ -97,10 +90,7 @@ export default function ClientWaitingScreen({ navigation, route }) {
           setCurrentRR(item);
         }
       });
-      setrepairOrderNo(currentRR.amount); // TODO CHANGE
-      // const tempDist = calculateDistance(currentRR.location.latitude, )
-      // setDistance()
-      // TODO Calculate distance when this is possible with location data in RR from ficer and client.
+      setrepairOrderNo(currentRR.amount);
     })();
   }, []);
 
