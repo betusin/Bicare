@@ -85,7 +85,7 @@ export default function OffersScreen({ navigation, route }) {
   function handlePress(id) {
     Alert.alert(
       "Repair Offer",
-      "Do you want to accept this offer?" + String(id),
+      "Do you want to accept this offer?",
       [
         {
           text: "Yes",
@@ -109,7 +109,7 @@ export default function OffersScreen({ navigation, route }) {
             navigation.navigate("ClientWaitingScreen", {
               requestID: requestID,
               offers: state.products,
-            }); // ToDo navigate to done screen
+            });
           },
         },
         {

@@ -9,7 +9,6 @@ import FixScreen from "./FixScreen";
 import MapClient from "./MapClient";
 import MapFixer from "./MapFixer";
 import ClientWaitingScreen from "./ClientWaitingScreen";
-import MapFixerONW from "./MapFixerONW";
 import RepairDoneScreen from "./RepairDoneScreen";
 import MakeOfferScreen from "./MakeOfferScreen";
 import FixerWaiting from "./FixerWaiting";
@@ -108,13 +107,6 @@ export default function Navigation({ route }) {
       <Drawer.Screen
         name="ClientWaitingScreen"
         component={ClientWaitingScreen}
-        options={{
-          drawerItemStyle: { display: "none" },
-        }}
-      />
-      <Drawer.Screen
-        name="MapFixerONW"
-        component={MapFixerONW}
         options={{
           drawerItemStyle: { display: "none" },
         }}
