@@ -115,8 +115,8 @@ export default function ClientWaitingScreen({ navigation, route }) {
         <Text style={page.header}>Waiting Screen</Text>
         <Text style={page.subtitle}>A fixer is on the way!</Text>
         <Text style={page.text}> Repair order : #{String(requestID)}</Text>
-        <Text style={page.text}>The fixer is approximately:</Text>
-        <Text style={page.text}> {distance} meters away</Text>
+        {/* <Text style={page.text}>The fixer is approximately:</Text>
+        <Text style={page.text}> {distance} meters away</Text> */}
         <TouchableOpacity style={page.button} onPress={handlePress}>
           <Text>Repair is done</Text>
         </TouchableOpacity>

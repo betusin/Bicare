@@ -104,7 +104,10 @@ export default function MapClient({ navigation }) {
                     style={page.logoMaps}
                     source={require("../img/bicare-store-marker.png")}
                   />
-                  <Callout tooltip onPress={() => alert("Clicked")}>
+                  <Callout
+                    tooltip
+                    onPress={() => console.log("Bike shop clicked")}
+                  >
                     <View>
                       <View style={page.callout}>
                         <Text style={page.titleCalloutMaker}>
@@ -141,10 +144,7 @@ export default function MapClient({ navigation }) {
                   style={page.fixerLogoMaps}
                   source={require("../img/bicare-fixer-marker.png")}
                 />
-                <Callout
-                  tooltip
-                  onPress={() => navigation.navigate("MapFixer")}
-                >
+                <Callout tooltip onPress={() => console.log("clicked")}>
                   <View>
                     <View style={page.callout}>
                       <Text style={page.subtitleCalloutMaker}>Fixer:</Text>

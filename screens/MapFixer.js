@@ -95,7 +95,6 @@ export default function MapFixer({ navigation }) {
           showsUserLocation={true}
         >
           {docsRR.map((val, index) => {
-            console.log(JSON.stringify(val) + " VAAAAAAAAAAL");
             return (
               <Marker
                 coordinate={{
@@ -155,10 +154,7 @@ export default function MapFixer({ navigation }) {
                   style={page.fixerLogoMaps}
                   source={require("../img/bicare-fixer-marker.png")}
                 />
-                <Callout
-                  tooltip
-                  onPress={() => navigation.navigate("MapFixer")}
-                >
+                <Callout tooltip onPress={() => console.log("Clicked")}>
                   <View>
                     <View style={page.callout}>
                       <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
@@ -175,92 +171,6 @@ export default function MapFixer({ navigation }) {
   } else {
     return <View syle={{ flex: 1 }}></View>;
   }
-
-  // return (
-  //   <View style={page.bigMap}>
-  //     <MapView
-  //       ref={(ref) => (this.map = ref)}
-  //       style={page.bigMap}
-  //       provider={PROVIDER_GOOGLE}
-  //       showsUserLocation={true}
-  //     >
-  //       {repairRequests &&
-  //         renderRequests &&
-  //         repairRequests.map((val, index) => {
-  //           if (renderRequests) {
-  //             return (
-  // <Marker
-  //   coordinate={{
-  //     latitude: val.latitude,
-  //     longitude: val.longitude,
-  //   }}
-  //   key={index}
-  // >
-  //   <Image
-  //     style={page.logoMaps}
-  //     source={require("../img/bicare-bike-marker.png")}
-  //   />
-  //   <Callout
-  //     tooltip
-  //     onPress={() => {
-  //       calculateDistance(
-  //         location.coords.latitude,
-  //         location.coords.longitude,
-  //         val.latitude,
-  //         val.longitude
-  //       );
-  //       navigation.navigate("MakeOfferScreen", {
-  //         request: val,
-  //       });
-  //     }}
-  //   >
-  //     <View>
-  //       <View style={page.callout}>
-  //         <Text style={page.titleCalloutMaker}>I need help!</Text>
-  //         <Text style={page.subtitleCalloutMaker}>Problem:</Text>
-  //         <Text> {String(val.problem)}</Text>
-  //         <Text style={page.subtitleCalloutMaker}>Amount:</Text>
-  //         <Text>{String(" " + val.amount) + "€"}</Text>
-  //         <Text style={page.subtitleCalloutMaker}>
-  //           Description:
-  //         </Text>
-  //         <Text> {String(val.description)}</Text>
-  //       </View>
-  //     </View>
-  //   </Callout>
-  // </Marker>
-  //             );
-  //           }
-  //         })}
-  //       {activeFixers.map((val, index) => {
-  //         if (fixerRender) {
-  //           return (
-  //             <Marker
-  //               coordinate={{
-  //                 latitude: val.latitude,
-  //                 longitude: val.longitude,
-  //               }}
-  //               key={index}
-  //             >
-  //               <Image
-  //                 style={page.fixerLogoMaps}
-  //                 source={require("../img/bicare-fixer-marker.png")}
-  //               />
-  //               <Callout tooltip onPress={() => alert("Clicked")}>
-  //                 <View>
-  //                   <View style={page.callout}>
-  //                     <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
-  //                     <Text>{val.username}</Text>
-  //                   </View>
-  //                 </View>
-  //               </Callout>
-  //             </Marker>
-  //           );
-  //         }
-  //       })}
-  //     </MapView>
-  //   </View>
-  // );
 }
 const calculateDistance = (
   originLat,

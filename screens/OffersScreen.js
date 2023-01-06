@@ -209,12 +209,17 @@ export default function OffersScreen({ navigation, route }) {
           </View>
           <View style={{ flex: 1 }}>{renderFlatList(state.products)}</View>
         </View>
-        <TouchableOpacity
+        {state.products.length == 0 ? (
+          <Text style={page.euroSign}>Waiting for offers...</Text>
+        ) : (
+          <View></View>
+        )}
+        {/* <TouchableOpacity
           style={page.button}
-          /* onPress={() => navigation.navigate("Offers screen")} */
+          onPress={() => navigation.navigate("Offers screen")} 
         >
           <Text>Choose offer</Text>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
