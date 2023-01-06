@@ -154,10 +154,7 @@ export default function MapFixer({ navigation }) {
                   style={page.fixerLogoMaps}
                   source={require("../img/bicare-fixer-marker.png")}
                 />
-                <Callout
-                  tooltip
-                  onPress={() => navigation.navigate("MapFixer")}
-                >
+                <Callout tooltip onPress={() => console.log("Clicked")}>
                   <View>
                     <View style={page.callout}>
                       <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
