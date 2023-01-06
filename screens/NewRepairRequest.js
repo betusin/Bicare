@@ -14,12 +14,12 @@ import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
 import { db, auth } from "../src/firebase";
 import * as Location from "expo-location";
 import { doc, getDoc } from "firebase/firestore";
+import { getDistance } from "geolib";
 
 export default function NewRepairRequest({ navigation }) {
   const [description, onChangeText] = React.useState("Useless Text");
   const [amount, onChangeNumber] = React.useState(10);
   const [location, setLocation] = useState({});
-
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState([
@@ -74,10 +74,25 @@ export default function NewRepairRequest({ navigation }) {
     addDoc(collection(db, "repair_request"), data)
       .then((docRef) => {
         alert("Repair successfully requested!");
+        navigation.navigate("Offers screen", {
+          request: data,
+          requestID: docRef.id,
+        });
       })
       .catch((error) => alert(error.message));
+  };
 
-    navigation.navigate("Offers screen");
+  const calculateDistance = (
+    originLat,
+    originLong,
+    destinationLat,
+    destinationLong
+  ) => {
+    var dis = getDistance(
+      { latitude: originLat, longitude: originLong },
+      { latitude: destinationLat, longitude: destinationLong }
+    );
+    return dis;
   };
 
   return (
