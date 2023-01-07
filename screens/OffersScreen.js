@@ -52,7 +52,7 @@ export default function OffersScreen({ navigation, route }) {
       state.products.push({
         id: doc.id,
         eta: doc.data().eta,
-        fixer: doc.data().fixer,
+        fixer_id: doc.data().fixer_id,
         offered_price: doc.data().offered_price,
         isChecked: false,
       });
@@ -81,6 +81,7 @@ export default function OffersScreen({ navigation, route }) {
             updateDoc(doc(db, "repair_request", requestID, "offers", id), {
               status: "accepted",
             });
+            let fixerID = "";
             state.products.map((product) => {
               if (product.id != id) {
                 updateDoc(
@@ -89,11 +90,15 @@ export default function OffersScreen({ navigation, route }) {
                     status: "rejected",
                   }
                 );
+              } else {
+                fixerID = product.fixer_id;
               }
             });
             navigation.navigate("ClientWaitingScreen", {
               requestID: requestID,
               offers: state.products,
+              offerID: id,
+              fixerID: fixerID,
             });
           },
         },

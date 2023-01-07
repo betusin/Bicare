@@ -15,9 +15,11 @@ import {
   doc,
   get,
   deleteDoc,
+  setDoc,
 } from "firebase/firestore";
-import { db } from "../src/firebase";
+import { auth, db } from "../src/firebase";
 import { CurrentRenderContext } from "@react-navigation/native";
+import { useDocumentData } from "react-firebase-hooks/firestore";
 
 export default function ClientWaitingScreen({ navigation, route }) {
   const [distance, setDistance] = useState(10000);
@@ -27,7 +29,17 @@ export default function ClientWaitingScreen({ navigation, route }) {
 
   const [location, setLocation] = useState({});
   const requestID = route.params.requestID;
+  const fixerID = route.params.fixerID;
+  const offerID = route.params.offerID;
   const offers = route.params.offers;
+
+  const offerDocRef = doc(db, "repair_request", requestID, "offers", offerID);
+  const [offerData, loading, error] = useDocumentData(offerDocRef);
+  const client = auth.currentUser;
+  const clientDocRef = doc(db, "users", client.uid);
+  const [clientData, clientDataLoading, clientDataError] = useDocumentData(clientDocRef);
+  const fixerDocRef = doc(db, "users", fixerID);
+  const [fixerData, fixerDataLoading, fixerDataError] = useDocumentData(fixerDocRef);
 
   function handlePress() {
     Alert.alert(
@@ -37,6 +49,19 @@ export default function ClientWaitingScreen({ navigation, route }) {
         {
           text: "Yes",
           onPress: () => {
+            // decrease balance of client
+            const clientBalance = clientData.balance ? clientData.balance : 0;
+            setDoc(clientDocRef, {balance: +clientBalance - +offerData.offered_price}, {merge: true})
+            .catch((error) => {
+              alert(error.message);
+            });
+            // increase balance of fixer
+            const fixerBalance = fixerData.balance ? fixerData.balance : 0;
+            setDoc(fixerDocRef, {balance: fixerBalance + +offerData.offered_price}, {merge: true})
+            .catch((error) => {
+              alert(error.message);
+            });
+
             // remove all offers
             offers.map((product) => {
               deleteDoc(
@@ -45,6 +70,7 @@ export default function ClientWaitingScreen({ navigation, route }) {
             });
             // delete request
             deleteDoc(doc(db, "repair_request", requestID));
+
             navigation.navigate("RepairDoneScreen", { requestID: requestID });
           },
         },
