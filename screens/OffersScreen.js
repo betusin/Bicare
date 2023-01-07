@@ -12,6 +12,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
+import * as Location from "expo-location";
 
 import { db } from "../src/firebase";
 import CheckBox from "expo-checkbox";
@@ -30,17 +31,20 @@ import {
   updateDoc,
   doc,
 } from "firebase/firestore";
+import { getDistance } from "geolib";
 
 export default function OffersScreen({ navigation, route }) {
   const { request, requestID } = route.params;
   console.log("request ID:", requestID);
-
-  const offersRef = collection(
-    db,
-    "repair_request",
-    requestID,
-    "offers"
+  console.log(
+    getDistance(
+      { latitude: 59.30973, longitude: 18.201393 },
+      { latitude: 59.308147, longitude: 18.161892 }
+    ) * 0.001
   );
+  const [location, setLocation] = useState({});
+
+  const offersRef = collection(db, "repair_request", requestID, "offers");
   const [docs, loading, error] = useCollectionData(offersRef);
 
   const [state, setState] = useState({ products: [] });
@@ -58,6 +62,27 @@ export default function OffersScreen({ navigation, route }) {
       });
     });
   }
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        return;
+      }
+      // Gets the location from expo
+      try {
+        let location = await Location.getCurrentPositionAsync({
+          accuracy: Location.Accuracy.Balanced,
+          enableHighAccuracy: true,
+          timeInterval: 5,
+        });
+        console.log(location);
+        setLocation(location);
+      } catch (error) {
+        console.log(error + "error");
+      }
+    })();
+  }, []);
 
   const handleChange = (id) => {
     let temp = state.products.map((product) => {
@@ -104,8 +129,7 @@ export default function OffersScreen({ navigation, route }) {
         },
         {
           text: "No",
-          onPress: () => {
-          },
+          onPress: () => {},
         },
       ],
       { cancelable: false }
@@ -135,7 +159,17 @@ export default function OffersScreen({ navigation, route }) {
                           Distance:
                         </Text>
                         <Text style={[page.profileField, page.cardFieldValue]}>
-                          {item.distance} km
+                          {getDistance(
+                            {
+                              latitude: location.coords.latitude,
+                              longitude: location.coords.longitude,
+                            },
+                            {
+                              latitude: item.location.latitude,
+                              longitude: item.location.longitude,
+                            }
+                          ) * 0.001}{" "}
+                          km
                         </Text>
                       </View>
                       <View style={[page.profileRows]}>
