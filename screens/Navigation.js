@@ -14,6 +14,7 @@ import OffersScreen from "./OffersScreen";
 import OfflineOrderScreen from "./OfflineOrderScreen";
 import ClientWaitingScreen from "./ClientWaitingScreen";
 import RepairDoneScreen from "./RepairDoneScreen";
+import FixerRepairDone from "./FixerRepairDone";
 
 const Drawer = createDrawerNavigator();
 
@@ -50,6 +51,14 @@ export default function Navigation({route}) {
       <Drawer.Screen
         name="FixerWaiting"
         component={FixerWaiting}
+        initialParams={{ params: route.params }}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="FixerRepairDone"
+        component={FixerRepairDone}
         initialParams={{ params: route.params }}
         options={{
           drawerItemStyle: { display: "none" },

@@ -19,7 +19,7 @@ import { doc } from "firebase/firestore";
     const [fetchedOfferData, loading, error] = useDocumentData(docRef);
 
     const repairDone = () => {
-        navigation.navigate('Change Status to fixer');
+        navigation.navigate('FixerRepairDone', {offerData: offerData});
     }
 
     return(
