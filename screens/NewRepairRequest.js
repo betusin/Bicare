@@ -33,14 +33,14 @@ export default function NewRepairRequest({ navigation }){
 
   useEffect(() => {
     (async () => {
-      let { status } = await Location.requestForegroundPermissionsAsync();
+      let { status } = await requestForegroundPermissionsAsync();
       if (status !== "granted") {
         return;
       }
       // Gets the location from expo
       try {
-        let location = await Location.getCurrentPositionAsync({
-          accuracy: Location.Accuracy.Balanced,
+        let location = await getCurrentPositionAsync({
+          accuracy: Accuracy.Balanced,
           enableHighAccuracy: true,
           timeInterval: 5,
         });
