@@ -32,16 +32,11 @@ import {
   doc,
 } from "firebase/firestore";
 import { getDistance } from "geolib";
+import Toast from "react-native-toast-message";
 
 export default function OffersScreen({ navigation, route }) {
   const { request, requestID } = route.params;
   console.log("request ID:", requestID);
-  console.log(
-    getDistance(
-      { latitude: 59.30973, longitude: 18.201393 },
-      { latitude: 59.308147, longitude: 18.161892 }
-    ) * 0.001
-  );
   const [location, setLocation] = useState({});
 
   const offersRef = collection(db, "repair_request", requestID, "offers");
@@ -77,10 +72,12 @@ export default function OffersScreen({ navigation, route }) {
           enableHighAccuracy: true,
           timeInterval: 5,
         });
-        console.log(location);
         setLocation(location);
       } catch (error) {
-        console.log(error + "error");
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
       }
     })();
   }, []);
