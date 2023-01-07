@@ -12,6 +12,8 @@ import MakeOfferScreen from "./MakeOfferScreen";
 import FixerWaiting from "./FixerWaiting";
 import OffersScreen from "./OffersScreen";
 import OfflineOrderScreen from "./OfflineOrderScreen";
+import ClientWaitingScreen from "./ClientWaitingScreen";
+import RepairDoneScreen from "./RepairDoneScreen";
 
 const Drawer = createDrawerNavigator();
 
