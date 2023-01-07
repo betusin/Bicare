@@ -123,11 +123,16 @@ export default function OffersScreen({ navigation, route }) {
               offerID: id,
               fixerID: fixerID,
             });
+            state.products = [];
           },
         },
         {
           text: "No",
-          onPress: () => {},
+          onPress: () => {
+            updateDoc(doc(db, "repair_request", requestID, "offers", id), {
+              status: "rejected",
+            });
+          },
         },
       ],
       { cancelable: false }
