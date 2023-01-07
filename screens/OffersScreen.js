@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import {Card} from "react-native-paper"
+import { Card } from "react-native-paper";
 import {
   StyleSheet,
   Text,

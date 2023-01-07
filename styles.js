@@ -166,16 +166,16 @@ export default StyleSheet.create({
   card: {
     padding: 10,
     margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     width: 400,
   },
-  cardText:{
-    margin: 10, 
-    flexDirection: 'column', 
-    justifyContent: 'space-between',
+  cardText: {
+    margin: 10,
+    flexDirection: "column",
+    justifyContent: "space-between",
     flex: 1,
-    padding: 10, 
+    padding: 10,
   },
   amountInput: {
     backgroundColor: "white",
@@ -257,7 +257,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     display: "flex",
     alignSelf: "center",
-    padding: 30, 
+    padding: 30,
   },
   initialPriceTitle: {
     color: "white",
@@ -421,16 +421,16 @@ export default StyleSheet.create({
   card: {
     padding: 10,
     margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     width: 400,
   },
-  cardText:{
-    margin: 10, 
-    flexDirection: 'column', 
-    justifyContent: 'space-between',
+  cardText: {
+    margin: 10,
+    flexDirection: "column",
+    justifyContent: "space-between",
     flex: 1,
-    padding: 10, 
+    padding: 10,
   },
   amountView: {
     flexDirection: "row",
@@ -548,14 +548,19 @@ export default StyleSheet.create({
     width: Dimensions.get("window").width * 0.6,
     height: Dimensions.get("window").height * 0.2,
   },
-  scrollContainer:{
+  callout: {
+    backgroundColor: "white",
+    borderRadius: 5,
+    width: Dimensions.get("window").width * 0.5,
+  },
+  scrollContainer: {
     flex: 1,
     backgroundColor: "#242424",
   },
-  scrollContainerNoBackground:{
+  scrollContainerNoBackground: {
     flex: 1,
   },
-  scrollContainerContent:{
+  scrollContainerContent: {
     alignItems: "center",
     justifyContent: "center",
   },

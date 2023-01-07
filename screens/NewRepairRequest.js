@@ -5,9 +5,16 @@ import {
   SafeAreaView,
   Image,
   TouchableOpacity,
+  ScrollView,
+  KeyboardAvoidingView,
 } from "react-native";
 import React, { useState, useEffect } from "react";
 import { useFonts } from "expo-font";
+import {
+  requestForegroundPermissionsAsync,
+  getCurrentPositionAsync,
+  Accuracy,
+} from "expo-location";
 import DropDownPicker from "react-native-dropdown-picker";
 import page from "../styles";
 import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
@@ -50,6 +57,7 @@ export default function NewRepairRequest({ navigation }) {
 
   const createRepairRequest = () => {
     var selectedItem = items.filter((item) => item.value == value)[0];
+    //console.log(selectedItem);
     if (
       selectedItem == undefined &&
       description.length != 0 &&
@@ -70,9 +78,10 @@ export default function NewRepairRequest({ navigation }) {
       ),
       createdAt: Timestamp.fromDate(new Date()),
     };
-
     addDoc(collection(db, "repair_request"), data)
       .then((docRef) => {
+        //console.log(docRef.id + " docRef");
+        // data.requestID = docRef;
         alert("Repair successfully requested!");
         navigation.navigate("Offers screen", {
           request: data,
@@ -93,54 +102,61 @@ export default function NewRepairRequest({ navigation }) {
       { latitude: destinationLat, longitude: destinationLong }
     );
     return dis;
+    //alert(`Distance\n\n${dis} Meter\nOR\n${dis / 1000} KM`);
   };
 
   return (
-    <SafeAreaView style={page.container}>
-      <View style={page.view}>
-        <Image
-          style={page.tinyLogo}
-          source={require("../img/logoWhiteTrial2.png")}
-        />
-        <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-        <Text style={page.header}>New Repair Request</Text>
-        <View style={page.inputWrapper}>
-          <Text style={page.fieldTitle}>Problem</Text>
-          <DropDownPicker
-            open={open}
-            value={value}
-            items={items}
-            setOpen={setOpen}
-            setValue={setValue}
-            setItems={setItems}
+    <KeyboardAvoidingView
+      style={{ flex: 1, flexDirection: "column", justifyContent: "center" }}
+      enabled
+      keyboardVerticalOffset={0}
+    >
+      <ScrollView
+        behavior="padding"
+        style={page.scrollContainer}
+        contentContainerStyle={page.scrollContainerContent}
+      >
+        <View style={page.scrollView}>
+          <Image
+            style={page.tinyLogo}
+            source={require("../img/logoWhiteTrial2.png")}
           />
-          <Text style={page.fieldTitle}>Price</Text>
-          <View style={page.amountView}>
-            <Text style={page.euroSign}>€</Text>
-            <TextInput
-              style={page.amountInput}
-              placeholder="10"
-              onChangeText={onChangeNumber}
-              keyboardType="numeric"
+          <Text style={page.header}>New Repair Request</Text>
+          <View style={page.inputWrapper}>
+            <Text style={page.fieldTitle}>Problem</Text>
+            <DropDownPicker
+              open={open}
+              value={value}
+              items={items}
+              setOpen={setOpen}
+              setValue={setValue}
+              setItems={setItems}
             />
-          </View>
+            <Text style={page.fieldTitle}>Price</Text>
+            <View style={page.amountView}>
+              <Text style={page.euroSign}>€</Text>
+              <TextInput
+                style={page.amountInput}
+                placeholder="10"
+                onChangeText={onChangeNumber}
+                keyboardType="numeric"
+              />
+            </View>
 
-          <Text style={page.fieldTitle}>Description</Text>
-          <TextInput
-            style={page.descriptionInput}
-            placeholder="Describe the issue"
-            onChangeText={onChangeText}
-            multiline
-            numberOfLines={4}
-          />
-          <TouchableOpacity
-            style={page.button}
-            onPress={createRepairRequest} // TODO navigate to the barterscreen
-          >
-            <Text>Create repair request</Text>
-          </TouchableOpacity>
+            <Text style={page.fieldTitle}>Description</Text>
+            <TextInput
+              style={page.descriptionInput}
+              placeholder="Describe the issue"
+              onChangeText={onChangeText}
+              multiline
+              numberOfLines={4}
+            />
+            <TouchableOpacity style={page.button} onPress={createRepairRequest}>
+              <Text>Create repair request</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
-    </SafeAreaView>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }

@@ -20,7 +20,7 @@ import RepairDoneScreen from "./RepairDoneScreen";
 
 const Drawer = createDrawerNavigator();
 
-export default function Navigation({route}) {
+export default function Navigation({ route }) {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
@@ -107,20 +107,6 @@ export default function Navigation({route}) {
           drawerItemStyle: { display: "none" },
         }}
       />
-      <Drawer.Screen 
-        name="Offers screen" 
-        component={OffersScreen}
-        options={{
-            drawerItemStyle: { display: "none"}
-        }}
-      />
-      <Drawer.Screen
-				name="Offline Order Screen"
-				component={OfflineOrderScreen}
-				options={{
-					drawerItemStyle: {display: "none"}
-				}}
-			/>
       <Drawer.Screen
         name="ClientWaitingScreen"
         component={ClientWaitingScreen}
@@ -131,6 +117,20 @@ export default function Navigation({route}) {
       <Drawer.Screen
         name="RepairDoneScreen"
         component={RepairDoneScreen}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="Offers screen"
+        component={OffersScreen}
+        options={{
+          drawerItemStyle: { display: "none" },
+        }}
+      />
+      <Drawer.Screen
+        name="Offline Order Screen"
+        component={OfflineOrderScreen}
         options={{
           drawerItemStyle: { display: "none" },
         }}
