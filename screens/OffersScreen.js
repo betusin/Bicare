@@ -57,6 +57,7 @@ export default function OffersScreen({ navigation, route }) {
         id: doc.id,
         eta: doc.data().eta,
         fixer_id: doc.data().fixer_id,
+        fixerLocation: doc.data().fixerLocation,
         offered_price: doc.data().offered_price,
         isChecked: false,
       });
@@ -165,8 +166,8 @@ export default function OffersScreen({ navigation, route }) {
                               longitude: location.coords.longitude,
                             },
                             {
-                              latitude: item.location.latitude,
-                              longitude: item.location.longitude,
+                              latitude: item.fixerLocation.latitude,
+                              longitude: item.fixerLocation.longitude,
                             }
                           ) * 0.001}{" "}
                           km
