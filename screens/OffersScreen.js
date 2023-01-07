@@ -56,7 +56,7 @@ export default function OffersScreen({ navigation, route }) {
       state.products.push({
         id: doc.id,
         eta: doc.data().eta,
-        fixer_id: doc.data().fixer_id,
+        fixer: doc.data().fixer,
         fixerLocation: doc.data().fixerLocation,
         offered_price: doc.data().offered_price,
         isChecked: false,
@@ -117,7 +117,7 @@ export default function OffersScreen({ navigation, route }) {
                   }
                 );
               } else {
-                fixerID = product.fixer_id;
+                fixerID = product.fixer;
               }
             });
             navigation.navigate("ClientWaitingScreen", {
