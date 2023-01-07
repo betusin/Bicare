@@ -33,20 +33,18 @@ import {
 
 export default function OffersScreen({ navigation, route }) {
   const { request, requestID } = route.params;
-  console.log(request);
-  console.log(requestID);
+  console.log("request ID:", requestID);
 
   const offersRef = collection(
     db,
     "repair_request",
-    requestID, //"U7lXNmb71SpS1I3f0iXd", // change to erquestid
+    requestID,
     "offers"
   );
   const [docs, loading, error] = useCollectionData(offersRef);
 
   const [state, setState] = useState({ products: [] });
   const [docsColl] = useCollection(offersRef);
-  //console.log("ConstColl" + docsColl);
 
   if (docsColl) {
     state.products = [];
@@ -59,25 +57,15 @@ export default function OffersScreen({ navigation, route }) {
         isChecked: false,
       });
     });
-    //console.log(state.products);
-    //setState();
   }
-
-  // useEffect(() => {
-  //   setState({ products: data });
-  // }, [state]);
 
   const handleChange = (id) => {
     let temp = state.products.map((product) => {
-      // if (id !== product.id) {
-      //   return { ...product, isChecked: falsfe };
-      // }
       if (id == product.id) {
         return (product.isChecked = true);
       }
       return product;
     });
-    //console.log(JSON.stringify(temp) + "    TEEEEEEEEEEEEMP");
     setState({
       products: temp,
     });
@@ -90,9 +78,6 @@ export default function OffersScreen({ navigation, route }) {
         {
           text: "Yes",
           onPress: () => {
-            console.log("Yes pressed");
-            //set field status of chosen offer to "accepted"
-            //         addDoc(collection(db, "repair_request", requestData.id, "offers"), offerData
             updateDoc(doc(db, "repair_request", requestID, "offers", id), {
               status: "accepted",
             });
@@ -115,7 +100,6 @@ export default function OffersScreen({ navigation, route }) {
         {
           text: "No",
           onPress: () => {
-            console.log("No pressed");
           },
         },
       ],
