@@ -12,12 +12,8 @@ import { collection, getDocs, getDoc, doc, get } from "firebase/firestore";
 import { db } from "../src/firebase";
 
 export default function RepairDoneScreen({ navigation, route }) {
-  // const [distance, setDistance] = useState(10000);
-  // const [repairOrderNo, setRepairOrderNo] = useState(0);
-  // const [location, setLocation] = useState({});
-  // const repairRequestsRef = collection(db, "repair_request");
-  // const repairRequestDocRef = doc(db, "bicare-f1e12/repair_request/");
-  // const [repairRequests, setRepairRequests] = useState([]);
+  const offerData = route.params.offerData;
+
   return (
     <SafeAreaView style={page.container}>
       <View style={page.view}>
