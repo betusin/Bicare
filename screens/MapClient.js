@@ -7,7 +7,6 @@ import React from "react";
 import page from "../styles";
 import { db } from "../src/firebase";
 import { collection, getDocs } from "firebase/firestore";
-import { useCollectionData } from "react-firebase-hooks/firestore";
 
 export default function MapClient({ navigation }) {
   const [location, setLocation] = useState({});
@@ -17,8 +16,6 @@ export default function MapClient({ navigation }) {
   const [fixerRender, setFixerRender] = useState(false);
   const [activeFixers, setActiveFixers] = useState([]);
   const fixersRef = collection(db, "active_fixers");
-
-  const [docs, loading, error] = useCollectionData(fixersRef);
 
   async function getBikeShopData() {
     const querySnapshot = await getDocs(bikeShopsRef);
@@ -35,7 +32,6 @@ export default function MapClient({ navigation }) {
     setBikeShops(bikeShops);
     setRender(true);
   }
-
   async function getFixersData() {
     const querySnapshot = await getDocs(fixersRef);
     querySnapshot.forEach((doc) => {
@@ -47,6 +43,7 @@ export default function MapClient({ navigation }) {
       });
     });
     setActiveFixers(activeFixers);
+    setFixerRender(true);
   }
 
   useEffect(() => {
@@ -65,6 +62,8 @@ export default function MapClient({ navigation }) {
         setLocation(location);
         getBikeShopData();
         getFixersData();
+        console.log(location + "location useeffect");
+        console.log(render);
         if (this.map != undefined) {
           this.map.animateToRegion({
             latitude: location.coords.latitude,
@@ -77,61 +76,58 @@ export default function MapClient({ navigation }) {
         console.log(error + "error");
       }
     })();
-  }, [docs, loading]);
+  }, []);
 
-  if (docs != undefined) {
-    return (
-      <View style={page.bigMap}>
-        <MapView
-          ref={(ref) => (this.map = ref)}
-          style={page.bigMap}
-          provider={PROVIDER_GOOGLE}
-          showsUserLocation={true}
-        >
-          {bikeShops.map((val, index) => {
-            if (render) {
-              return (
-                <Marker
-                  coordinate={{
-                    latitude: val.latitude,
-                    longitude: val.longitude,
-                  }}
-                  key={index}
-                >
-                  <Image
-                    style={page.logoMaps}
-                    source={require("../img/bicare-store-marker.png")}
-                  />
-                  <Callout
-                    tooltip
-                    onPress={() => console.log("Bike shop clicked")}
-                  >
-                    <View>
-                      <View style={page.callout}>
-                        <Text style={page.titleCalloutMaker}>
-                          {String(val.title)}
-                        </Text>
-                        <Text style={page.subtitleCalloutMaker}>
-                          Opening hours:
-                        </Text>
-                        <Text> {String(val.openingHours)}</Text>
-                        <Text style={page.subtitleCalloutMaker}>
-                          Phone number:
-                        </Text>
-                        <Text>{String(val.phoneNumber)}</Text>
-                      </View>
-                    </View>
-                  </Callout>
-                </Marker>
-              );
-            }
-          })}
-          {docs.map((val, index) => {
+  return (
+    <View style={page.bigMap}>
+      <MapView
+        ref={(ref) => (this.map = ref)}
+        style={page.bigMap}
+        provider={PROVIDER_GOOGLE}
+        showsUserLocation={true}
+      >
+        {bikeShops.map((val, index) => {
+          if (render) {
             return (
               <Marker
                 coordinate={{
-                  latitude: val.location.latitude,
-                  longitude: val.location.longitude,
+                  latitude: val.latitude,
+                  longitude: val.longitude,
+                }}
+                key={index}
+              >
+                <Image
+                  style={page.logoMaps}
+                  source={require("../img/bicare-store-marker.png")}
+                />
+                <Callout tooltip onPress={() => alert("Clicked")}>
+                  <View>
+                    <View style={styles.callout}>
+                      <Text style={page.titleCalloutMaker}>
+                        {String(val.title)}
+                      </Text>
+                      <Text>
+                        Opening hours:{"\n"}
+                        {String(val.openingHours)}
+                      </Text>
+                      <Text>
+                        Phone number:{"\n"}
+                        {String(val.phoneNumber)}
+                      </Text>
+                    </View>
+                  </View>
+                </Callout>
+              </Marker>
+            );
+          }
+        })}
+        {activeFixers.map((val, index) => {
+          if (fixerRender) {
+            return (
+              <Marker
+                coordinate={{
+                  latitude: val.latitude,
+                  longitude: val.longitude,
                 }}
                 key={index}
                 //title={val.title}
@@ -142,21 +138,35 @@ export default function MapClient({ navigation }) {
                   style={page.fixerLogoMaps}
                   source={require("../img/bicare-fixer-marker.png")}
                 />
-                <Callout tooltip onPress={() => console.log("clicked")}>
+                <Callout
+                  tooltip
+                  onPress={() => navigation.navigate("MapFixer")}
+                >
                   <View>
-                    <View style={page.callout}>
-                      <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
+                    <View style={styles.callout}>
                       <Text>{val.username}</Text>
                     </View>
                   </View>
                 </Callout>
               </Marker>
             );
-          })}
-        </MapView>
-      </View>
-    );
-  } else {
-    return <View syle={{ flex: 1 }}></View>;
-  }
+          }
+        })}
+      </MapView>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  callout: {
+    backgroundColor: "white",
+    borderRadius: 5,
+    width: Dimensions.get("window").width * 0.5,
+  },
+});

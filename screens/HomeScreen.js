@@ -1,14 +1,17 @@
 //Work In Progress
 
-import { Text, View, SafeAreaView } from "react-native";
-import React from "react";
+import {
+  Text,
+  View,
+  SafeAreaView,
+} from "react-native";
+import React, { useState } from "react";
 import page from "../styles";
 import { Image, TouchableOpacity } from "react-native";
 import MapClient from "./MapClient";
-import { auth, db } from "../src/firebase";
-import { useDocumentData } from "react-firebase-hooks/firestore";
+import { auth, db } from '../src/firebase';
+import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { doc } from "firebase/firestore";
-import MapFixer from "./MapFixer";
 
 export default function HomeScreen({ navigation }) {
   const user = auth.currentUser;
@@ -20,7 +23,7 @@ export default function HomeScreen({ navigation }) {
       <View style={page.view}>
         <Image
           style={page.tinyLogo}
-          source={require("../img/logoWhiteTrial2.png")}
+          source={require('../img/logoWhiteTrial2.png')}
         />
         <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
         <Text style={page.header}>Home Screen</Text>
@@ -39,14 +42,19 @@ export default function HomeScreen({ navigation }) {
               <MapClient></MapClient>
             </View>
           </TouchableOpacity>
-          {userData && userData.isFixer && (
+          {userData && userData.isFixer &&
             <TouchableOpacity
               style={page.buttonProfile}
               onPress={() => navigation.navigate("Change Status to fixer")}
             >
-              <Text style={page.buttonTextSmall}>Change Status</Text>
+              <Text
+                style={page.buttonTextSmall}
+              >
+                Change Status
+              </Text>
+
             </TouchableOpacity>
-          )}
+          }
         </View>
       </View>
     </SafeAreaView>
