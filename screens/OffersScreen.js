@@ -129,18 +129,6 @@ export default function OffersScreen({ navigation, route }) {
                       justifyContent: "center",
                     }}
                   >
-                    {/* <CheckBox
-                    style={{
-                      width: 30,
-                      height: 30,
-                      padding: 1,
-                      alignSelf: "center",
-                    }}
-                    value={item.isChecked}
-                    onValueChange={() => {
-                      handleChange(item.id);
-                    }}
-                  /> */}
                     <View style={page.cardText}>
                       <View style={[page.profileRows]}>
                         <Text style={[page.profileField, page.cardFieldTitle]}>
@@ -203,12 +191,6 @@ export default function OffersScreen({ navigation, route }) {
         ) : (
           <View></View>
         )}
-        {/* <TouchableOpacity
-          style={page.button}
-          onPress={() => navigation.navigate("Offers screen")} 
-        >
-          <Text>Choose offer</Text>
-        </TouchableOpacity> */}
       </View>
     </SafeAreaView>
   );
