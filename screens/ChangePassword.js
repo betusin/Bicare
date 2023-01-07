@@ -16,6 +16,7 @@ import {
     EmailAuthProvider,
 } from 'firebase/auth';
 import { auth } from "../src/firebase";
+import Toast from 'react-native-toast-message';
 
 export default function LoginScreen({ navigation }) {
     const [oldPasswordText, setOldPasswordText] = useState("");
@@ -24,7 +25,10 @@ export default function LoginScreen({ navigation }) {
 
     const changePassword = async () => {
         if (newPasswordText != reenterPasswordText) {
-            alert("New password and reentered are not matching!")
+            Toast.show({
+                type: 'error',
+                text1: "Passwords are not matching!",
+            });
             return;
         }
 
@@ -36,12 +40,21 @@ export default function LoginScreen({ navigation }) {
             .then(() => {
                 updatePassword(auth.currentUser, newPasswordText)
                     .then(() => {
-                        alert("Password changed successfully");
+                        Toast.show({
+                            type: 'success',
+                            text1: "Password changed successfully",
+                        })
                         navigation.navigate("Profile");
                     })
-                    .catch(error => alert(error.message))
+                    .catch(error => Toast.show({
+                        type: 'error',
+                        text1: error.message,
+                    }))
             })
-            .catch(error => alert(error.message))
+            .catch(error => Toast.show({
+                type: 'error',
+                text1: error.message,
+            }))
     }
 
 return (
@@ -87,7 +100,7 @@ return (
                 onPress={() => navigation.navigate("Profile")}
                 >
                 <Text style={page.buttonTextSmall}>
-                Back to Profle
+                Back to Profile
                 </Text>
             </TouchableOpacity>
             </View>

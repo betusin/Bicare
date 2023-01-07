@@ -14,6 +14,7 @@ import MapFixer from "./MapFixer";
 import { useDocumentData } from 'react-firebase-hooks/firestore';
 import { doc, setDoc, GeoPoint, deleteDoc } from "@firebase/firestore";
 import { auth, db } from '../src/firebase';
+import Toast from 'react-native-toast-message';
 
 export default function FixScreen({ navigation }) {
   const user = auth.currentUser;
@@ -37,7 +38,10 @@ export default function FixScreen({ navigation }) {
         });
         setLocation(location);
       } catch (error) {
-        alert(error);
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
       }
     })();
   }, []);
@@ -54,7 +58,10 @@ export default function FixScreen({ navigation }) {
       .then(() => {
       })
       .catch((error) => {
-        alert(error.message);
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
       })
     } else {
       deleteDoc(doc(db, "active_fixers", user.uid));
@@ -62,10 +69,17 @@ export default function FixScreen({ navigation }) {
 
     setDoc(docRef, { isAvailable: isEnabled }, { merge: true })
       .then(() => {
-        alert("Successfully changed availability!");
+        Toast.show({
+          type: 'success',
+          text1: "Successfully changed availability!",
+          text2: "Now clients can see you are available for fixing their bikes."
+        });
       })
       .catch((error) => {
-        alert(error.message);
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
       });
   }
 

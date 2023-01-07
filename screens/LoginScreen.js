@@ -13,6 +13,7 @@ import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
 import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import Toast from 'react-native-toast-message';
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -37,19 +38,35 @@ export default function LoginScreen({ navigation }) {
     signInWithEmailAndPassword(auth, email, passwordText)
       .then(userCredentials => {
         const user = userCredentials.user;
-        window.alert('Logged in with:' + user.email);
+        Toast.show({
+          type: 'success',
+          text1: 'Successfully logged in!',
+          text2: `You have logged in with email ${user.email}`
+        });
         navigation.navigate("Navigation")
       })
-      .catch(error => alert(error.message))
+      .catch(error => {
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
+      })
   }
 
   const resetPassword = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        alert("Reset password email sent. Check your inbox.")
+        Toast.show({
+          type: 'success',
+          text1: 'Reset password email was sent',
+          text2: `Check your inbox of email ${user.email}.`
+        });
       })
       .catch((error) => {
-        alert(error.message)
+        Toast.show({
+          type: 'error',
+          text1: error.message,
+        });
       });
   }
 

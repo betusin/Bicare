@@ -11,13 +11,14 @@ import page from '../styles';
 import {Image, TouchableOpacity} from "react-native";
 import { addDoc, collection } from "firebase/firestore";
 import { auth, db } from "../src/firebase";
+import Toast from "react-native-toast-message";
 
 
 export default function MakeOfferScreen({ route, navigation }){
-    const user = auth.currentUser;
-    const [priceOffer, setPriceOffer] = useState("8");
-    const [eta, setEta] = useState("40");
     const requestData = route.params.request;
+    const user = auth.currentUser;
+    const [priceOffer, setPriceOffer] = useState(requestData.amount.toString());
+    const [eta, setEta] = useState("40");
 
     const createOffer = () => {
         const offerData = {
@@ -27,11 +28,19 @@ export default function MakeOfferScreen({ route, navigation }){
         }
 
         addDoc(collection(db, "repair_request", requestData.id, "offers"), offerData)
-        .then(() => {
-            alert(`Offer created with estimated time - ${eta} and price - ${priceOffer}`)
+        .then((docRef) => {
+            Toast.show({
+                type: 'success',
+                text1: "Offer created successfully",
+                text2: `Offer created with estimated time ${eta} minutes and price ${priceOffer}€`,
+            });
+            offerData.id = docRef.id;
             navigation.navigate("FixerWaiting", {request: requestData, offer: offerData})
         })
-        .catch((error) => alert(error.message))
+        .catch((error) => Toast.show({
+            type: 'error',
+            text1: error.message,
+        }))
     }
 
     return(
