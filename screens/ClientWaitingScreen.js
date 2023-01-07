@@ -61,7 +61,11 @@ export default function ClientWaitingScreen({ navigation, route }) {
             });
             // increase balance of fixer
             const fixerBalance = fixerData.balance ? fixerData.balance : 0;
-            setDoc(fixerDocRef, {balance: fixerBalance + (+offerData.offered_price * 0.95)}, {merge: true})
+            setDoc(
+              fixerDocRef,
+              {balance: fixerBalance + +(Math.round(+offerData.offered_price * 0.95 * 100) / 100).toFixed(2)},
+              {merge: true}
+            )
             .catch((error) => {
               Toast.show({
                 type: 'error',

@@ -9,8 +9,8 @@ import { Image, TouchableOpacity } from "react-native";
 
 export default function FixerRepairDone({ route, navigation }) {
     const offerData = route.params.offerData;
-    const five_percent = offerData.offered_price * 0.05;
-    const you_earn = offerData.offered_price * 0.95;
+    const five_percent = (Math.round(offerData.offered_price * 0.05 * 100) / 100).toFixed(2);
+    const you_earn = (Math.round(offerData.offered_price * 0.95 * 100) / 100).toFixed(2);
 
     return (
         <SafeAreaView style={page.container}>
