@@ -7,6 +7,8 @@ import React from "react";
 import page from "../styles";
 import { db } from "../src/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import { getDistance, getPreciseDistance } from "geolib";
+import { useCollectionData } from "react-firebase-hooks/firestore";
 
 export default function MapFixer({ navigation }) {
   const [location, setLocation] = useState({});
@@ -16,6 +18,9 @@ export default function MapFixer({ navigation }) {
   const [activeFixers, setActiveFixers] = useState([]);
   const fixersRef = collection(db, "active_fixers");
   const repairRequestsRef = collection(db, "repair_request");
+
+  const [docsFixers, loadingF, errorF] = useCollectionData(fixersRef);
+  const [docsRR, loadingRR, errorRR] = useCollectionData(repairRequestsRef);
 
   async function getRepairRequests() {
     const querySnapshot = await getDocs(repairRequestsRef);
@@ -78,23 +83,23 @@ export default function MapFixer({ navigation }) {
         console.log(error + "error");
       }
     })();
-  }, []);
+  }, [docsRR, docsFixers]);
 
-  return (
-    <View style={page.bigMap}>
-      <MapView
-        ref={(ref) => (this.map = ref)}
-        style={page.bigMap}
-        provider={PROVIDER_GOOGLE}
-        showsUserLocation={true}
-      >
-        {repairRequests && renderRequests && repairRequests.map((val, index) => {
-          if (renderRequests) {
+  if (docsFixers != undefined && docsRR != undefined) {
+    return (
+      <View style={page.bigMap}>
+        <MapView
+          ref={(ref) => (this.map = ref)}
+          style={page.bigMap}
+          provider={PROVIDER_GOOGLE}
+          showsUserLocation={true}
+        >
+          {docsRR.map((val, index) => {
             return (
               <Marker
                 coordinate={{
-                  latitude: val.latitude,
-                  longitude: val.longitude,
+                  latitude: val.location.latitude,
+                  longitude: val.location.longitude,
                 }}
                 key={index}
               >
@@ -104,75 +109,78 @@ export default function MapFixer({ navigation }) {
                 />
                 <Callout
                   tooltip
-                  onPress={() => navigation.navigate("MakeOfferScreen", {
-                    request: val
-                  })}
+                  onPress={() => {
+                    calculateDistance(
+                      location.coords.latitude,
+                      location.coords.longitude,
+                      val.latitude,
+                      val.longitude
+                    );
+                    navigation.navigate("MakeOfferScreen", {
+                      request: val,
+                    });
+                  }}
                 >
                   <View>
-                    <View style={styles.callout}>
-                      <Text>
-                        Problem:{"\n"}
-                        {String(val.problem)}
+                    <View style={page.callout}>
+                      <Text style={page.titleCalloutMaker}>I need help!</Text>
+                      <Text style={page.subtitleCalloutMaker}>Problem:</Text>
+                      <Text> {String(val.problem)}</Text>
+                      <Text style={page.subtitleCalloutMaker}>Amount:</Text>
+                      <Text>{String(" " + val.amount) + "€"}</Text>
+                      <Text style={page.subtitleCalloutMaker}>
+                        Description:
                       </Text>
-                      <Text>
-                        Amount:{"\n"}
-                        {String(val.amount) + "€"}
-                      </Text>
-                      <Text>
-                        Description:{"\n"}
-                        {String(val.description)}
-                      </Text>
+                      <Text> {String(val.description)}</Text>
                     </View>
                   </View>
                 </Callout>
               </Marker>
             );
-          }
-        })}
-        {activeFixers.map((val, index) => {
-          if (fixerRender) {
+          })}
+          {docsFixers.map((val, index) => {
             return (
               <Marker
                 coordinate={{
-                  latitude: val.latitude,
-                  longitude: val.longitude,
+                  latitude: val.location.latitude,
+                  longitude: val.location.longitude,
                 }}
                 key={index}
+                //title={val.title}
+                //description={val.description}
+                //onCalloutPress={() => alert("Clicked")}
               >
                 <Image
                   style={page.fixerLogoMaps}
                   source={require("../img/bicare-fixer-marker.png")}
                 />
-                <Callout tooltip onPress={() => alert("Clicked")}>
+                <Callout tooltip onPress={() => console.log("Clicked")}>
                   <View>
-                    <View style={styles.callout}>
+                    <View style={page.callout}>
+                      <Text style={page.subtitleCalloutMaker}>Fixer:</Text>
                       <Text>{val.username}</Text>
                     </View>
                   </View>
                 </Callout>
               </Marker>
             );
-          }
-        })}
-      </MapView>
-    </View>
-  );
+          })}
+        </MapView>
+      </View>
+    );
+  } else {
+    return <View syle={{ flex: 1 }}></View>;
+  }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  map: {
-    width: Dimensions.get("window").width,
-    height: Dimensions.get("window").height,
-  },
-  callout: {
-    backgroundColor: "white",
-    borderRadius: 5,
-    width: Dimensions.get("window").width * 0.5,
-  },
-});
+const calculateDistance = (
+  originLat,
+  originLong,
+  destinationLat,
+  destinationLong
+) => {
+  var dis = getDistance(
+    { latitude: originLat, longitude: originLong },
+    { latitude: destinationLat, longitude: destinationLong }
+  );
+  alert(`Distance\n\n${dis} Meter\nOR\n${dis / 1000} KM`);
+};

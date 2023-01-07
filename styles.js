@@ -34,10 +34,10 @@ export default StyleSheet.create({
     marginVertical: "3%",
     shadowColor: "#000",
     shadowOffset: {
-          width: 1,
-          height: 3,
+      width: 1,
+      height: 3,
     },
-    shadowOpacity: 0.50,
+    shadowOpacity: 0.5,
     shadowRadius: 4,
 
     elevation: 5,
@@ -52,32 +52,32 @@ export default StyleSheet.create({
     marginVertical: "3%",
     shadowColor: "#000",
     shadowOffset: {
-          width: 1,
-          height: 3,
+      width: 1,
+      height: 3,
     },
-    shadowOpacity: 0.50,
+    shadowOpacity: 0.5,
     shadowRadius: 4,
     elevation: 5,
     width: 225,
-    height: 45, 
+    height: 45,
   },
-	bigButton:{
-	  alignItems: "center",
-	  borderRadius: 5,
-	  backgroundColor:"#F5D466",
-    justifyContent: "center", 
-	  marginVertical: "3%",
+  bigButton: {
+    alignItems: "center",
+    borderRadius: 5,
+    backgroundColor: "#F5D466",
+    justifyContent: "center",
+    marginVertical: "3%",
     shadowColor: "#000",
-      shadowOffset: {
-           width: 1,
-           height: 3,
-      },
-    shadowOpacity: 0.50,
+    shadowOffset: {
+      width: 1,
+      height: 3,
+    },
+    shadowOpacity: 0.5,
     shadowRadius: 4,
     elevation: 5,
     width: 250,
-    height: 75, 
-	}, 
+    height: 75,
+  },
   buttonText: {
     fontFamily: "Roboto",
     fontSize: 20,
@@ -85,7 +85,7 @@ export default StyleSheet.create({
     textAlignt: "center",
     justifyContent: "center",
     alignItems: "center",
-  }, 
+  },
   buttonTextSmall: {
     color: "Black",
     fontFamily: "Roboto",
@@ -94,14 +94,14 @@ export default StyleSheet.create({
     textTransform: "uppercase",
     justifyContent: "center",
     alignItems: "center",
-  }, 
+  },
   text: {
     color: "white",
     fontSize: 26,
     fontWeight: "300",
     alignItems: "center",
     fontFamily: "Roboto",
-    textAlign: "center", 
+    textAlign: "center",
   },
   subtitle: {
     color: "white",
@@ -128,11 +128,11 @@ export default StyleSheet.create({
     justifyContent: "center",
     textAlign: "center",
     marginVertical: "3%",
-    marginHorizontal:"3%",
+    marginHorizontal: "3%",
     shadowColor: "#000",
     shadowOffset: {
-          width: 0,
-          height: 2,
+      width: 0,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -142,41 +142,40 @@ export default StyleSheet.create({
     width: 260,
   },
   inputWrapper: {
-    flexDirection: 'column',
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-  height: 350,
+    height: 350,
   },
   buttonWrapper: {
-    flexDirection: 'column', 
+    flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
     marginBottom: 20,
   },
   space: {
-    width: 100, 
-    height: 75, 
+    width: 100,
+    height: 75,
   },
   title: {
     color: "#F5D466",
     fontWeight: "bold",
     fontSize: 42,
     fontFamily: "Roboto",
-
   },
   card: {
     padding: 10,
     margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     width: 400,
   },
-  cardText:{
-    margin: 10, 
-    flexDirection: 'column', 
-    justifyContent: 'space-between',
+  cardText: {
+    margin: 10,
+    flexDirection: "column",
+    justifyContent: "space-between",
     flex: 1,
-    padding: 10, 
+    padding: 10,
   },
   amountInput: {
     backgroundColor: "white",
@@ -188,8 +187,8 @@ export default StyleSheet.create({
     //marginBottom: "5%",
     shadowColor: "#000",
     shadowOffset: {
-          width: 0,
-          height: 2,
+      width: 0,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -211,29 +210,29 @@ export default StyleSheet.create({
   amountView: {
     flexDirection: "row",
     display: "flex",
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   descriptionInput: {
-      //flex: 0.1,
-      backgroundColor: "white",
-      fontSize: 18,
-      marginTop: 5,
-      marginBottom: "5%",
-      shadowColor: "#000",
-      shadowOffset: {
-            width: 0,
-            height: 2,
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-      elevation: 5,
-      borderRadius: 5,
-      height: 180,
-      width: "100%",
-      textAlign: 'left',
-      textAlignVertical: 'top',
-      paddingTop: 5,
-      paddingHorizontal: 10,
+    //flex: 0.1,
+    backgroundColor: "white",
+    fontSize: 18,
+    marginTop: 5,
+    marginBottom: "5%",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    borderRadius: 5,
+    height: 180,
+    width: "100%",
+    textAlign: "left",
+    textAlignVertical: "top",
+    paddingTop: 5,
+    paddingHorizontal: 10,
   },
   fieldTitle: {
     color: "white",
@@ -258,7 +257,7 @@ export default StyleSheet.create({
     flexDirection: "row",
     display: "flex",
     alignSelf: "center",
-    padding: 30, 
+    padding: 30,
   },
   initialPriceTitle: {
     color: "white",
@@ -268,21 +267,21 @@ export default StyleSheet.create({
     fontFamily: "Roboto",
   },
   inputWrapper: {
-      alignItems: "center",
-      gap: "5px",
-      flexDirection: "column",
-      flex: 1,
-      alignSelf: "stretch"
+    alignItems: "center",
+    gap: "5px",
+    flexDirection: "column",
+    flex: 1,
+    alignSelf: "stretch",
   },
   space: {
     //backgroundColor: "white",
     width: 100, // or whatever size  you need
-    height: 75, 
+    height: 75,
   },
   profileColumn: {
-      paddingVertical: 20,
-      flexDirection: "column",
-      width: "120%"
+    paddingVertical: 20,
+    flexDirection: "column",
+    width: "120%",
   },
   profileRows: {
     flexDirection: "row",
@@ -422,16 +421,16 @@ export default StyleSheet.create({
   card: {
     padding: 10,
     margin: 10,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     width: 400,
   },
-  cardText:{
-    margin: 10, 
-    flexDirection: 'column', 
-    justifyContent: 'space-between',
+  cardText: {
+    margin: 10,
+    flexDirection: "column",
+    justifyContent: "space-between",
     flex: 1,
-    padding: 10, 
+    padding: 10,
   },
   amountView: {
     flexDirection: "row",
@@ -536,24 +535,32 @@ export default StyleSheet.create({
   titleCalloutMaker: {
     fontSize: 16,
     fontWeight: "800",
+    textAlign: "center",
+  },
+  subtitleCalloutMaker: {
+    fontSize: 14,
+    fontWeight: "600",
   },
   bigMap: {
-    //width: Dimensions.get("window").width,
-    //height: Dimensions.get("window").height,
     flex: 1,
   },
   smallMap: {
     width: Dimensions.get("window").width * 0.6,
     height: Dimensions.get("window").height * 0.2,
   },
-  scrollContainer:{
+  callout: {
+    backgroundColor: "white",
+    borderRadius: 5,
+    width: Dimensions.get("window").width * 0.5,
+  },
+  scrollContainer: {
     flex: 1,
     backgroundColor: "#242424",
   },
-  scrollContainerNoBackground:{
+  scrollContainerNoBackground: {
     flex: 1,
   },
-  scrollContainerContent:{
+  scrollContainerContent: {
     alignItems: "center",
     justifyContent: "center",
   },
@@ -562,5 +569,10 @@ export default StyleSheet.create({
     width: "80%",
     paddingTop: "20%",
     alignItems: "center",
+  },
+  callout: {
+    backgroundColor: "white",
+    borderRadius: 5,
+    width: Dimensions.get("window").width * 0.5,
   },
 });
