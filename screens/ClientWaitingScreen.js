@@ -37,7 +37,6 @@ export default function ClientWaitingScreen({ navigation, route }) {
         {
           text: "Yes",
           onPress: () => {
-            console.log("Yes pressed");
             // remove all offers
             offers.map((product) => {
               deleteDoc(
