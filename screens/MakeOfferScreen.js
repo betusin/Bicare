@@ -6,12 +6,13 @@ import {
     KeyboardAvoidingView,
     ScrollView,
 } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import page from '../styles';
 import {Image, TouchableOpacity} from "react-native";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, GeoPoint } from "firebase/firestore";
 import { auth, db } from "../src/firebase";
 import Toast from "react-native-toast-message";
+import { getCurrentPositionAsync, requestForegroundPermissionsAsync, Accuracy } from "expo-location";
 
 
 export default function MakeOfferScreen({ route, navigation }){
@@ -19,12 +20,41 @@ export default function MakeOfferScreen({ route, navigation }){
     const user = auth.currentUser;
     const [priceOffer, setPriceOffer] = useState(requestData.amount.toString());
     const [eta, setEta] = useState("40");
+    const [location, setLocation] = useState({});
+
+    useEffect(() => {
+        (async () => {
+          let { status } = await requestForegroundPermissionsAsync();
+          if (status !== "granted") {
+            return;
+          }
+          // Gets the location from expo
+          try {
+            getCurrentPositionAsync({
+                accuracy: Accuracy.Balanced,
+                enableHighAccuracy: true,
+                timeInterval: 5,
+            }).then((thisLocation) => {
+                setLocation(thisLocation);
+            });
+          } catch (error) {
+            Toast.show({
+                type: 'error',
+                text1: error.message,
+            });
+          }
+        })();
+    }, []);
 
     const createOffer = () => {
         const offerData = {
             fixer: user.uid,
             offered_price: +priceOffer,
             eta: +eta,
+            fixerLocation: new GeoPoint(
+                location.coords.latitude,
+                location.coords.longitude
+            ),
         }
 
         addDoc(collection(db, "repair_request", requestData.id, "offers"), offerData)
