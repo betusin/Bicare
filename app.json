@@ -25,10 +25,16 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "softwareKeyboardLayoutMode":"resize"
+      "softwareKeyboardLayoutMode": "resize",
+      "package": "com.gtk.bicarenative"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "cf723460-3e84-4944-8080-e085aacded9b"
+      }
     }
   }
 }
