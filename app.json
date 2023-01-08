@@ -18,7 +18,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gtk.bicarenative"
     },
     "android": {
       "adaptiveIcon": {
@@ -26,7 +27,12 @@
         "backgroundColor": "#FFFFFF"
       },
       "softwareKeyboardLayoutMode": "resize",
-      "package": "com.gtk.bicarenative"
+      "package": "com.gtk.bicarenative",
+      "config": {
+        "googleMaps": {
+          "apiKey": "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"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

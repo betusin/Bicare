@@ -83,6 +83,7 @@ export default function MapFixer({ navigation }) {
   return (
     <View style={page.bigMap}>
       <MapView
+        key={GOOGLE_API_KEY}
         ref={(ref) => (this.map = ref)}
         style={page.bigMap}
         provider={PROVIDER_GOOGLE}
