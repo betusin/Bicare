@@ -18,7 +18,7 @@ import Toast from 'react-native-toast-message';
 
 export default function NewRepairRequest({ navigation }){
 
-    const [description, onChangeText] = React.useState("Useless Text");
+    const [description, onChangeText] = React.useState("");
     const [amount, onChangeNumber] = React.useState(10);
     const [location, setLocation] = useState({});
 
