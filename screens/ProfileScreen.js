@@ -16,8 +16,6 @@ import { doc, setDoc } from "firebase/firestore";
 import Toast from "react-native-toast-message";
 
 //Placeholders for design, these need to be pulled from the db
-const jobs_made = 8;
-const balance = 4.52;
 
 export default function ProfileScreen({ navigation }) {
     const user = auth.currentUser;
@@ -121,10 +119,6 @@ export default function ProfileScreen({ navigation }) {
                             {userData && (userData.balance ? userData.balance : 0)}
                             {loading && "Loading..."}
                         </Text>
-                    </View>
-                    <View style={[page.profileRows]}>
-                        <Text style={[page.profileField,page.profileFieldTitle]}>Jobs Offered:</Text>
-                        <Text style={[page.profileField,page.profileFieldValue]}>{jobs_made}</Text>
                     </View>
                 </View>
 
