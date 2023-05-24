@@ -62,8 +62,6 @@ export default function MapClient({ navigation }) {
         setLocation(location);
         getBikeShopData();
         getFixersData();
-        console.log(location + "location useeffect");
-        console.log(render);
         if (this.map != undefined) {
           this.map.animateToRegion({
             latitude: location.coords.latitude,
@@ -130,9 +128,9 @@ export default function MapClient({ navigation }) {
                   longitude: val.longitude,
                 }}
                 key={index}
-                //title={val.title}
-                //description={val.description}
-                //onCalloutPress={() => alert("Clicked")}
+              //title={val.title}
+              //description={val.description}
+              //onCalloutPress={() => alert("Clicked")}
               >
                 <Image
                   style={page.fixerLogoMaps}

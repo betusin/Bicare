@@ -17,36 +17,36 @@ const Stack = createStackNavigator();
 export default function App() {
   return (
     <>
-    <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
-        }}
-      >
-        <Stack.Screen
-          name="LoginScreen"
-          component={LoginScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SignupScreen"
-          component={SignupScreen}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="MapClient"
-          component={MapClient}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Navigation"
-          component={Navigation}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-      <StatusBar style="light" />
-    </NavigationContainer>
-    <Toast />
+      <NavigationContainer>
+        <Stack.Navigator
+          screenOptions={{
+            cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
+          }}
+        >
+          <Stack.Screen
+            name="LoginScreen"
+            component={LoginScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SignupScreen"
+            component={SignupScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MapClient"
+            component={MapClient}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Navigation"
+            component={Navigation}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+        <StatusBar style="light" />
+      </NavigationContainer>
+      <Toast />
     </>
   );
 }

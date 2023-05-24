@@ -55,14 +55,14 @@ export default function FixScreen({ navigation }) {
         location: geoPoint,
         username: userData.username,
       })
-      .then(() => {
-      })
-      .catch((error) => {
-        Toast.show({
-          type: 'error',
-          text1: error.message,
-        });
-      })
+        .then(() => {
+        })
+        .catch((error) => {
+          Toast.show({
+            type: 'error',
+            text1: error.message,
+          });
+        })
     } else {
       deleteDoc(doc(db, "active_fixers", user.uid));
     }
@@ -107,9 +107,9 @@ export default function FixScreen({ navigation }) {
           >
             <Text style={page.buttonTextSmall}>Change Status</Text>
           </TouchableOpacity>
-          { userData &&
+          {userData &&
             <View style={[page.profileRows]}>
-              <Text style={[page.profileField,page.profileFieldValue]}>Change availability</Text>
+              <Text style={[page.profileField, page.profileFieldValue]}>Change availability</Text>
               <Switch
                 trackColor={{ false: "#767577", true: "white" }}
                 thumbColor={userData.isAvailable ? "#f5dd4b" : "#f4f3f4"}

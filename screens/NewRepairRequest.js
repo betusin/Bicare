@@ -1,12 +1,11 @@
 import {
-  Text,
-  View,
-  TextInput,
-  SafeAreaView,
-  Image,
-  TouchableOpacity,
-  ScrollView,
-  KeyboardAvoidingView
+    Text,
+    View,
+    TextInput,
+    Image,
+    TouchableOpacity,
+    ScrollView,
+    KeyboardAvoidingView
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { requestForegroundPermissionsAsync, getCurrentPositionAsync, Accuracy } from "expo-location";
@@ -16,7 +15,7 @@ import { addDoc, collection, GeoPoint, Timestamp } from "firebase/firestore";
 import { db, auth } from '../src/firebase';
 import Toast from 'react-native-toast-message';
 
-export default function NewRepairRequest({ navigation }){
+export default function NewRepairRequest({ navigation }) {
 
     const [description, onChangeText] = React.useState("Useless Text");
     const [amount, onChangeNumber] = React.useState(10);
@@ -25,9 +24,9 @@ export default function NewRepairRequest({ navigation }){
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
-      {label: 'Flat Tire', value: 'flattire'},
-      {label: 'Detached Chain', value: 'chain'},
-      {label: 'Other Issue', value: 'other'}
+        { label: 'Flat Tire', value: 'flattire' },
+        { label: 'Detached Chain', value: 'chain' },
+        { label: 'Other Issue', value: 'other' }
 
     ]);
 
@@ -35,16 +34,16 @@ export default function NewRepairRequest({ navigation }){
         (async () => {
             let { status } = await requestForegroundPermissionsAsync();
             if (status !== "granted") {
-            return;
+                return;
             }
             // Gets the current location from expo
             try {
-            let location = await getCurrentPositionAsync({
-                accuracy: Accuracy.Balanced,
-                enableHighAccuracy: true,
-                timeInterval: 5,
-            });
-            setLocation(location);
+                let location = await getCurrentPositionAsync({
+                    accuracy: Accuracy.Balanced,
+                    enableHighAccuracy: true,
+                    timeInterval: 5,
+                });
+                setLocation(location);
             } catch (error) {
                 Toast.show({
                     type: 'error',
@@ -66,7 +65,7 @@ export default function NewRepairRequest({ navigation }){
             createdAt: Timestamp.fromDate(new Date()),
         };
 
-        addDoc(collection(db, "repair_request"),  data)
+        addDoc(collection(db, "repair_request"), data)
             .then((docRef) => {
                 Toast.show({
                     type: 'success',
@@ -78,58 +77,58 @@ export default function NewRepairRequest({ navigation }){
                 text1: error.message,
             }))
 
-            navigation.navigate("Offers screen");
+        navigation.navigate("Offers screen");
     }
 
-    return(
-        <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} enabled   keyboardVerticalOffset={0}>
-        <ScrollView behavior="padding" style={page.scrollContainer} contentContainerStyle={page.scrollContainerContent}>
-            <View style={page.scrollView}>
-                <Image
-                    style={page.tinyLogo}
-                    source={require('../img/logoWhiteTrial2.png')}
-                />                
-                <Text style={page.header}>New Repair Request</Text>
-                <View style={page.inputWrapper}>
-                    <Text style={page.fieldTitle}>Problem</Text>
-                    <DropDownPicker
-                      open={open}
-                      value={value}
-                      items={items}
-                      setOpen={setOpen}
-                      setValue={setValue}
-                      setItems={setItems}
+    return (
+        <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', }} enabled keyboardVerticalOffset={0}>
+            <ScrollView behavior="padding" style={page.scrollContainer} contentContainerStyle={page.scrollContainerContent}>
+                <View style={page.scrollView}>
+                    <Image
+                        style={page.tinyLogo}
+                        source={require('../img/logoWhiteTrial2.png')}
                     />
-                    <Text style={page.fieldTitle}>Price</Text>
-                    <View style={page.amountView}>
-                      <Text style={page.euroSign}>€</Text>
-                      <TextInput
-                          style={page.amountInput}
-                          placeholder="10"
-                          onChangeText={onChangeNumber}
-                          keyboardType="numeric"
-                      />
-                    </View>
+                    <Text style={page.header}>New Repair Request</Text>
+                    <View style={page.inputWrapper}>
+                        <Text style={page.fieldTitle}>Problem</Text>
+                        <DropDownPicker
+                            open={open}
+                            value={value}
+                            items={items}
+                            setOpen={setOpen}
+                            setValue={setValue}
+                            setItems={setItems}
+                        />
+                        <Text style={page.fieldTitle}>Price</Text>
+                        <View style={page.amountView}>
+                            <Text style={page.euroSign}>€</Text>
+                            <TextInput
+                                style={page.amountInput}
+                                placeholder="10"
+                                onChangeText={onChangeNumber}
+                                keyboardType="numeric"
+                            />
+                        </View>
 
-                    <Text style={page.fieldTitle}>Description</Text>
-                    <TextInput
-                        style={page.descriptionInput}
-                        placeholder="Describe the issue"
-                        onChangeText={onChangeText}
-                        multiline
-                        numberOfLines={4}
-                    />
-                    <TouchableOpacity
-                        style={page.button}
-                        onPress={createRepairRequest}
-                    >
-                        <Text>
-                            Create repair request
-                        </Text>
-                    </TouchableOpacity>
+                        <Text style={page.fieldTitle}>Description</Text>
+                        <TextInput
+                            style={page.descriptionInput}
+                            placeholder="Describe the issue"
+                            onChangeText={onChangeText}
+                            multiline
+                            numberOfLines={4}
+                        />
+                        <TouchableOpacity
+                            style={page.button}
+                            onPress={createRepairRequest}
+                        >
+                            <Text>
+                                Create repair request
+                            </Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-        </ScrollView>
+            </ScrollView>
         </KeyboardAvoidingView>
     );
 }

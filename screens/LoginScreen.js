@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useState, useEffect } from "react";
-import {Image, TouchableOpacity} from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { useFonts } from 'expo-font';
 import page from '../styles'
 import { auth } from '../src/firebase';
@@ -70,67 +70,67 @@ export default function LoginScreen({ navigation }) {
       });
   }
 
-return (
-  <LinearGradient colors={['#751A33', '#B34233']} style={{flex:1}} locations={[0.0, 1.0]}>
-    <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column',justifyContent: 'center',}} enabled   keyboardVerticalOffset={0}>
-    <ScrollView behavior="padding" style={page.scrollContainerNoBackground} contentContainerStyle={page.scrollContainerContent}>
-        <View style={page.scrollView}>
-        <Image
-          style={page.tinyLogo}
-          source={require('../img/logoWhiteTrial2.png')}
-        />
-        <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
-        <View style={page.inputWrapper}>
-          <TextInput
-            style={page.input}
-            placeholder="Enter your Email"
-            onChangeText={(newText) => setEmail(newText)}
-            value={email}
-          />
-          <TextInput
-            style={page.input}
-            secureTextEntry={true}
-            placeholder="Enter your Password"
-            onChangeText={(newText) => setTextPassword(newText)}
-            value={passwordText}
-          />
-        </View>
-        <View style={page.buttonWrapper}>
-          <TouchableOpacity
-            style={page.button}
-            onPress={handleLogin}
-          >
-            <Text
-                style={page.buttonText}
-            >
-              Login
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={page.button}
-            onPress={resetPassword}
-          >
-            <Text
-                style={page.buttonText}
-            >
-              Forgot Password
-            </Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={page.button}
-            onPress={() => navigation.navigate("SignupScreen")}
-          >
-            <Text
-              style={page.buttonText}
-            >
-              Sign Up
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <StatusBar style="auto" />
-        </View>
-    </ScrollView>
-    </KeyboardAvoidingView>
-  </LinearGradient>
-);
+  return (
+    <LinearGradient colors={['#751A33', '#B34233']} style={{ flex: 1 }} locations={[0.0, 1.0]}>
+      <KeyboardAvoidingView style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', }} enabled keyboardVerticalOffset={0}>
+        <ScrollView behavior="padding" style={page.scrollContainerNoBackground} contentContainerStyle={page.scrollContainerContent}>
+          <View style={page.scrollView}>
+            <Image
+              style={page.tinyLogo}
+              source={require('../img/logoWhiteTrial2.png')}
+            />
+            <Text style={page.subtitle}>Barter your bike repair anywhere</Text>
+            <View style={page.inputWrapper}>
+              <TextInput
+                style={page.input}
+                placeholder="Enter your Email"
+                onChangeText={(newText) => setEmail(newText)}
+                value={email}
+              />
+              <TextInput
+                style={page.input}
+                secureTextEntry={true}
+                placeholder="Enter your Password"
+                onChangeText={(newText) => setTextPassword(newText)}
+                value={passwordText}
+              />
+            </View>
+            <View style={page.buttonWrapper}>
+              <TouchableOpacity
+                style={page.button}
+                onPress={handleLogin}
+              >
+                <Text
+                  style={page.buttonText}
+                >
+                  Login
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={page.button}
+                onPress={resetPassword}
+              >
+                <Text
+                  style={page.buttonText}
+                >
+                  Forgot Password
+                </Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={page.button}
+                onPress={() => navigation.navigate("SignupScreen")}
+              >
+                <Text
+                  style={page.buttonText}
+                >
+                  Sign Up
+                </Text>
+              </TouchableOpacity>
+            </View>
+            <StatusBar style="auto" />
+          </View>
+        </ScrollView>
+      </KeyboardAvoidingView>
+    </LinearGradient>
+  );
 }
