@@ -74,7 +74,7 @@ npm version 8.15.0
 
 node version 16.17.1
 
-nvm version 2.2.11 
+nvm version 2.2.11
 
 expo version 6.0.6
 
@@ -88,6 +88,6 @@ Use nvm to change your node version. Simply typing 16 sufficies.
 
 2. get npm, node, nvm and yarn with the versions mentioned above. nvm is purely a version manager, you can use it as follows: `nvm use 16`. This will default to 16.17.1 for node. Don't worry about expo just yet, yarn will take care of it.
 
-3. Since all dependencies should be in the yarn.lock, you should run yarn install. 
+3. Since all dependencies should be in the yarn.lock, you should run yarn install.
 
-4. Everything *should* be set up correctly now. `yarn expo start` will start an emulator. 
+4. Everything *should* be set up correctly now. `yarn expo start` will start an emulator.
